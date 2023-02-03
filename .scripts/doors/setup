@@ -13,6 +13,11 @@ elif test -d .doors; then
     rm -rf .doors
 fi
 
+# Prep
+
+cd &&
+mkdir .doors
+
 # Bootstrap into distro scripts
 . /etc/os-release
 OS=$NAME
@@ -21,7 +26,7 @@ if [[ $OS == *Arch* ]]; then
     cd &&
         sudo sed '/Color/s/^#//' -i /etc/pacman.conf &&
         sudo pacman -S --needed --noconfirm git rsync base-devel  &&
-        git clone https://github.com/adoyle0/Doors.git:.doors &&
+        git clone https://github.com/adoyle0/Doors.git .doors &&
         .doors/.scripts/doors/install_min_arch
 
 elif [[ $OS == *buntu* ]]; then
