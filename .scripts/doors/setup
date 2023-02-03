@@ -36,3 +36,6 @@ elif [[ $OS == *buntu* ]]; then
         .doors/.scripts/doors/install_min_ubuntu
 
 fi
+
+# Copy it
+rsync -avzP .doors/ .
