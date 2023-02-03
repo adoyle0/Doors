@@ -23,7 +23,7 @@ If you want recommendations for archinstall I'll say:
 - [linux-zen](https://wiki.archlinux.org/title/Kernel)
 - [NetworkManager](https://wiki.archlinux.org/title/NetworkManager)
 
-Shell install also works on Ubuntu Server 22.04 so it should work on any buntu or Mint, Pop, etc. and maybe Debian too
+Shell install also works on Ubuntu Server 22.04 so it should work on any buntu or Mint, Pop, etc. and maybe Debian too but packer is broken for some reason at least on minimum install
 
 ### Quick shell(start here):
 As your new user in your new user's home directory run: (will overwrite some user files)
