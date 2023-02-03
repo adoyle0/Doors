@@ -31,7 +31,7 @@ if [[ $OS == *Arch* ]]; then
 
 elif [[ $OS == *buntu* ]]; then
     cd &&
-        sudo apt-get install git rsync &&
+        sudo apt-get -y install git rsync &&
         .doors/.scripts/doors/install_min_ubuntu
 
 fi
