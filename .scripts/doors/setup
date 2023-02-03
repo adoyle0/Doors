@@ -19,8 +19,8 @@ if [[ $OS == *Arch* ]]; then
     mkdir .doors &&
     rsync -avzP Doors/ .doors &&
     rm -rf Doors &&
-    .scripts/doors/install_min_arch
+    .doors/.scripts/doors/install_min_arch
 
 elif [[ $OS == *buntu* ]]; then
-    .scripts/doors/install_min_ubuntu
+    .doors/.scripts/doors/install_min_ubuntu
 fi
