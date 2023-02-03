@@ -12,7 +12,9 @@ if [[ $OS == *Arch* ]]; then
     sudo sed '/Color/s/^#//' -i /etc/pacman.conf &&
     sudo pacman -S --needed --noconfirm git rsync base-devel  &&
     git clone https://github.com/adoyle0/Doors.git &&
-    rsync -avzP --copy-links Doors/ ./
+    mkdir .doors &&
+    rsync -avzP Doors/ .doors &&
+    rmdir Doors &&
     .scripts/doors/install_min_arch
 
 elif [[ $OS == *buntu* ]]; then
