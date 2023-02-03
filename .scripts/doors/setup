@@ -14,7 +14,7 @@ if [[ $OS == *Arch* ]]; then
     git clone https://github.com/adoyle0/Doors.git &&
     mkdir .doors &&
     rsync -avzP Doors/ .doors &&
-    rmdir Doors &&
+    rm -rf Doors &&
     .scripts/doors/install_min_arch
 
 elif [[ $OS == *buntu* ]]; then

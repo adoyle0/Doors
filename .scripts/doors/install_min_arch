@@ -23,4 +23,4 @@ nvim-packer-git \
 oh-my-zsh-git &&
 
 rsync -avzP .doors/ ./ &&
-sudo chsh -s $(which zsh) $USER
+sudo chsh -s /bin/zsh $USER
