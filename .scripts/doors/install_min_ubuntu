@@ -1,5 +1,12 @@
 #!/bin/bash
 
+# Base
+sudo apt-get -y install \
+    btop \
+    neovim \
+    byobu \
+    zsh \
+    nnn
 
 # Packer
 git clone --depth 1 https://github.com/wbthomason/packer.nvim\
