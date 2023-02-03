@@ -5,6 +5,10 @@ echo "
 =======================================================
 "
 
+if test -d Doors; then
+    rm -rf Doors
+fi
+
 . /etc/os-release
 OS=$NAME
 
@@ -20,10 +24,3 @@ if [[ $OS == *Arch* ]]; then
 elif [[ $OS == *buntu* ]]; then
     .scripts/doors/install_min_ubuntu
 fi
-
-echo "
-========================
- logout and log back in
-========================
-plz
-";
