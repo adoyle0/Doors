@@ -1,27 +1,32 @@
 #!/bin/bash
 echo "
 =======================================================
- Installing D's nux (you're gonna love my nux(really))
+Installing D's nux (you're gonna love my nux(really))
 =======================================================
 "
+# Clean up
+if test -d Doors; then
+    rm -rf Doors
+elif test -d .doors; then
+    rm -rf .doors
+fi
+
+# Bootstrap into distro scripts
 . /etc/os-release
 OS=$NAME
 
-if test -d Doors; then
-    rm -rf Doors
-fi
-
 if [[ $OS == *Arch* ]]; then
     sudo sed '/Color/s/^#//' -i /etc/pacman.conf &&
-    sudo pacman -S --needed --noconfirm git rsync base-devel  &&
-    .doors/.scripts/doors/install_min_arch
+        sudo pacman -S --needed --noconfirm git rsync base-devel  &&
+        .doors/.scripts/doors/install_min_arch
 
 elif [[ $OS == *buntu* ]]; then
-    # Base
-    sudo apt-get install git rsync btop neovim byobu zsh nnn
+    sudo apt-get install git rsync &&
     .doors/.scripts/doors/install_min_ubuntu
+
 fi
 
+# Do the rest
 git clone https://github.com/adoyle0/Doors.git &&
     mkdir .doors &&
     rsync -avzP Doors/ .doors &&
