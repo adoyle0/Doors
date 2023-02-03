@@ -6,7 +6,7 @@ It's a bootstrap script for my personal desktop environment that is:
 
 1. Reliable
 1. Fast
-1. Made from off as many off the shelf parts as possible
+1. Made from readily available components
 1. Simple (see above)
 1. Decent looking
 
@@ -25,16 +25,16 @@ If you want recommendations for archinstall I'll say:
 
 Shell install also works on Ubuntu Server 22.04 so it should work on any buntu or Mint, Pop, etc. and maybe Debian too
 
-### Quick shell:
+### Quick shell(start here):
 As your new user in your new user's home directory run: (will overwrite some user files)
 
 1. ```curl -s https://doordesk.net/setup | bash```
 
 2. Log out and log back in
 
-Minimum install is the default, if you want a graphical environment run:
+Minimum install is the default, if you want a graphical environment run: (Arch only)
 
-`.scripts/installdeps_full`
+`.scripts/doors/.installdeps_full_arch`
 
 to get the rest and then:
 
