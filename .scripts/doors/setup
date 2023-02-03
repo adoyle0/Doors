@@ -4,23 +4,25 @@ echo "
  Installing D's nux (you're gonna love my nux(really))
 =======================================================
 "
+. /etc/os-release
+OS=$NAME
 
 if test -d Doors; then
     rm -rf Doors
 fi
 
-. /etc/os-release
-OS=$NAME
-
 if [[ $OS == *Arch* ]]; then
     sudo sed '/Color/s/^#//' -i /etc/pacman.conf &&
     sudo pacman -S --needed --noconfirm git rsync base-devel  &&
-    git clone https://github.com/adoyle0/Doors.git &&
-    mkdir .doors &&
-    rsync -avzP Doors/ .doors &&
-    rm -rf Doors &&
     .doors/.scripts/doors/install_min_arch
 
 elif [[ $OS == *buntu* ]]; then
+    # Base
+    sudo apt-get install git rsync btop neovim byobu zsh nnn
     .doors/.scripts/doors/install_min_ubuntu
 fi
+
+git clone https://github.com/adoyle0/Doors.git &&
+    mkdir .doors &&
+    rsync -avzP Doors/ .doors &&
+    rm -rf Doors &&

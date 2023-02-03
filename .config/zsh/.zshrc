@@ -58,7 +58,7 @@ ccat="highlight --out-format=ansi" \
 # Laziness
 alias \
 hosts="sudo nvim /etc/hosts" \
-push="rsync -avzP --copy-links " \
+push="rsync -avzP " \
 sup="push ~/projects/http deez:" \
 vs="source bin/activate" \
 vd="deactivate" \

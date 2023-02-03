@@ -1,7 +1,5 @@
 #!/bin/bash
 
-# Base
-sudo apt-get install git rsync btop neovim byobu zsh nnn
 
 # Packer
 git clone --depth 1 https://github.com/wbthomason/packer.nvim\
