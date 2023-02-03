@@ -1,9 +1,11 @@
 #!/bin/bash
+
 echo "
 =======================================================
 Installing D's nux (you're gonna love my nux(really))
 =======================================================
 "
+
 # Clean up
 if test -d Doors; then
     rm -rf Doors
@@ -16,18 +18,15 @@ fi
 OS=$NAME
 
 if [[ $OS == *Arch* ]]; then
-    sudo sed '/Color/s/^#//' -i /etc/pacman.conf &&
+    cd &&
+        sudo sed '/Color/s/^#//' -i /etc/pacman.conf &&
         sudo pacman -S --needed --noconfirm git rsync base-devel  &&
+        git clone https://github.com/adoyle0/Doors.git:.doors &&
         .doors/.scripts/doors/install_min_arch
 
 elif [[ $OS == *buntu* ]]; then
-    sudo apt-get install git rsync &&
-    .doors/.scripts/doors/install_min_ubuntu
+    cd &&
+        sudo apt-get install git rsync &&
+        .doors/.scripts/doors/install_min_ubuntu
 
 fi
-
-# Do the rest
-git clone https://github.com/adoyle0/Doors.git &&
-    mkdir .doors &&
-    rsync -avzP Doors/ .doors &&
-    rm -rf Doors &&
