@@ -1,0 +1,40 @@
+#!/bin/bash
+
+# Install all (most) dependencies
+# This also serves as a list of dependencies
+
+yay -S --needed --noconfirm \
+\
+`# Standard`\
+awesome \
+btop \
+kitty \
+neovim \
+firefox-developer-edition \
+python-pywal \
+playerctl \
+pamixer \
+byobu \
+zsh \
+xorg-xmodmap \
+picom \
+unclutter \
+redshift \
+xclip \
+polkit-gnome \
+arc-icon-theme \
+acpi \
+nitrogen \
+spotify-launcher \
+xorg-server \
+xorg-xinit \
+xorg-xset \
+\
+`# Aur`\
+python-pywalfox \
+pywal-discord-git \
+wal-telegram-git \
+lf-git \
+ctpv-git \
+nvim-packer-git \
+oh-my-zsh-git 

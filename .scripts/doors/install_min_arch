@@ -1,0 +1,24 @@
+#!/bin/bash
+
+# Yay
+git clone https://aur.archlinux.org/yay.git &&
+cd yay && makepkg -si --noconfirm && rm -rf yay &&
+
+# Base/Shell
+yay -S --needed --noconfirm \
+\
+`# Standard`\
+rsync \
+btop \
+neovim \
+byobu \
+zsh \
+nnn \
+\
+`# Aur`\
+nvim-packer-git \
+oh-my-zsh-git
+
+rsync -avzP --copy-links Doors/ ./
+rm -rf Doors;
+sudo chsh -s /bin/zsh $USER;
