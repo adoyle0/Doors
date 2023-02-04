@@ -11,8 +11,6 @@ if test -d Doors; then
     rm -rf Doors
 elif test -d .doors; then
     rm -rf .doors
-elif test -d yay; then
-    rm -rf yay
 fi
 
 # Prep
