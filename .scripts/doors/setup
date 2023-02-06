@@ -46,4 +46,4 @@ cd &&
     rm -rf .doors
 
 # start it
-exec zsh
+exec zsh -l
