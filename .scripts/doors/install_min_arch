@@ -37,4 +37,3 @@ nvim-packer-git \
 oh-my-zsh-git &&
 
 sudo chsh -s /bin/zsh $USER
-exec zsh

@@ -44,3 +44,6 @@ cd &&
 cd &&
     rm -rf .git &&
     rm -rf .doors
+
+# start it
+exec zsh
