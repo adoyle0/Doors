@@ -38,4 +38,9 @@ elif [[ $OS == *buntu* ]]; then
 fi
 
 # Copy it
-rsync -avzP .doors/ .
+cd &&
+    rsync -avzP .doors/ .
+
+# git
+cd &&
+    rm -rf .git
