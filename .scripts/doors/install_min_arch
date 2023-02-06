@@ -22,9 +22,11 @@ btop \
 neovim \
 byobu \
 zsh \
+lf \
 nnn \
 \
 `# Aur`\
+stpv-git \
 nvim-packer-git \
 oh-my-zsh-git &&
 

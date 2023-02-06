@@ -26,7 +26,9 @@ Use as much or as little as you need.
 - [neovim](https://github.com/neovim/neovim) - Blazingly fast editor
 - [byobu](https://www.byobu.org/) - Comfy multiplexer
 - [Oh My Zsh](https://github.com/ohmyzsh/ohmyzsh) - Community enhancements for zsh. Easier than DIY
+- [lf](https://github.com/gokcehan/lf) - File manager like [ranger](https://github.com/ranger/ranger) but faster
 - [nnn](https://github.com/jarun/nnn) - Blazingly fast file manager
+- [stpv](https://github.com/Naheel-Azawy/stpv) (via AUR) - For lf previews
 
 ### Graphical environment
 
