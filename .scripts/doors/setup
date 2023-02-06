@@ -38,7 +38,7 @@ fi
 
 # send it
 cd &&
-    rsync -azP .doors/ .
+    rsync -aqzP .doors/ .
 
 # cleanup
 cd &&
