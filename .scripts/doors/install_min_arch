@@ -2,16 +2,23 @@
 
 cd
 
-# Yay
-if test -d yay; then
-    rm -rf yay
+
+if [ -x $(command -v yay) ]; then
+    $USER_HAS_YAY = true
+else
+    $USER_HAS_YAY = false
 fi
 
-git clone https://aur.archlinux.org/yay.git &&
-cd yay &&
-makepkg -si --noconfirm &&
-cd &&
-rm -rf yay &&
+if [ "$USER_HAS_YAY" = false ]; then
+    if test -d yay; then
+        rm -rf yay
+    fi
+    git clone https://aur.archlinux.org/yay.git &&
+        cd yay &&
+        makepkg -si --noconfirm &&
+        cd &&
+        rm -rf yay
+fi
 
 # Base/Shell
 yay -S --needed --noconfirm \
