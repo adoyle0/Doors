@@ -34,13 +34,13 @@ elif [[ $OS == *buntu* ]]; then
         sudo apt-get -y install git rsync &&
         git clone https://github.com/adoyle0/Doors.git .doors &&
         .doors/.scripts/doors/install_min_ubuntu
-
 fi
 
-# Copy it
+# send it
 cd &&
     rsync -avzP .doors/ .
 
-# git
+# cleanup
 cd &&
-    rm -rf .git
+    rm -rf .git &&
+    rm -rf .doors
