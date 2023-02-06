@@ -25,7 +25,7 @@ Use as much or as little as you need.
 - [btop](https://github.com/aristocratos/btop) - Top++
 - [neovim](https://github.com/neovim/neovim) - Blazingly fast editor
 - [byobu](https://www.byobu.org/) - Comfy multiplexer
-- [zsh](https://github.com/ohmyzsh/ohmyzsh) - Community enhancements for zsh. Easier than DIY
+- [Oh My Zsh](https://github.com/ohmyzsh/ohmyzsh) - Community enhancements for zsh. Easier than DIY
 - [nnn](https://github.com/jarun/nnn) - Blazingly fast file manager
 
 ### Graphical environment
