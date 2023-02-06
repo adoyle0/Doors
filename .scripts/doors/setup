@@ -38,12 +38,11 @@ fi
 
 # send it
 cd &&
-    rsync -avzP .doors/ .
+    rsync -azP .doors/ .
 
 # cleanup
 cd &&
     rm -rf .git &&
     rm -rf .doors
 
-# start it
-exec zsh -l
+echo 'Start a new shell'
