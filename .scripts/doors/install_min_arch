@@ -1,6 +1,12 @@
 #!/bin/bash
 
+cd
+
 # Yay
+if test -d yay; then
+    rm -rf yay
+fi
+
 git clone https://aur.archlinux.org/yay.git &&
 cd yay &&
 makepkg -si --noconfirm &&
@@ -12,6 +18,7 @@ yay -S --needed --noconfirm \
 \
 `# Standard`\
 rsync \
+sl \
 btop \
 neovim \
 byobu \
