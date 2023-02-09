@@ -59,7 +59,6 @@ ccat="highlight --out-format=ansi" \
 alias \
 hosts="sudo nvim /etc/hosts" \
 push="rsync -avzP " \
-sup="push ~/projects/http deez:" \
 vs="source bin/activate" \
 vd="deactivate" \
 
