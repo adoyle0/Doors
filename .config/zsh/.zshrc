@@ -28,9 +28,18 @@ v="vim ." \
 x="exit" \
 ka="killall" \
 bb="byobu" \
+t="tree -L" \
+glow="clear && glow" \
+push="rsync -avzP" \
+vs="source bin/activate" \
+vd="deactivate" \
+doors_update="cd && curl https://doordesk.net/setup | bash" \
+drm="docker rm -vf $(docker ps -aq)" \
+drmi="docker rmi -f $(docker images -aq)" \
 
 # Shortcuts
 alias \
+hosts="sudo nvim /etc/hosts" \
 cf="~/.config && v" \
 cfv="~/.config/nvim && v" \
 cfa="~/.config/awesome && v" \
@@ -55,12 +64,6 @@ grep="grep --color=auto" \
 diff="diff --color=auto" \
 ccat="highlight --out-format=ansi" \
 
-# Laziness
-alias \
-hosts="sudo nvim /etc/hosts" \
-push="rsync -avzP " \
-vs="source bin/activate" \
-vd="deactivate" \
 
 # Forget why
 wget="wget --hsts-file='XDG_CACHE_HOME/wget-hsts'" \
