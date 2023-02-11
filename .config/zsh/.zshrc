@@ -34,9 +34,9 @@ push="rsync -avzP" \
 vs="source bin/activate" \
 vd="deactivate" \
 doors_update="cd && curl https://doordesk.net/setup | bash" \
-drm="docker rm -vf $(docker ps -aq)" \
-drmi="docker rmi -f $(docker images -aq)" \
-drv="docker volume rm $(docker volume ls -q)" \
+drm='docker rm -vf $(docker ps -aq)' \
+drmi='docker rmi -f $(docker images -aq)' \
+drv='docker volume rm $(docker volume ls -q)' \
 
 # Shortcuts
 alias \
