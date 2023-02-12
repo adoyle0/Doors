@@ -36,7 +36,8 @@ vd="deactivate" \
 doors_update="cd && curl https://doordesk.net/setup | bash" \
 drm='docker rm -vf $(docker ps -aq)' \
 drmi='docker rmi -f $(docker images -aq)' \
-drv='docker volume rm $(docker volume ls -q)' \
+drmv='docker volume rm $(docker volume ls -q)' \
+dicheck='rsync -havn . /dev/shm --exclude-from .dockerignore' \
 
 # Shortcuts
 alias \
