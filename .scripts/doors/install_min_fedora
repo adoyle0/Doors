@@ -1,0 +1,26 @@
+#!/bin/bash
+
+cd
+
+sudo dnf install -y \
+sl \
+btop \
+neovim \
+byobu \
+zsh \
+lf \
+nnn \
+kitty-terminfo \
+mosh \
+
+# Packer
+if ! test -d ~/.local/share/nvim/site/pack/packer/start/packer.nvim; then
+    git clone --depth 1 https://github.com/wbthomason/packer.nvim\
+        ~/.local/share/nvim/site/pack/packer/start/packer.nvim
+fi &&
+
+# OhMyZsh
+if ! test -d .config/zsh/ohmyzsh; then
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+fi &&
+sudo chsh -s /bin/zsh $USER
