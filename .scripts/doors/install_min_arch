@@ -26,6 +26,7 @@ byobu \
 zsh \
 lf \
 nnn \
+kitty-terminfo \
 \
 `# Aur`\
 stpv-git \
