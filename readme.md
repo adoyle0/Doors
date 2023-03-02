@@ -50,19 +50,7 @@ Eye Candy:
 - [Pywalfox](https://github.com/Frewacom/pywalfox) - See above
 
 ## Install
-You should have an [Arch](https://archlinux.org) system, you can run this immediately after a minimal `archinstall` setup:
-
-If you want recommendations for [archinstall](https://wiki.archlinux.org/title/Archinstall) I'll say:
-
-- [Btrfs](https://wiki.archlinux.org/title/Btrfs)
-- I personally dislike [Swap](https://wiki.archlinux.org/title/Swap) (don't run out of ram if you don't have swap) 
-- [PipeWire](https://wiki.archlinux.org/title/PipeWire)
-- [linux-zen](https://wiki.archlinux.org/title/Kernel)
-- [NetworkManager](https://wiki.archlinux.org/title/NetworkManager)
-- Whatever else you want
-
-Shell install also works on Ubuntu Server 22.04 so it should work on any buntu or Mint, Pop, etc. and maybe Debian too but 
-packer is broken for some reason at least on minimized (Ubuntu Server 22.04) install 
+Tested on Arch, Ubuntu Server 22.04, Fedora 37
 
 ### Quick shell (start here):
 As your new user in your new user's home directory run: (will overwrite some user files)
