@@ -5,6 +5,8 @@ sudo apt-get -y install \
     btop \
     byobu \
     zsh \
+    sl \
+    kitty-terminfo \
     nnn &&
 
 # neovim
