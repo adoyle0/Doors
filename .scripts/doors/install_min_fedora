@@ -2,13 +2,12 @@
 
 cd
 
-sudo dnf install -y \
+sudo dnf -y install \
 sl \
 btop \
 neovim \
 byobu \
 zsh \
-lf \
 nnn \
 kitty-terminfo \
 mosh \
