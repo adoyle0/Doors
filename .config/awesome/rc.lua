@@ -4,7 +4,7 @@ Terminal      = "kitty"
 Editor        = "nvim"
 Editor_cmd    = Terminal .. " -e " .. Editor
 Browser       = "firefox-developer-edition"
-Browser2      = "brave-nightly"
+Browser2      = "google-chrome-beta"
 Music         = "spotify-launcher"
 Modkey        = "Mod4"
 
