@@ -41,16 +41,17 @@ dicheck='rsync -havn . /dev/shm --exclude-from .dockerignore' \
 
 # Shortcuts
 alias \
-hosts="sudo nvim /etc/hosts" \
 cf="~/.config && v" \
+cfh="sudo nvim /etc/hosts" \
+cfk="nvim ~/.config/kitty/kitty.conf" \
+cfl="nvim ~/.config/lf/lfrc" \
+cfm="nvim ~/.config/mako/config" \
+cfp="nvim ~/.zprofile" \
+cfr="nvim ~/.config/river/init" \
 cfv="~/.config/nvim && v" \
-cfa="~/.config/awesome && v" \
-cfs="~/.config/shell && v" \
-cfl="~/.config/lf && v" \
-cfx="~/.config/x11 && v" \
-cfz="~/.config/zsh && v" \
-cfk="~/.config/kitty && v" \
-cfp="nvim ~/.config/picom.conf" \
+cfw="nvim ~/.config/waybar/config" \
+cfws="nvim ~/.config/waybar/style.css" \
+cfz="nvim ~/.config/zsh/.zshrc" \
 
 # Add verbosity
 alias \
@@ -66,9 +67,6 @@ grep="grep --color=auto" \
 diff="diff --color=auto" \
 ccat="highlight --out-format=ansi" \
 
-
-# Forget why
-wget="wget --hsts-file='XDG_CACHE_HOME/wget-hsts'" \
 
 ZSH_CACHE_DIR=$HOME/.cache/oh-my-zsh
 if [[ ! -d $ZSH_CACHE_DIR ]]; then

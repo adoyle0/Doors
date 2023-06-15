@@ -1,2 +1,0 @@
-cp $(awk {print} ~/.cache/wal/wal) ~/projects/doordesk/doordesk/public/bg.png
-cp ~/.cache/wal/colors.css ~projects/doordesk/doordesk/public/colors.css

@@ -1,19 +1,23 @@
 #!/bin/bash
 
-cd
-
-if test -d yay; then
-    rm -rf yay
-fi
-
+cd &&
 if ! type "yay" &> /dev/null; then
+    echo "Yay not found, installing..." &&
+
+    if test -d yay; then
+        rm -rf yay
+    fi &&
+
     git clone https://aur.archlinux.org/yay.git &&
         cd yay &&
         makepkg -si --noconfirm &&
         cd &&
         rm -rf yay
-fi
+else
+    echo -e  "\nYay is already installed, skipping..."
+fi &&
 
+echo -e "\nInstalling dependencies..." &&
 # Base/Shell
 yay -S --needed --noconfirm \
 \
@@ -26,11 +30,12 @@ byobu \
 zsh \
 lf \
 nnn \
+kitty \
 kitty-terminfo \
 \
 `# Aur`\
 stpv-git \
-nvim-packer-git \
 oh-my-zsh-git &&
 
+echo "" &&
 sudo chsh -s /bin/zsh $USER

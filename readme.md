@@ -1,8 +1,6 @@
 # Doors are sturdier than windows
 
-The idea is a one liner to have a quick workbench, like flipping a door on its side for a quick desk.
-
-I'm writing speedrun install scripts for my personal desktop environment that is:
+This is my personal desktop environment that is:
 
 1. Reliable
 1. Fast
@@ -13,9 +11,9 @@ I'm writing speedrun install scripts for my personal desktop environment that is
 I try to use the terminal as much as possible for performance and also so it's the same experience whether 
 you're at the computer or connected via ssh.
 
-Use as much or as little as you need.
+If it's not here then you probably don't need it.
 
-## Features
+## Most Features
 
 ### Shell/Base
 
@@ -23,7 +21,7 @@ Use as much or as little as you need.
 - [rsync](https://rsync.samba.org/) - For my 'push' alias
 - [sl](https://github.com/eyJhb/sl) - For when you're too fast
 - [btop](https://github.com/aristocratos/btop) - Top++
-- [neovim](https://github.com/neovim/neovim) - Blazingly fast editor
+- [neovim](https://github.com/neovim/neovim) - Edit text blazingly fast (even over ssh)
 - [byobu](https://www.byobu.org/) - Comfy multiplexer
 - [Oh My Zsh](https://github.com/ohmyzsh/ohmyzsh) - Community enhancements for zsh. Easier than DIY
 - [nnn](https://github.com/jarun/nnn) - Lightning fast file manager
@@ -33,24 +31,24 @@ Use as much or as little as you need.
 ### Graphical environment
 
 Business:
-- [AwesomeWM](https://awesomewm.org/) - Fast and light Tiling WM configured with lua
+
+- [river](https://github.com/riverwm/river) - Dynamic wayland compositor like DWM
 - [kitty](https://github.com/kovidgoyal/kitty) - Fast terminal with GPU acceleration and image support
-- [redshift](https://github.com/jonls/redshift) - Easier on the eyes at night
-- [picom](https://github.com/yshui/picom) - Compositing
-- [unclutter](https://github.com/Airblader/unclutter-xfixes) - Hide mouse cursor after inactivity
-- [xclip](https://github.com/astrand/xclip) - Make clipboard work between terminal and gui
 - [playerctl](https://github.com/altdesktop/playerctl) - Handle media keys
 - [acpi](https://archlinux.org/packages/community/x86_64/acpi/) - Power/thermal stuff, standby, etc. You want this for a desktop
 
 Eye Candy:
-- [nitrogen](https://github.com/l3ib/nitrogen/) - I use it in my wal script to set wallpaper spanning across multiple screens
 - [pywal](https://github.com/dylanaraps/pywal) - Set whole system color scheme from wallpaper colors 
 - [pywal-discord](https://github.com/FilipLitwora/pywal-discord) - See above
 - [wal-telegram](https://github.com/guillaumeboehm/wal-telegram) - See above
 - [Pywalfox](https://github.com/Frewacom/pywalfox) - See above
 
 ## Install
-Tested on Arch, Ubuntu Server 22.04, Fedora 37
+The install script clones this repo, installs a few dependencies, then copies my configs to `$HOME/.config/` creating a backup 
+for any config files that already exist. NOTE: Only one backup per file is saved to prevent piling up backups. It's only meant 
+to catch small oversights and is very verbose.
+
+Shell tested on Arch, Ubuntu Server 22.04, Fedora 37, it should work just about anywhere.
 
 ### Quick shell (start here):
 As your new user in your new user's home directory run: (will overwrite some user files)
@@ -59,21 +57,10 @@ As your new user in your new user's home directory run: (will overwrite some use
 
 2. Log out and log back in
 
-### Graphical environment
-If you want a graphical environment run: (Arch only)
-
-`.scripts/doors/.installdeps_full_arch`
-
-to get the rest and then:
-
-```startx``` to load it.
-
-but it might be missing some things depending on your install profile (still testing)
-
 ## Post Install
 1. Neovim will be confused on first start until `:PackerSync` is run
 
 ### TODO:
+- make installer more granular
+- install full DE
 - support more distros
-- make sure full install actually has all deps handled
-

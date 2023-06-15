@@ -1,0 +1,56 @@
+#!/bin/bash
+clear
+
+curl https://doordesk.net/doors
+
+. /etc/os-release
+OS=$NAME
+echo -e "\nDetected OS as $OS"
+
+if [[ $OS == *Arch* ]]; then
+    cd &&
+        echo "Enabling Pacman colors..." &&
+        sudo sed '/Color/s/^#//' -i /etc/pacman.conf &&
+
+        echo -e "\nVerifying base requirements..." &&
+        sudo pacman -S --needed --noconfirm git base-devel  &&
+
+        if test -d .doors; then
+            echo -e "\n$HOME/.doors found, checking for updates..."
+            cd .doors && git pull && cd
+        else
+            echo -e "\n$HOME/.doors not found, creating..."
+            git clone https://github.com/adoyle0/Doors.git .doors
+        fi &&
+
+        .doors/scripts/install_arch
+
+elif [[ $OS == *buntu* ]]; then
+    cd &&
+        sudo apt-get -y install git rsync &&
+        git clone https://github.com/adoyle0/Doors.git .doors &&
+        .doors/scripts/install_min_ubuntu
+
+elif [[ $OS == *Fedora* ]]; then
+    cd &&
+        sudo dnf install -y git rsync &&
+        git clone https://github.com/adoyle0/Doors.git .doors &&
+        .doors/scripts/install_min_fedora
+fi
+
+echo -e "\nInstalling Configs..." &&
+    cd .doors/configs &&
+
+    for file in *
+    do
+        if test -d $HOME/.config/$file; then
+            echo -e "\n$file already exists, creating backups..."
+        else
+            echo -e "\nWriting $file..."
+        fi
+        cp -rbv $file $HOME/.config/
+    done &&
+    echo -e "\nLinking profile..." &&
+        cp -sbv $HOME/.config/shell/profile $HOME/.zprofile &&
+
+echo -e "\nDone!"
