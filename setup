@@ -56,5 +56,5 @@ echo -e "\nInstalling Configs..." &&
     echo -e "\nLinking profile..." &&
         cp -sbv $HOME/.config/shell/profile $HOME/.zprofile &&
 
-echo -e "\n\nDone!\nLog out and back in for changes to take effect."
+echo -e "\nDone!\nLog out and back in for changes to take effect."
 sleep 1 && killall -s SIGINT less
