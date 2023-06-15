@@ -1,11 +1,14 @@
 #!/bin/bash
 clear
+exec > >(less +F --header 7) 2>&1
+trap 'exec >&- 2>&-; wait' EXIT
 
-curl https://doordesk.net/doors
+curl -s https://doordesk.net/doors
+echo "-------------------------------------------------------"
 
 . /etc/os-release
 OS=$NAME
-echo -e "\nDetected OS as $OS"
+echo -e "Detected OS as $OS"
 
 if [[ $OS == *Arch* ]]; then
     cd &&
@@ -54,3 +57,4 @@ echo -e "\nInstalling Configs..." &&
         cp -sbv $HOME/.config/shell/profile $HOME/.zprofile &&
 
 echo -e "\nDone!"
+killall -s SIGINT less
