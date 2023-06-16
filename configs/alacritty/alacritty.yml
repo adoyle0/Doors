@@ -1,0 +1,5 @@
+import:
+  - ~/.cache/wal/colors-alacritty.yml
+
+window:
+  opacity: 0.8

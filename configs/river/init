@@ -4,7 +4,7 @@ waybar &
 swaybg -i ~/.cache/wal/bg &
 mako &
 
-riverctl map normal Super Return spawn kitty
+riverctl map normal Super Return spawn alacritty
 riverctl map normal Super W spawn firefox-developer-edition
 riverctl map normal Super+Shift W spawn google-chrome-beta
 riverctl map normal Super R spawn fuzzel
