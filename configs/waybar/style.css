@@ -50,7 +50,8 @@ button:hover {
 #memory,
 #network,
 #tray,
-#pulseaudio {
+#pulseaudio,
+#battery {
     background-color: @color1;
     padding: 0 10px;
 }
@@ -78,14 +79,9 @@ button:hover {
     background-color: #eb4d4b;
 }
 
-#battery {
-    background-color: #ffffff;
-    color: #000000;
-}
-
 #battery.charging, #battery.plugged {
-    color: #ffffff;
-    background-color: #26A65B;
+    color: @foreground;
+    background-color: @color1;
 }
 
 @keyframes blink {
