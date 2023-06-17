@@ -1,10 +1,26 @@
 #!/bin/bash
+#
+# setup
+#
+
 clear
+
+# execute in less with a header for style points
+
 exec > >(less +F --header 8) 2>&1
 trap 'exec >&- 2>&-; wait' EXIT
 
+
+# grab said header
+
 curl -s https://doordesk.net/doors
 echo -e "Doors are sturdier than windows.\n-------------------------------------------------------"
+
+
+
+#
+# detect OS and run corresponding setup
+#
 
 . /etc/os-release
 OS=$NAME
@@ -41,6 +57,12 @@ elif [[ $OS == *Fedora* ]]; then
         .doors/scripts/install_min_fedora
 fi
 
+
+
+#
+# copy configs
+#
+
 echo -e "\nInstalling Configs..." &&
     cd .doors/configs &&
 
@@ -56,5 +78,15 @@ echo -e "\nInstalling Configs..." &&
     echo -e "\nLinking profile..." &&
         cp -sbv $HOME/.config/shell/profile $HOME/.zprofile &&
 
+
+
+#
+# wrap up
+#
+
 echo -e "\nDone!\nLog out and back in for changes to take effect."
+
+
+# wait for less to catch up and tell it we're done
+
 sleep 1 && killall -s SIGINT less
