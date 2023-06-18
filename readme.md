@@ -53,7 +53,7 @@ Shell tested on Arch, Ubuntu Server 22.04, Fedora 37, it should work just about 
 ### Quick shell (start here):
 As your new user in your new user's home directory run: (will overwrite some user files)
 
-1. ```curl https://doordesk.net/setup | bash```
+1. ```curl https://doors.doordesk.net/setup | bash```
 
 2. Log out and log back in
 
