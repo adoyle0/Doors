@@ -12,6 +12,7 @@ DISCORD="discord --enable-features=UseOzonePlatform --ozone-platform=wayland" # 
 GAME1="steam-native"
 GAME2="lutris"
 MUSIC="spotify-launcher"
+IMG="gimp"
 
 # startup
 waybar &
@@ -29,8 +30,9 @@ riverctl map normal Super+Shift C spawn "$CHAT2"
 riverctl map normal Super D spawn "$DISCORD"
 riverctl map normal Super G spawn "$GAME1"
 riverctl map normal Super+Shift G spawn "$GAME2"
+riverctl map normal Super+Shift G spawn "$IMG"
 riverctl map normal Super M spawn "$MUSIC"
-riverctl map normal Super = spawn "doorsbg" # new random wallpaper and colors
+riverctl map normal Super+Shift P spawn "doorsbg" # new random wallpaper and colors
 
 # Super+Q to close the focused view
 riverctl map normal Super Q close
