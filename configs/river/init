@@ -1,19 +1,21 @@
 #!/bin/sh
 
+# startup
 waybar &
 swaybg -i ~/.cache/wal/bg &
 mako &
 
-riverctl map normal Super Return spawn alacritty
-riverctl map normal Super W spawn firefox-developer-edition
-riverctl map normal Super+Shift W spawn google-chrome-beta
-riverctl map normal Super R spawn fuzzel
+# set keybinds
+riverctl map normal Super Return spawn "alacritty"
+riverctl map normal Super W spawn "firefox-developer-edition"
+riverctl map normal Super+Shift W spawn "chromium"
+riverctl map normal Super R spawn "fuzzel"
 riverctl map normal Super C spawn "caprine --enable-features=UseOzonePlatform --ozone-platform=wayland"
-riverctl map normal Super+Shift C spawn telegram-desktop
+riverctl map normal Super+Shift C spawn "telegram-desktop"
 riverctl map normal Super D spawn "discord --enable-features=UseOzonePlatform --ozone-platform=wayland"
-riverctl map normal Super G spawn gimp
-riverctl map normal Super+Shift G spawn steam-native
-riverctl map normal Super M spawn spotify-launcher
+riverctl map normal Super G spawn "gimp"
+riverctl map normal Super+Shift G spawn "steam-native"
+riverctl map normal Super M spawn "spotify-launcher"
 
 # Super+Q to close the focused view
 riverctl map normal Super Q close
