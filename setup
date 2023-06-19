@@ -81,6 +81,21 @@ echo -e "\nInstalling Configs..." &&
 
 
 #
+# copy scripts
+#
+
+echo -e "\nInstalling Scripts..." &&
+    cd ../scripts &&
+
+    if [ ! -d "$HOME/.local/bin" ]; then
+        mkdir "$HOME/.local/bin"
+    fi &&
+
+    cp -rbv doorsbg $HOME/.local/bin &&
+
+
+
+#
 # wrap up
 #
 

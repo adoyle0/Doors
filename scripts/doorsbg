@@ -8,4 +8,5 @@ pywal-discord;
 beautifuldiscord --css ~/.config/BetterDiscord/themes;
 wal-telegram -g;
 
-echo 'awesome.restart()' | awesome-client;
+swaybg -i ~/.cache/wal/bg &
+killall waybar && waybar &

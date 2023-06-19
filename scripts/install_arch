@@ -30,11 +30,27 @@ byobu \
 zsh \
 lf \
 nnn \
-kitty \
-kitty-terminfo \
-\
-`# Aur`\
-stpv-git \
+alacritty \
+waybar \
+swaybg \
+firefox-developer-edition \
+chromium \
+caprine \
+fuzzel \
+telegram-desktop \
+discord \
+gimp \
+steam \
+spotify-launcher \
+mako \
+pamixer \
+playerctl \
+gawk \
+light \
+pywal-discord-git \
+beautiful-discord-git \
+wal-telegram-git \
+python-pywalfox \
 oh-my-zsh-git &&
 
 echo "" &&

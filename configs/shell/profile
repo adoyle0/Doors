@@ -9,7 +9,7 @@ fi
 export XKB_DEFAULT_OPTIONS=caps:escape
 
 # Wayland stuff
-export WLR_NO_HARDWARE_CURSORS=1
+export WLR_NO_HARDWARE_CURSORS=1 # thanks NVIDIA
 export MOZ_ENABLE_WAYLAND=1
 
 export PATH="$PATH:$(du "$HOME/.local/bin" | cut -f2 | paste -sd ':' -)"
