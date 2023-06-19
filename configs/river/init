@@ -1,5 +1,6 @@
 #!/bin/sh
 
+# try to be obvious
 TERMINAL="alacritty"
 BROWSER1="firefox-developer-edition"
 BROWSER2="chromium"
@@ -29,6 +30,7 @@ riverctl map normal Super D spawn "$DISCORD"
 riverctl map normal Super G spawn "$GAME1"
 riverctl map normal Super+Shift G spawn "$GAME2"
 riverctl map normal Super M spawn "$MUSIC"
+riverctl map normal Super = spawn "doorsbg" # new random wallpaper and colors
 
 # Super+Q to close the focused view
 riverctl map normal Super Q close
