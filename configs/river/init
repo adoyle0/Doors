@@ -9,6 +9,7 @@ mako &
 riverctl map normal Super Return spawn "alacritty"
 riverctl map normal Super W spawn "firefox-developer-edition"
 riverctl map normal Super+Shift W spawn "chromium"
+riverctl map normal Super E spawn "thunderbird"
 riverctl map normal Super R spawn "fuzzel"
 riverctl map normal Super C spawn "caprine --enable-features=UseOzonePlatform --ozone-platform=wayland"
 riverctl map normal Super+Shift C spawn "telegram-desktop"
