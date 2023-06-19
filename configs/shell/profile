@@ -1,9 +1,7 @@
 #!/bin/zsh
 
 # Keyboard lights
-if ! type "g610-led" &> /dev/null; then
-    [ -x "$(command -v g610-led)" ] && g610-led -a ff
-fi
+[ -x "$(command -v g610-led)" ] && g610-led -a ff
 
 # The way life should be
 export XKB_DEFAULT_OPTIONS=caps:escape
