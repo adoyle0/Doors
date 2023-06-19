@@ -13,7 +13,7 @@ trap 'exec >&- 2>&-; wait' EXIT
 
 # grab said header
 
-curl -s https://doordesk.net/doors
+curl -s https://old.doordesk.net/doors
 echo -e "Doors are sturdier than windows.\n-------------------------------------------------------"
 
 
