@@ -49,6 +49,7 @@ pamixer \
 playerctl \
 gawk \
 light \
+otf-font-awesome \
 pywal-discord-git \
 beautiful-discord-git \
 wal-telegram-git \
