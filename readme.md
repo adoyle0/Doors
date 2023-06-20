@@ -32,8 +32,8 @@ If it's not here then you probably don't need it.
 
 Business:
 
-- [river](https://github.com/riverwm/river) - Dynamic wayland compositor like DWM
-- [kitty](https://github.com/kovidgoyal/kitty) - Fast terminal with GPU acceleration and image support
+- [river](https://github.com/riverwm/river) - Dynamic wayland compositor like DWM written in Zig
+- [alacritty](https://github.com/alacritty/alacritty) - Fast terminal with GPU acceleration written in Rust
 - [playerctl](https://github.com/altdesktop/playerctl) - Handle media keys
 - [acpi](https://archlinux.org/packages/community/x86_64/acpi/) - Power/thermal stuff, standby, etc. You want this for a desktop
 
@@ -62,5 +62,4 @@ As your new user in your new user's home directory run: (will overwrite some use
 
 ### TODO:
 - make installer more granular
-- install full DE
 - support more distros
