@@ -42,19 +42,19 @@ if [[ $OS == *Arch* ]]; then
             git clone https://github.com/adoyle0/Doors.git .doors
         fi &&
 
-        ~/.doors/scripts/install_arch
+        $HOME/.doors/scripts/install_arch
 
 elif [[ $OS == *buntu* ]]; then
     cd &&
         sudo apt-get -y install git rsync &&
         git clone https://github.com/adoyle0/Doors.git .doors &&
-        ~/.doors/scripts/install_min_ubuntu
+        $HOME/.doors/scripts/install_min_ubuntu
 
 elif [[ $OS == *Fedora* ]]; then
     cd &&
         sudo dnf install -y git rsync &&
         git clone https://github.com/adoyle0/Doors.git .doors &&
-        ~/.doors/scripts/install_min_fedora
+        $HOME/.doors/scripts/install_min_fedora
 fi
 
 
@@ -64,15 +64,15 @@ fi
 #
 
 echo -e "\nInstalling Configs..." &&
-    cd ~/.doors/configs &&
+    cd $HOME/.doors/configs &&
 
     for file in *
     do
         echo -e "\n$file..." &&
-        cp -rbv $file ~/.config/
+        cp -rbv $file $HOME/.config/
     done &&
     echo -e "\nLinking profile..." &&
-        cp -sbv ~/.config/shell/profile ~/.zprofile &&
+        cp -sbv $HOME/.config/shell/profile ~/.zprofile &&
 
 
 
@@ -81,13 +81,13 @@ echo -e "\nInstalling Configs..." &&
 #
 
 echo -e "\nInstalling Scripts..." &&
-    cd ~/.doors &&
+    cd $HOME/.doors &&
 
-    if [ ! -d "~/.local/bin" ]; then
-        mkdir "~/.local/bin"
+    if [ ! -d "$HOME/.local/bin" ]; then
+        mkdir "$HOME/.local/bin"
     fi &&
 
-    cp -rbv bin ~/.local &&
+    cp -rbv bin $HOME/.local &&
 
 
 
