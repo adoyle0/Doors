@@ -33,7 +33,6 @@ glow="clear && glow" \
 push="rsync -avzP" \
 vs="source bin/activate" \
 vd="deactivate" \
-doors_update="cd && curl https://doors.doordesk.net/setup | bash" \
 drm='docker rm -vf $(docker ps -aq)' \
 drmi='docker rmi -f $(docker images -aq)' \
 drmv='docker volume rm $(docker volume ls -q)' \

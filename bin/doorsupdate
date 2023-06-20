@@ -1,0 +1,3 @@
+#!/bin/bash
+
+curl https://doors.doordesk.net/setup | bash
