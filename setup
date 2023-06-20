@@ -42,19 +42,19 @@ if [[ $OS == *Arch* ]]; then
             git clone https://github.com/adoyle0/Doors.git .doors
         fi &&
 
-        .doors/scripts/install_arch
+        ~/.doors/scripts/install_arch
 
 elif [[ $OS == *buntu* ]]; then
     cd &&
         sudo apt-get -y install git rsync &&
         git clone https://github.com/adoyle0/Doors.git .doors &&
-        .doors/scripts/install_min_ubuntu
+        ~/.doors/scripts/install_min_ubuntu
 
 elif [[ $OS == *Fedora* ]]; then
     cd &&
         sudo dnf install -y git rsync &&
         git clone https://github.com/adoyle0/Doors.git .doors &&
-        .doors/scripts/install_min_fedora
+        ~/.doors/scripts/install_min_fedora
 fi
 
 
@@ -64,19 +64,15 @@ fi
 #
 
 echo -e "\nInstalling Configs..." &&
-    cd .doors/configs &&
+    cd ~/.doors/configs &&
 
     for file in *
     do
-        if test -d $HOME/.config/$file; then
-            echo -e "\n$file already exists, creating backups..."
-        else
-            echo -e "\nWriting $file..."
-        fi
-        cp -rbv $file $HOME/.config/
+        echo -e "\n$file..." &&
+        cp -rbv $file ~/.config/
     done &&
     echo -e "\nLinking profile..." &&
-        cp -sbv $HOME/.config/shell/profile $HOME/.zprofile &&
+        cp -sbv ~/.config/shell/profile ~/.zprofile &&
 
 
 
@@ -85,13 +81,13 @@ echo -e "\nInstalling Configs..." &&
 #
 
 echo -e "\nInstalling Scripts..." &&
-    cd ../scripts &&
+    cd ~/.doors &&
 
-    if [ ! -d "$HOME/.local/bin" ]; then
-        mkdir "$HOME/.local/bin"
+    if [ ! -d "~/.local/bin" ]; then
+        mkdir "~/.local/bin"
     fi &&
 
-    cp -rbv doorsbg $HOME/.local/bin &&
+    cp -rbv bin ~/.local &&
 
 
 
@@ -102,6 +98,6 @@ echo -e "\nInstalling Scripts..." &&
 echo -e "\nDone!\nLog out and back in for changes to take effect."
 
 
-# wait for less to catch up and tell it we're done
+# give less time to catch up and tell it we're done
 
 sleep 1 && killall -s SIGINT less

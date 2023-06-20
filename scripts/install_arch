@@ -1,5 +1,9 @@
 #!/bin/bash
 
+#
+# install yay
+#
+
 cd &&
 if ! type "yay" &> /dev/null; then
     echo "Yay not found, installing..." &&
@@ -17,44 +21,52 @@ else
     echo -e  "\nYay is already installed, skipping..."
 fi &&
 
+
+#
+# install deps
+#
+
 echo -e "\nInstalling dependencies..." &&
-# Base/Shell
 yay -S --needed --noconfirm \
-\
-`# Standard`\
-rsync \
-sl \
-btop \
-neovim \
-byobu \
-zsh \
-lf \
-nnn \
 alacritty \
-river \
-waybar \
-swaybg \
-firefox-developer-edition \
-thunderbird \
-chromium \
+beautiful-discord-git \
+btop \
+byobu \
 caprine \
-fuzzel \
-telegram-desktop \
+chromium \
 discord \
+firefox-developer-edition \
+fuzzel \
+gawk \
 gimp \
-steam \
-spotify-launcher \
+lf \
+light \
 mako \
+neovim \
+nnn \
+oh-my-zsh-git \
+otf-font-awesome \
 pamixer \
 playerctl \
-gawk \
-light \
-otf-font-awesome \
-pywal-discord-git \
-beautiful-discord-git \
-wal-telegram-git \
 python-pywalfox \
-oh-my-zsh-git &&
+pywal-discord-git \
+river \
+rsync \
+sl \
+spotify-launcher \
+steam \
+swaybg \
+telegram-desktop \
+thunderbird \
+wal-telegram-git \
+waybar \
+zsh \
+&&
+
+
+#
+# set shell
+#
 
 echo "" &&
 sudo chsh -s /bin/zsh $USER
