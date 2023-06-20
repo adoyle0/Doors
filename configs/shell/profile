@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/bin/bash
 
 # Keyboard lights
 [ -x "$(command -v g610-led)" ] && g610-led -a ff
