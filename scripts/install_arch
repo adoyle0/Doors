@@ -39,6 +39,7 @@ firefox-developer-edition \
 fuzzel \
 gawk \
 gimp \
+grim \
 lf \
 light \
 mako \
@@ -53,6 +54,7 @@ pywal-discord-git \
 river \
 rsync \
 sl \
+slurp \
 spotify-launcher \
 steam \
 swaybg \
@@ -60,6 +62,7 @@ telegram-desktop \
 thunderbird \
 wal-telegram-git \
 waybar \
+wl-clipboard \
 zsh \
 &&
 

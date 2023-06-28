@@ -30,9 +30,11 @@ riverctl map normal Super+Shift C spawn "$CHAT2"
 riverctl map normal Super D spawn "$DISCORD"
 riverctl map normal Super G spawn "$GAME1"
 riverctl map normal Super+Shift G spawn "$GAME2"
-riverctl map normal Super+Shift G spawn "$IMG"
+riverctl map normal Super I spawn "$IMG"
 riverctl map normal Super M spawn "$MUSIC"
 riverctl map normal Super+Shift P spawn "doorsbg" # new random wallpaper and colors
+riverctl map normal None Print spawn "grim - | wl-copy"
+riverctl map normal Shift Print spawn 'grim -g "$(slurp)" - | wl-copy'
 
 # Super+Q to close the focused view
 riverctl map normal Super Q close
