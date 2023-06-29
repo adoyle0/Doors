@@ -1,38 +1,42 @@
 #!/bin/sh
 
-# try to be obvious
-TERMINAL="alacritty"
-BROWSER1="firefox-developer-edition"
-BROWSER2="chromium"
-EMAIL="thunderbird"
-RUN="fuzzel"
-CHAT1="caprine --enable-features=UseOzonePlatform --ozone-platform=wayland" # with wayland hack
-CHAT2="telegram-desktop"
-DISCORD="discord --enable-features=UseOzonePlatform --ozone-platform=wayland" # with wayland hack
-GAME1="steam-native"
-GAME2="lutris"
-MUSIC="spotify-launcher"
-IMG="gimp"
-
-# startup
+# Startup
 waybar &
 swaybg -i ~/.cache/wal/bg &
 mako &
 
-# set keybinds
-riverctl map normal Super Return spawn "$TERMINAL"
-riverctl map normal Super W spawn "$BROWSER1"
-riverctl map normal Super+Shift W spawn "$BROWSER2"
-riverctl map normal Super E spawn "$EMAIL"
-riverctl map normal Super R spawn "$RUN"
-riverctl map normal Super C spawn "$CHAT1"
-riverctl map normal Super+Shift C spawn "$CHAT2"
-riverctl map normal Super D spawn "$DISCORD"
-riverctl map normal Super G spawn "$GAME1"
-riverctl map normal Super+Shift G spawn "$GAME2"
-riverctl map normal Super I spawn "$IMG"
-riverctl map normal Super M spawn "$MUSIC"
-riverctl map normal Super+Shift P spawn "doorsbg" # new random wallpaper and colors
+# Terminal
+riverctl map normal Super Return spawn "alacritty"
+
+# Browsers
+riverctl map normal Super W spawn "firefox-developer-edition"
+riverctl map normal Super+Shift W spawn "chromium"
+
+# Email
+riverctl map normal Super E spawn "thunderbird"
+
+# Runner
+riverctl map normal Super R spawn "fuzzel"
+
+# Chat stuff
+riverctl map normal Super+Shift C spawn "telegram-desktop"
+riverctl map normal Super C spawn "caprine --enable-features=UseOzonePlatform --ozone-platform=wayland"
+riverctl map normal Super D spawn "discord --enable-features=UseOzonePlatform --ozone-platform=wayland"
+
+# Games
+riverctl map normal Super G spawn "steam-native"
+riverctl map normal Super+Shift G spawn "lutris"
+
+# Image editor
+riverctl map normal Super I spawn "gimp"
+
+# Music
+riverctl map normal Super M spawn "spotify-launcher"
+
+# Run script to set new random bg/colors
+riverctl map normal Super+Shift P spawn "doorsbg"
+
+# Screenshots
 riverctl map normal None Print spawn "grim - | wl-copy"
 riverctl map normal Shift Print spawn 'grim -g "$(slurp)" - | wl-copy'
 
