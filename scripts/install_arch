@@ -29,17 +29,22 @@ fi &&
 echo -e "\nInstalling dependencies..." &&
 yay -S --needed --noconfirm \
 alacritty \
+alsa-utils \
 beautiful-discord-git \
+bluez \
 btop \
 byobu \
 caprine \
 chromium \
 discord \
+fakeroot \
 firefox-developer-edition \
 fuzzel \
 gawk \
 gimp \
 grim \
+i3bar-river \
+i3status-rust \
 lf \
 light \
 mako \
@@ -49,6 +54,8 @@ oh-my-zsh-git \
 otf-font-awesome \
 pamixer \
 playerctl \
+powerline-fonts \
+pulseaudio \
 python-pywalfox \
 pywal-discord-git \
 river \
@@ -60,8 +67,9 @@ steam \
 swaybg \
 telegram-desktop \
 thunderbird \
+ttf-font-awesome \
+upower \
 wal-telegram-git \
-waybar \
 wl-clipboard \
 zsh \
 &&
