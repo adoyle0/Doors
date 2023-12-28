@@ -2,8 +2,6 @@
 
 # startx/xinit run this script
 
-set -e
-
 # Run xprofile
 if [ -f "${XDG_CONFIG_HOME:-$HOME/.config}/x11/xprofile" ]; then
 	. "${XDG_CONFIG_HOME:-$HOME/.config}/x11/xprofile"

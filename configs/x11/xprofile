@@ -2,8 +2,6 @@
 
 # This is called by xinitrc during x startup
 
-set -e
-
 # Run multi-monitor config if it exists
 if [ -f ".screenlayout/default.sh" ]; then
 	. ".screenlayout/default.sh" &

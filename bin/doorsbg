@@ -3,8 +3,6 @@
 # This is meant to be run by awesome with the set colors keybind,
 # not by itself though it should work regardless
 
-set -e
-
 # Pick a random wallpaper and save a copy
 wal -i ~/Pictures/Wallpapers
 cp $(awk {print} ~/.cache/wal/wal) ~/.cache/wal/bg
