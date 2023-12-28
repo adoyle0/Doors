@@ -8,7 +8,7 @@ if [ -f ".screenlayout/default.sh" ]; then
 fi
 
 picom -b &            # Compositor
-xset r rate 150 50 &  # Key repeat rate
+xset r rate 200 100 & # Key repeat rate
 unclutter &           # Hide mouse cursor after inactivity
-redshift -l 43:-70 &  # Tint screen at night if you're in new england (should change)    
+redshift -l 43:-70 &  # Tint screen at night if you're in new england (this should be changed)    
 xclip &               # Make clipboard work
