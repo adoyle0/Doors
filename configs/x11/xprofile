@@ -1,0 +1,16 @@
+#!/bin/sh
+
+# This is called by xinitrc during x startup
+
+set -e
+
+# Run multi-monitor config if it exists
+if [ -f ".screenlayout/default.sh" ]; then
+	. ".screenlayout/default.sh" &
+fi
+
+picom -b &            # Compositor
+xset r rate 150 50 &  # Key repeat rate
+unclutter &           # Hide mouse cursor after inactivity
+redshift -l 43:-70 &  # Tint screen at night if you're in new england (should change)    
+xclip &               # Make clipboard work

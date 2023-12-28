@@ -1,0 +1,24 @@
+#!/bin/sh
+
+# startx/xinit run this script
+
+set -e
+
+# Run xprofile
+if [ -f "${XDG_CONFIG_HOME:-$HOME/.config}/x11/xprofile" ]; then
+	. "${XDG_CONFIG_HOME:-$HOME/.config}/x11/xprofile"
+else
+	. "$HOME/.xprofile"
+fi
+
+# Set up optimus on some laptops if optimus-manager exists
+if [ -x $(command -v optimus-manager) ]; then
+	sudo prime-switch
+	prime-offload
+fi
+
+# Set system colors
+wal -R
+
+# Start awesome
+ssh-agent awesome
