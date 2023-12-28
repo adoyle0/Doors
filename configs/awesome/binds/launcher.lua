@@ -85,16 +85,6 @@ globalkeys = Gears.table.join(
     ),
 
     Awful.key(
-        { Modkey, "Shift" }, "p",
-        function() Awful.spawn("doorsbg") end,
-        awesome.restart,
-        {
-            description = "set new random wallpaper/color scheme",
-            group = "launcher"
-        }
-    ),
-
-    Awful.key(
         { Modkey, }, "r",
         function() Awful.screen.focused().mypromptbox:run() end,
         {
