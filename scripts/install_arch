@@ -1,35 +1,33 @@
 #!/bin/bash
 
-#
-# install yay
-#
+# Full (probably) setup for arch
 
-cd &&
+set -e
+
+# Install yay
+cd
 if ! type "yay" &> /dev/null; then
-    echo "Yay not found, installing..." &&
+    echo "Yay not found, installing..."
 
     if test -d yay; then
         rm -rf yay
-    fi &&
+    fi
 
-    git clone https://aur.archlinux.org/yay.git &&
-        cd yay &&
-        makepkg -si --noconfirm &&
-        cd &&
+    git clone https://aur.archlinux.org/yay.git
+        cd yay
+        makepkg -si --noconfirm
+        cd
         rm -rf yay
 else
     echo -e  "\nYay is already installed, skipping..."
-fi &&
+fi
 
-
-#
-# install deps
-#
-
-echo -e "\nInstalling dependencies..." &&
+# Install deps
+echo -e "\nInstalling dependencies..."
 yay -S --needed --noconfirm \
 alacritty \
 alsa-utils \
+awesome \
 beautiful-discord-git \
 bluez \
 btop \
@@ -39,45 +37,35 @@ chromium \
 discord \
 fakeroot \
 firefox-developer-edition \
-fuzzel \
 gawk \
 gimp \
-grim \
-i3bar-river \
-i3status-rust \
 lf \
 light \
-mako \
+maim \
+mosh \
+mpd \
 neovim \
 nnn \
 oh-my-zsh-git \
 otf-font-awesome \
-pamixer \
 playerctl \
 powerline-fonts \
-pulseaudio \
 python-pywalfox \
 pywal-discord-git \
-river \
 rsync \
 sl \
 slurp \
 spotify-launcher \
 steam \
-swaybg \
+sxiv \
 telegram-desktop \
 thunderbird \
 ttf-font-awesome \
 upower \
 wal-telegram-git \
-wl-clipboard \
+xclip \
 zsh \
-&&
 
-
-#
-# set shell
-#
-
-echo "" &&
+# Set shell
+echo ""
 sudo chsh -s /bin/zsh $USER

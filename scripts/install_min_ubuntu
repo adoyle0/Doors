@@ -1,35 +1,40 @@
 #!/bin/bash
 
+# Minimal setup for Ubuntu
+
+set -e
+
 # Base
 sudo apt-get -y install \
     btop \
     byobu \
     zsh \
     sl \
-    kitty-terminfo \
-    nnn &&
+    nnn
 
-# neovim
-sudo apt-get -y install software-properties-common &&
-sudo add-apt-repository -y ppa:neovim-ppa/stable &&
-sudo apt-get -y update &&
-sudo apt-get -y install neovim &&
-sudo apt-get -y install python3-dev python3-pip &&
-sudo update-alternatives --install /usr/bin/vi vi /usr/bin/nvim 60 &&
-sudo update-alternatives --config vi &&
-sudo update-alternatives --install /usr/bin/vim vim /usr/bin/nvim 60 &&
-sudo update-alternatives --config vim &&
-sudo update-alternatives --install /usr/bin/editor editor /usr/bin/nvim 60 &&
-sudo update-alternatives --config editor &&
+# Neovim
+sudo apt-get -y install software-properties-common
+sudo add-apt-repository -y ppa:neovim-ppa/stable
+sudo apt-get -y update
+sudo apt-get -y install neovim
+sudo apt-get -y install python3-dev python3-pip
+sudo update-alternatives --install /usr/bin/vi vi /usr/bin/nvim 60
+sudo update-alternatives --config vi
+sudo update-alternatives --install /usr/bin/vim vim /usr/bin/nvim 60
+sudo update-alternatives --config vim
+sudo update-alternatives --install /usr/bin/editor editor /usr/bin/nvim 60
+sudo update-alternatives --config editor
 
 # Packer
 if ! test -d ~/.local/share/nvim/site/pack/packer/start/packer.nvim; then
     git clone --depth 1 https://github.com/wbthomason/packer.nvim\
         ~/.local/share/nvim/site/pack/packer/start/packer.nvim
-fi &&
+fi
 
 # OhMyZsh
 if ! test -d .config/zsh/ohmyzsh; then
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-fi &&
+fi
+
+# Set shell
 sudo chsh -s /bin/zsh $USER

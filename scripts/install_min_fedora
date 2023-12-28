@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# Minimal setup for Fedora
+
+set -e
+
 cd
 
 sudo dnf -y install \
@@ -9,7 +13,6 @@ neovim \
 byobu \
 zsh \
 nnn \
-kitty-terminfo \
 mosh \
 clang \
 
@@ -17,10 +20,12 @@ clang \
 if ! test -d ~/.local/share/nvim/site/pack/packer/start/packer.nvim; then
     git clone --depth 1 https://github.com/wbthomason/packer.nvim\
         ~/.local/share/nvim/site/pack/packer/start/packer.nvim
-fi &&
+fi
 
 # OhMyZsh
 if ! test -d .config/zsh/ohmyzsh; then
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-fi &&
+fi
+
+# Set shell
 sudo usermod -s /bin/zsh $USER

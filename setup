@@ -1,103 +1,80 @@
 #!/bin/bash
-#
-# setup
-#
 
-clear
+set -e
 
-# execute in less with a header for style points
-
+# Execute in less with a header for style points
 exec > >(less +F --header 8) 2>&1
 trap 'exec >&- 2>&-; wait' EXIT
 
-
-# grab said header
-
+# Grab said header
 curl -s https://old.doordesk.net/doors
 echo -e "Doors are sturdier than windows.\n-------------------------------------------------------"
 
-
-
-#
-# detect OS and run corresponding setup
-#
-
+# Detect OS and run corresponding setup
 . /etc/os-release
 OS=$NAME
 echo -e "\nDetected OS as $OS"
 
 if [[ $OS == *Arch* ]]; then
-    cd &&
-        echo "Enabling Pacman colors..." &&
-        sudo sed '/Color/s/^#//' -i /etc/pacman.conf &&
+    cd
+        echo "Enabling Pacman colors..."
+        sudo sed '/Color/s/^#//' -i /etc/pacman.conf
 
-        echo -e "\nVerifying base requirements..." &&
-        sudo pacman -S --needed --noconfirm git base-devel  &&
+        echo -e "\nVerifying base requirements..."
+        sudo pacman -S --needed --noconfirm git base-devel
 
         if test -d .doors; then
             echo -e "\n$HOME/.doors found, checking for updates..."
-            cd .doors && git pull && cd
+            cd .doors
+            git pull
+            cd
         else
             echo -e "\n$HOME/.doors not found, creating..."
             git clone https://github.com/adoyle0/Doors.git .doors
-        fi &&
+        fi
 
         $HOME/.doors/scripts/install_arch
 
 elif [[ $OS == *buntu* ]]; then
-    cd &&
-        sudo apt-get -y install git rsync &&
-        git clone https://github.com/adoyle0/Doors.git .doors &&
+    cd
+        sudo apt-get -y install git rsync
+        git clone https://github.com/adoyle0/Doors.git .doors
         $HOME/.doors/scripts/install_min_ubuntu
 
 elif [[ $OS == *Fedora* ]]; then
-    cd &&
-        sudo dnf install -y git rsync &&
-        git clone https://github.com/adoyle0/Doors.git .doors &&
+    cd
+        sudo dnf install -y git rsync
+        git clone https://github.com/adoyle0/Doors.git .doors
         $HOME/.doors/scripts/install_min_fedora
 fi
 
-
-
-#
-# copy configs
-#
-
-echo -e "\nInstalling Configs..." &&
-    cd $HOME/.doors/configs &&
+# Copy configs and make a backup if it already exists
+echo -e "\nInstalling Configs..."
+    cd $HOME/.doors/configs
 
     for file in *
     do
-        echo -e "\n$file..." &&
+        echo -e "\n$file..."
         cp -rbv $file $HOME/.config/
-    done &&
-    echo -e "\nLinking profile..." &&
-        cp -sbv $HOME/.config/shell/profile ~/.zprofile &&
+    done
 
+# Link shell files and make a backup if it already exists
+echo -e "\nLinking shell..."
+    cp -sbv $HOME/.config/shell/profile ~/.zprofile
+    cp -sbv $HOME/.config/x11/xinitrc ~/.xinitrc
 
-
-#
-# copy scripts
-#
-
-echo -e "\nInstalling Scripts..." &&
-    cd $HOME/.doors &&
+# Copy scripts and make a backup if it already exists
+echo -e "\nInstalling Scripts..."
+    cd $HOME/.doors
 
     if [ ! -d "$HOME/.local/bin" ]; then
         mkdir "$HOME/.local/bin"
-    fi &&
+    fi
 
-    cp -rbv bin $HOME/.local &&
+    cp -rbv bin $HOME/.local
 
-
-
-#
-# wrap up
-#
-
+# Wrap up
 echo -e "\nDone!\nLog out and back in for changes to take effect."
 
-
-# give less time to catch up and tell it we're done
-
+# Give less time to catch up and tell it we're done
 sleep 1 && killall -s SIGINT less
