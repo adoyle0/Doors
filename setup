@@ -54,6 +54,10 @@ elif [[ $OS == *Fedora* ]]; then
         $HOME/.doors/scripts/install_min_fedora
 fi
 
+# Init and update awesome widgets submodule
+cd $HOME/.doors
+git submodule init && git submodule update
+
 # Copy configs and make a backup if it already exists
 echo -e "\nInstalling Configs..."
     cd $HOME/.doors/configs
