@@ -2,6 +2,12 @@
 
 set -e
 
+# Check for less and install if not found
+if ! type "less" &> /dev/null; then
+    echo "less not found, installing..."
+    sudo pacman -S --noconfirm less
+fi
+
 # Execute in less with a header for style points
 exec > >(less +F --header 8) 2>&1
 trap 'exec >&- 2>&-; wait' EXIT
