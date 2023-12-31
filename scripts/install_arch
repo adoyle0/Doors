@@ -65,7 +65,7 @@ ttf-font-awesome \
 upower \
 wal-telegram-git \
 xclip \
-xorg \
+xorg-server \
 xorg-xinit \
 zsh \
 
