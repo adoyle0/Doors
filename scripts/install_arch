@@ -47,7 +47,9 @@ nitrogen \
 nnn \
 oh-my-zsh-git \
 otf-font-awesome \
+picom \
 playerctl \
+polkit-gnome \
 powerline-fonts \
 python-pywal \
 python-pywalfox \
@@ -62,13 +64,13 @@ sxiv \
 telegram-desktop \
 thunderbird \
 ttf-font-awesome \
+unclutter \
 upower \
 wal-telegram-git \
 xclip \
 xorg-xrandr \
 xorg-server \
 xorg-xinit \
-
 zsh \
 
 # Set shell
