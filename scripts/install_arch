@@ -27,6 +27,7 @@ echo -e "\nInstalling dependencies..."
 yay -S --needed --noconfirm \
 alacritty \
 alsa-utils \
+arandr \
 awesome \
 beautiful-discord-git \
 bluez \
