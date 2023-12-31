@@ -14,7 +14,8 @@ trap 'exec >&- 2>&-; wait' EXIT
 
 # Grab said header
 curl -s https://old.doordesk.net/doors
-echo -e "Doors are sturdier than windows.\n-------------------------------------------------------"
+echo -e "Doors are sturdier than windows.
+-------------------------------------------------------"
 
 # Detect OS and run corresponding setup
 . /etc/os-release
