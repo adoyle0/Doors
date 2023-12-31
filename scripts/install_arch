@@ -41,6 +41,8 @@ gimp \
 lf \
 light \
 maim \
+man-db \
+man-pages \
 mosh \
 mpd \
 neovim \
@@ -66,8 +68,10 @@ telegram-desktop \
 thunderbird \
 ttf-font-awesome \
 unclutter \
+unrar \
 upower \
 wal-telegram-git \
+wget \
 xclip \
 xorg-xrandr \
 xorg-server \
