@@ -68,10 +68,10 @@ just run `startx`
 - Awesomewm reload races the bg/color script and may not update. Just reload awesome again manually for now
 - Installer can hang at "retrieving packages" - I think this is a pacman/mirror issue. Just kill and restart it, 
 it'll pick up where it left off
+- Less can block entering sudo password for an update, same workaround as above
 - Xorg may hang on a black screen after a fresh install hiding a sudo password prompt behind it. Ctrl + Alt + 
-Backspace to kill Xorg and then do something like `sudo echo hey && startx` as a workaround. This may be VM 
-weirdness, more testing is needed
-- Less can block entering sudo password for an update, may also be a weird VM thing, same workaround as above
+Backspace to kill Xorg and then do something like `sudo echo hey && startx` or hop to another tty and `killall Xorg`
+as a workaround
 - Redshift is hard coded to New England because geolocating had an error and I was lazy
 
 ## Future:
