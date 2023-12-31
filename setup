@@ -41,17 +41,22 @@ if [[ $OS == *Arch* ]]; then
 
         $HOME/.doors/scripts/install_arch
 
-elif [[ $OS == *buntu* ]]; then
-    cd
-        sudo apt-get -y install git rsync
-        git clone https://github.com/adoyle0/Doors.git .doors
-        $HOME/.doors/scripts/install_min_ubuntu
+# These are broken for now
+# elif [[ $OS == *buntu* ]]; then
+#     cd
+#         sudo apt-get -y install git rsync
+#         git clone https://github.com/adoyle0/Doors.git .doors
+#         $HOME/.doors/scripts/install_min_ubuntu
+# 
+# elif [[ $OS == *Fedora* ]]; then
+#     cd
+#         sudo dnf install -y git rsync
+#         git clone https://github.com/adoyle0/Doors.git .doors
+#         $HOME/.doors/scripts/install_min_fedora
 
-elif [[ $OS == *Fedora* ]]; then
-    cd
-        sudo dnf install -y git rsync
-        git clone https://github.com/adoyle0/Doors.git .doors
-        $HOME/.doors/scripts/install_min_fedora
+else
+    echo "$OS is not supported by this script at this time."
+    exit 1
 fi
 
 # Init and update awesome widgets submodule
