@@ -69,12 +69,13 @@ just run `startx`
 - Installer can hang at "retrieving packages" - I think this is a pacman/mirror issue. Just kill and restart it, 
 it'll pick up where it left off
 - Less can block entering sudo password for an update, same workaround as above
-- Xorg may hang on a black screen after a fresh install hiding a sudo password prompt behind it. Ctrl + Alt + 
-Backspace to kill Xorg and then do something like `sudo echo hey && startx` or hop to another tty and `killall Xorg`
-as a workaround
+- Xorg may hang on a black screen after a fresh install hiding a sudo password prompt behind it. Hop to another 
+tty and `killall Xorg` to kill Xorg and then do something like `sudo echo hey && startx` as a workaround. I don't 
+want to force a display manager
 - Redshift is hard coded to New England because geolocating had an error and I was lazy
 
 ## Future:
+- Move stuff from startx/xinitrc to awesome rc to be less intrusive on existing systems
 - More granular installer
 - Support more distros
 - Add color to setup cause why not?
