@@ -7,6 +7,7 @@ if [ -f ".screenlayout/default.sh" ]; then
 	. ".screenlayout/default.sh" &
 fi
 
+/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 picom -b &            # Compositor
 xset r rate 200 100 & # Key repeat rate
 unclutter &           # Hide mouse cursor after inactivity
