@@ -4,8 +4,9 @@
 # not by itself though it should work regardless
 
 # Pick a random wallpaper and save a copy
-wal -i ~/Pictures/Wallpapers
-cp $(awk {print} ~/.cache/wal/wal) ~/.cache/wal/bg
+# Leave these &&s to prevent a race
+wal -i ~/Pictures/Wallpapers &&
+cp $(awk {print} ~/.cache/wal/wal) ~/.cache/wal/bg &&
 
 # Update themes for other stuff it it exists
 [[ -x "$(command -v pywalfox)" ]] && pywalfox update
