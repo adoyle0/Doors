@@ -63,7 +63,7 @@ As your new user in your new user's home directory run: (will overwrite some use
 For now the setup just installs everything in one shot so you get the GUI whether you need it or not, to use it 
 just run `startx`
 
-### Known issues (aka things to fix and excuses why they aren't):
+## Known issues (aka things to fix and excuses why they aren't):
 - Nvim complains about packer
 - Awesomewm reload races the bg/color script and may not update. Just reload awesome again manually for now
 - Installer can hang at "retrieving packages" - I think this is a pacman/mirror issue. Just kill and restart it, 
@@ -72,6 +72,7 @@ it'll pick up where it left off
 Backspace to kill Xorg and then do something like `sudo echo hey && startx` as a workaround. This may be VM 
 weirdness, more testing is needed
 - Less can block entering sudo password for an update, may also be a weird VM thing, same workaround as above
+- Redshift is hard coded to New England because geolocating had an error and I was lazy
 
 ## Future:
 - More granular installer
