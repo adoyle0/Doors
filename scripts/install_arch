@@ -65,8 +65,10 @@ ttf-font-awesome \
 upower \
 wal-telegram-git \
 xclip \
+xorg-xrandr \
 xorg-server \
 xorg-xinit \
+
 zsh \
 
 # Set shell
