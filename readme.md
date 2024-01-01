@@ -79,6 +79,7 @@ it'll pick up where it left off
 tty and `killall Xorg` to kill Xorg and then do something like `sudo echo hey && startx` as a workaround. I don't 
 want to force a display manager
 - Redshift is hard coded to New England because geolocating had an error and I was lazy
+- lsp-zero changed some things and needs to be reconfigured
 
 ## Future:
 - Move stuff from startx/xinitrc to awesome rc to be less intrusive on existing systems
