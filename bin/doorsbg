@@ -4,12 +4,11 @@
 # not by itself though it should work regardless
 
 # Pick a random wallpaper and save a copy
-# Leave these &&s to prevent a race
 wal -i ~/Pictures/Wallpapers &&
 cp $(awk {print} ~/.cache/wal/wal) ~/.cache/wal/bg &&
 
 # Update themes for other stuff it it exists
-[[ -x "$(command -v pywalfox)" ]] && pywalfox update
-[[ -x "$(command -v pywal-discord)" ]] && pywal-discord
-[[ -x "$(command -v beautifuldiscord)" ]] && beautifuldiscord --css ~/.config/BetterDiscord/themes
-[[ -x "$(command -v wal-telegram )" ]] && wal-telegram -g
+[[ -x "$(command -v pywalfox)" ]] && pywalfox update &
+[[ -x "$(command -v pywal-discord)" ]] && pywal-discord &
+[[ -x "$(command -v beautifuldiscord)" ]] && beautifuldiscord --css ~/.config/BetterDiscord/themes &
+[[ -x "$(command -v wal-telegram )" ]] && wal-telegram -g &
