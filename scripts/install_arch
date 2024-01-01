@@ -48,6 +48,7 @@ mpd \
 neovim \
 nitrogen \
 nnn \
+nvim-packer-git \
 oh-my-zsh-git \
 otf-font-awesome \
 picom \
@@ -72,9 +73,9 @@ upower \
 wal-telegram-git \
 wget \
 xclip \
-xorg-xrandr \
 xorg-server \
 xorg-xinit \
+xorg-xrandr \
 zsh \
 
 # Set shell
