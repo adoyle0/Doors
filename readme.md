@@ -79,9 +79,6 @@ servers to update treesitter
 - Awesomewm reload races the bg/color script and may not update. Just reload awesome again manually for now
 - Installer can hang at "retrieving packages" - I think this is a pacman/mirror issue. Just kill and restart it, 
 it'll pick up where it left off
-- Xorg may hang on a black screen hiding a sudo password prompt behind it when using startx. Hop to another tty 
-and `killall Xorg` to kill Xorg and then do something like `sudo echo hey && startx` as a workaround. Or use 
-a display manager but I don't want to force one
 - Redshift is hard coded to New England because geolocating had an error and I was lazy
 - lsp-zero (nvim plugin) changed some things and needs to be reconfigured
 
