@@ -7,9 +7,23 @@ if [ -f ".screenlayout/default.sh" ]; then
 	. ".screenlayout/default.sh" &
 fi
 
+# Tint screen at night    
+redshift -l \
+    $(curl -s "https://location.services.mozilla.com/v1/geolocate?key=geoclue" \
+    | sed 's/.*"lat": \(-\?[0-9.]*\).*"lng": \(-\?[0-9.]*\).*/\1:\2/') &
+
+# Password prompt popup
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
-picom -b &            # Compositor
-xset r rate 200 100 & # Key repeat rate
-unclutter &           # Hide mouse cursor after inactivity
-redshift -l 43:-70 &  # Tint screen at night if you're in new england (this should be changed)    
-xclip &               # Make clipboard work
+
+# Compositor
+picom -b &            
+
+# Key repeat rate
+xset r rate 200 100 & 
+
+# Hide mouse cursor after inactivity
+unclutter &           
+
+# Make clipboard work
+xclip &               
+

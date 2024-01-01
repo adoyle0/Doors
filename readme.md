@@ -79,7 +79,6 @@ servers to update treesitter
 - Awesomewm reload races the bg/color script and may not update. Just reload awesome again manually for now
 - Installer can hang at "retrieving packages" - I think this is a pacman/mirror issue. Just kill and restart it, 
 it'll pick up where it left off
-- Redshift is hard coded to New England because geolocating had an error and I was lazy
 - lsp-zero (nvim plugin) changed some things and needs to be reconfigured
 
 ## Future:
