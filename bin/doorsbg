@@ -4,11 +4,14 @@
 # not by itself though it should work regardless
 
 # Pick a random wallpaper and save a copy
+# &&s ensure it gets batched
 wal -i ~/Pictures/Wallpapers &&
 cp $(awk {print} ~/.cache/wal/wal) ~/.cache/wal/bg &&
 
 # Update themes for other stuff it it exists
+# Fire these and bail to not block any dependents
 [[ -x "$(command -v pywalfox)" ]] && pywalfox update &
 [[ -x "$(command -v pywal-discord)" ]] && pywal-discord &
 [[ -x "$(command -v beautifuldiscord)" ]] && beautifuldiscord --css ~/.config/BetterDiscord/themes &
 [[ -x "$(command -v wal-telegram )" ]] && wal-telegram -g &
+exit
