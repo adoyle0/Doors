@@ -27,6 +27,7 @@ If it's not here then you probably don't need it.
 - [nnn](https://github.com/jarun/nnn) - Lightning fast file manager
 - [lf](https://github.com/gokcehan/lf) - File manager like [ranger](https://github.com/ranger/ranger) but faster
 - [mosh](https://mosh.org/) - MObile SHell, like ssh but better with a bad connection
+
 ### Graphical environment
 
 Business:
@@ -47,21 +48,25 @@ stretching across multiple screens
 The install script clones this repo, installs a few dependencies, then copies my configs to `$HOME/.config/` 
 creating a backup for any config files that already exist. NOTE: Only ONE backup per file is saved to prevent 
 piling up backups. It's only meant to catch small oversights and is very verbose. In other words, if you run 
-the installer twice it will overwrite the backup.
+the installer twice IT WILL OVERWRITE THE BACKUP!
 
 The install script is only for Arch right now but I plan to include any distro that has these programs in their 
 repos. Or at least most of them.
 
 ### Quick shell (start here):
-As your new user in your new user's home directory run: (will overwrite some user files)
+Note: back up your home directory or create a new user or you aren't allowed to complain about anything being 
+overwritten
 
 1. ```curl https://doors.doordesk.net/setup | bash```
-
 2. Log out and log back in
 
 ### GUI
-For now the setup just installs everything in one shot so you get the GUI whether you need it or not, to use it 
-just run `startx`
+- For now the setup just installs everything in one shot so you get the GUI whether you need it or not, to use it 
+just run `startx` or start awesome from your display manager if you have one.
+
+- The mod keys are Super, Menu, and Meta
+
+- Once in awesome press Mod + F1 for a quick reference of all keybinds
 
 ## Post Install
 
@@ -74,15 +79,14 @@ servers to update treesitter
 - Awesomewm reload races the bg/color script and may not update. Just reload awesome again manually for now
 - Installer can hang at "retrieving packages" - I think this is a pacman/mirror issue. Just kill and restart it, 
 it'll pick up where it left off
-- Less can block entering sudo password for an update, same workaround as above
-- Xorg may hang on a black screen after a fresh install hiding a sudo password prompt behind it. Hop to another 
-tty and `killall Xorg` to kill Xorg and then do something like `sudo echo hey && startx` as a workaround. I don't 
-want to force a display manager
+- Xorg may hang on a black screen hiding a sudo password prompt behind it when using startx. Hop to another tty 
+and `killall Xorg` to kill Xorg and then do something like `sudo echo hey && startx` as a workaround. Or use 
+a display manager but I don't want to force one
 - Redshift is hard coded to New England because geolocating had an error and I was lazy
-- lsp-zero changed some things and needs to be reconfigured
+- lsp-zero (nvim plugin) changed some things and needs to be reconfigured
 
 ## Future:
-- Move stuff from startx/xinitrc to awesome rc to be less intrusive on existing systems
+- Move stuff from xinitrc/xprofile to awesome rc to be less intrusive on existing systems
 - More granular installer
 - Support more distros
 - Add color to setup cause why not?
