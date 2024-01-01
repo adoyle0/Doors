@@ -76,7 +76,6 @@ just run `startx` or start awesome from your display manager if you have one.
 servers to update treesitter
 
 ## Known issues (aka things to fix and excuses why they aren't):
-- Awesomewm reload races the bg/color script and may not update. Just reload awesome again manually for now
 - Installer can hang at "retrieving packages" - I think this is a pacman/mirror issue. Just kill and restart it, 
 it'll pick up where it left off
 - lsp-zero (nvim plugin) changed some things and needs to be reconfigured
