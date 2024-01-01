@@ -2,10 +2,18 @@
 
 set -e
 
+
+# Trigger sudo prompt before less can block password input
+sudo echo ''
+
+# Detect OS and act accordingly
+. /etc/os-release
+OS=$NAME
+
 # Check for less and install if not found
 if ! type "less" &> /dev/null; then
     echo "less not found, installing..."
-    sudo pacman -S --noconfirm less
+    sudo pacman -S --noconfirm less # <<< should handle other distros here
 fi
 
 # Execute in less with a header for style points
@@ -17,10 +25,7 @@ curl -s https://old.doordesk.net/doors
 echo -e "Doors are sturdier than windows.
 -------------------------------------------------------"
 
-# Detect OS and run corresponding setup
-. /etc/os-release
-OS=$NAME
-echo -e "\nDetected OS as $OS"
+echo -e "\nSetup for $OS"
 
 if [[ $OS == *Arch* ]]; then
     cd
