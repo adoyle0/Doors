@@ -1,11 +1,11 @@
-#! /bin/bash
+#!/bin/sh
 
 # Pick a random wallpaper and save a copy
-wal -i ~/Pictures/Wallpapers &&
-cp $(awk {print} ~/.cache/wal/wal) ~/.cache/wal/bg
+wal -qi ~/Pictures/Wallpapers &&
+cp "$(awk "{print}" "$HOME/.cache/wal/wal")" ~/.cache/wal/bg &&
 
 # Update themes for other stuff it it exists
-[[ -x "$(command -v pywalfox)" ]] && pywalfox update &
-[[ -x "$(command -v wal-telegram )" ]] && wal-telegram -g &
-[[ -x "$(command -v pywal-discord)" ]] && pywal-discord &&
-[[ -x "$(command -v beautifuldiscord)" ]] && beautifuldiscord --css ~/.config/BetterDiscord/themes &
+([ -x "$(command -v pywalfox)" ] && pywalfox update &
+[ -x "$(command -v wal-telegram )" ] && wal-telegram -g &
+[ -x "$(command -v pywal-discord)" ] && pywal-discord &&
+    [ -x "$(command -v beautifuldiscord)" ] && beautifuldiscord --css ~/.config/BetterDiscord/themes) &
