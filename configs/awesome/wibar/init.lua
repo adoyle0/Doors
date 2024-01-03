@@ -113,4 +113,5 @@ Awful.screen.connect_for_each_screen(
     end
 )
 
-os.execute('nitrogen --set-zoom-fill $(awk {print} ~/.cache/wal/wal)')
+--os.execute('nitrogen --set-zoom-fill $(awk {print} ~/.cache/wal/wal)')
+os.execute('wal -Rsq')
