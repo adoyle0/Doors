@@ -75,6 +75,15 @@ git submodule init && git submodule update
 cd $HOME/.doors &&
 $HOME/.doors/scripts/copy_and_link
 
+# Copy default wallpaper
+if ! test -d $HOME/Pictures/Wallpapers; then
+    mkdir $HOME/Pictures/Wallpapers
+
+    if ! test -f $HOME/Pictures/Wallpapers/door2.jpg; then
+        curl -o $HOME/Pictures/Wallpapers/door2.jpg https://old.doordesk.net/door2.jpg
+        $HOME/.local/bin/doorsbg
+fi
+
 # Wrap up
 echo -e "\nDone!\nLog out and back in for changes to take effect."
 
