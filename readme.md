@@ -44,27 +44,26 @@ stretching across multiple screens
 - [unclutter](https://github.com/Airblader/unclutter-xfixes) - Hides the cursor after inactivity
 
 ## Install
-The install script clones this repo, installs a few dependencies, then copies my configs to `$HOME/.config/` 
-creating a backup for any config files that already exist. NOTE: Only ONE backup per file is saved to prevent 
-piling up backups. It's only meant to catch small oversights and is very verbose. In other words, if you run 
-the installer twice IT WILL OVERWRITE THE BACKUP!
+The install script clones this repo, installs a few dependencies and copies my configs to `~/.config/`. It 
+then links `~/.xinitrc` and `~/.zprofile` to the ones copied from the repo, all while creating a **SINGLE** 
+backup for any files that already exist. NOTE: Only **ONE** backup per file is saved to prevent piling up backups. 
+It's only meant to catch small oversights and is very verbose. In other words, if you run the installer twice 
+**IT WILL OVERWRITE THE BACKUP!**
 
-The install script is only for Arch right now but I plan to include any distro that has these programs in their 
-repos. Or at least the popular ones
+The install script is only for Arch right now but I plan to include any distro with this software in their repos. 
+At least the popular ones
 
 ### Quick shell (start here):
-Note: back up your home directory or create a new user (unless you don't care) or you aren't allowed to 
-complain about anything that may be overwritten
+Create a new user or backup your home directory if you're unsure about anything. If you have nothing to lose then 
+go ahead and YOLO it. Just don't complain if something gets overwritten
 
 1. ```curl https://doors.doordesk.net/setup | bash```
-2. Log out and log back in
+1. Log out and log back in
 
 ### GUI
 - For now the setup just installs everything in one shot so you get the GUI whether you need it or not, to use it 
 just run `startx` or start awesome from your display manager if you have one.
-
 - The mod keys are Super, Menu, and Meta
-
 - Once in awesome press Mod + F1 for a quick reference of all keybinds
 
 ## Post Install
