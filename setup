@@ -76,8 +76,11 @@ cd $HOME/.doors &&
 $HOME/.doors/scripts/copy_and_link
 
 # Copy default wallpaper
-if ! test -d $HOME/Pictures/Wallpapers; then
-    mkdir $HOME/Pictures/Wallpapers
+if ! test -d $HOME/Pictures; then
+    mkdir $HOME/Pictures
+    if ! test -d $HOME/Pictures/Wallpapers; then
+        mkdir $HOME/Pictures/Wallpapers
+    fi
 
     if ! test -f $HOME/Pictures/Wallpapers/door2.jpg; then
         curl -o $HOME/Pictures/Wallpapers/door2.jpg https://old.doordesk.net/door2.jpg
