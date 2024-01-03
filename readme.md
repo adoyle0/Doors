@@ -71,17 +71,22 @@ just run `startx` or start awesome from your display manager if you have one.
 ## Post Install
 
 ### Neovim
-
 - Run `:PackerSync` on first run, `:Mason` to install language servers, `:TSUpdate` after installing language 
-servers to update treesitter
+servers to update treesitter. Do this again periodically to keep everything fresh
+
+### Colors
+Some manual setup is required for theming if you want eye candy. My scripts should handle everything else
+- Install [pywalfox](https://addons.mozilla.org/en-US/firefox/addon/pywalfox/) for firefox, then open it 
+and click the "Fetch Pywal colors" button. You shouldn't have to touch it ever again
+- Point telegram to [wal-telegram](https://github.com/guillaumeboehm/wal-telegram#set-the-color-palette)'s 
+generated theme. It should handle itself from here
 
 ## Known issues (aka things to fix and excuses why they aren't):
-- Installer can hang at "retrieving packages" - I think this is a pacman/mirror issue. Just kill and restart it, 
-it'll pick up where it left off
+- Installer can hang at "retrieving packages" - I think this is a pacman/mirror issue. Just wait or kill 
+and restart it if you're impatient. The setup should pick up where it left off
 - lsp-zero (nvim plugin) changed some things and needs to be reconfigured
 
 ## Future:
-- Move stuff from xinitrc/xprofile to awesome rc to be less intrusive on existing systems
-- More granular installer
+- More granular installer (shell, gui, make some gui apps optional like messengers)
 - Support more distros
 - Add color to setup cause why not?
