@@ -13,7 +13,7 @@ you're at the computer or connected via ssh.
 
 If it's not here then you probably don't need it.
 
-## Most Features
+## Some Features
 
 ### Shell/Base
 
@@ -28,10 +28,9 @@ If it's not here then you probably don't need it.
 - [lf](https://github.com/gokcehan/lf) - File manager like [ranger](https://github.com/ranger/ranger) but faster
 - [mosh](https://mosh.org/) - MObile SHell, like ssh but better with a bad connection
 
-### Graphical environment
+### GUI
 
 Business:
-
 - [awesome](https://awesomewm.org/) - Dynamic window manager based on DWM
 - [alacritty](https://github.com/alacritty/alacritty) - Fast terminal with GPU acceleration written in Rust
 - [maim](https://github.com/naelstrof/maim) - Screenshot tool, with a script for ease of use
@@ -51,11 +50,11 @@ piling up backups. It's only meant to catch small oversights and is very verbose
 the installer twice IT WILL OVERWRITE THE BACKUP!
 
 The install script is only for Arch right now but I plan to include any distro that has these programs in their 
-repos. Or at least most of them.
+repos. Or at least the popular ones
 
 ### Quick shell (start here):
-Note: back up your home directory or create a new user or you aren't allowed to complain about anything being 
-overwritten
+Note: back up your home directory or create a new user (unless you don't care) or you aren't allowed to 
+complain about anything that may be overwritten
 
 1. ```curl https://doors.doordesk.net/setup | bash```
 2. Log out and log back in
