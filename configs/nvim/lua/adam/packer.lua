@@ -20,6 +20,7 @@ return require('packer').startup(function(use)
     use 'theprimeagen/harpoon'
     use 'mbbill/undotree'
     use 'tpope/vim-fugitive'
+    use 'terrortylor/nvim-comment'
 
     -- Visual
     use 'vim-airline/vim-airline'
