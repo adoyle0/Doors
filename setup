@@ -68,33 +68,12 @@ else
 fi
 
 # Init and update awesome widgets submodule
-cd $HOME/.doors
+cd $HOME/.doors &&
 git submodule init && git submodule update
 
-# Copy configs and make a backup if it already exists
-echo -e "\nInstalling Configs..."
-    cd $HOME/.doors/configs
-
-    for file in *
-    do
-        echo -e "\n$file..."
-        cp -rbv $file $HOME/.config/
-    done
-
-# Link shell files and make a backup if it already exists
-echo -e "\nLinking shell..."
-    cp -sbv $HOME/.config/shell/profile ~/.zprofile
-    cp -sbv $HOME/.config/x11/xinitrc ~/.xinitrc
-
-# Copy scripts and make a backup if it already exists
-echo -e "\nInstalling Scripts..."
-    cd $HOME/.doors
-
-    if [ ! -d "$HOME/.local/bin" ]; then
-        mkdir "$HOME/.local/bin"
-    fi
-
-    cp -rbv bin $HOME/.local
+# Copy and link files
+cd $HOME/.doors &&
+$HOME/.doors/scripts/copy_and_link
 
 # Wrap up
 echo -e "\nDone!\nLog out and back in for changes to take effect."
