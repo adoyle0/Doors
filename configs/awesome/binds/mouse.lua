@@ -1,17 +1,17 @@
 -- Binds related to the mouse
 
-root.buttons(
-    Gears.table.join(
-        Awful.button(
-            {}, 4,
-            Awful.tag.viewnext
-        ),
-        Awful.button(
-            {}, 5,
-            Awful.tag.viewprev
-        )
-    )
-)
+-- root.buttons(
+--     Gears.table.join(
+--         Awful.button(
+--             {}, 4,
+--             Awful.tag.viewnext
+--         ),
+--         Awful.button(
+--             {}, 5,
+--             Awful.tag.viewprev
+--         )
+--     )
+-- )
 
 clientbuttons = Gears.table.join(
     Awful.button(
