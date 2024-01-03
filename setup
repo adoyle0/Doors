@@ -2,7 +2,6 @@
 
 set -e
 
-
 # Trigger sudo prompt before less can block password input
 sudo echo ''
 
@@ -20,11 +19,14 @@ fi
 exec > >(less +F --header 8) 2>&1
 trap 'exec >&- 2>&-; wait' EXIT
 
-# Grab said header
-curl -s https://old.doordesk.net/doors
-echo -e "Doors are sturdier than windows.
+echo ':::::::-.      ...         ...    :::::::..   .::::::. 
+ ;;,   `'\'';, .;;;;;;;.   .;;;;;;;. ;;;;``;;;; ;;;`    ` 
+ `[[     [[,[[     \[[,,[[     \[[,[[[,/[[['\'' '\''[==/[[[[,
+  $$,    $$$$$,     $$$$$$,     $$$$$$$$$c     '\'''\'''\''    $
+  888_,o8P'\''"888,_ _,88P"888,_ _,88P888b "88bo,88b    dP
+  MMMMP"`    "YMMMMMP"   "YMMMMMP" MMMM   "W"  "YMmMY" '
+echo "Doors are sturdier than windows.
 -------------------------------------------------------"
-
 echo -e "\nSetup for $OS"
 
 if [[ $OS == *Arch* ]]; then
