@@ -29,6 +29,7 @@ alacritty \
 alsa-utils \
 arandr \
 awesome \
+bat \
 beautiful-discord-git \
 bluez \
 btop \
@@ -37,6 +38,7 @@ caprine \
 chromium \
 discord \
 firefox-developer-edition \
+fzf \
 gimp \
 lf \
 light \
@@ -60,6 +62,7 @@ python-pywalfox \
 pywal-discord-git \
 rar \
 redshift \
+ripgrep \
 rsync \
 sl \
 spotify-launcher \

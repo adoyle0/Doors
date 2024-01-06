@@ -1,0 +1,7 @@
+#!/bin/sh
+
+# NNN
+export NNN_FIFO=/tmp/nnn.fifo # to enable plugins
+export NNN_PLUG='f:preview-tui'
+
+nnn -P f
