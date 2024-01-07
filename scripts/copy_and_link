@@ -1,5 +1,7 @@
 #!/bin/sh
 
+set -e
+
 # Copy configs and make a backup if it already exists
 echo -e "\nInstalling Configs..."
     for file in configs/*
@@ -21,4 +23,3 @@ cp -rbv bin $HOME/.local
 echo -e "\nLinking shell..."
     cp -sbv $HOME/.config/shell/profile ~/.zprofile
     cp -sbv $HOME/.config/x11/xinitrc ~/.xinitrc
-

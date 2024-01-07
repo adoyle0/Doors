@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # Full (probably) setup for arch
 
@@ -7,6 +7,7 @@ set -e
 # Install yay
 cd
 if ! type "yay" &> /dev/null; then
+
     echo "Yay not found, installing..."
 
     if test -d yay; then
@@ -22,65 +23,89 @@ else
     echo -e  "\nYay is already installed, skipping..."
 fi
 
-# Install deps
-echo -e "\nInstalling dependencies..."
-yay -S --needed --noconfirm \
-alacritty \
-alsa-utils \
-arandr \
-awesome \
-bat \
-beautiful-discord-git \
-bluez \
-btop \
-byobu \
-caprine \
-chromium \
-discord \
-firefox-developer-edition \
-fzf \
-gimp \
-lf \
-light \
-maim \
-man-db \
-man-pages \
-mosh \
-mpd \
-neovim \
-nitrogen \
-nnn \
-nvim-packer-git \
-oh-my-zsh-git \
-otf-font-awesome \
-picom \
-playerctl \
-polkit-gnome \
-powerline-fonts \
-python-pywal \
-python-pywalfox \
-pywal-discord-git \
-rar \
-redshift \
-ripgrep \
-rsync \
-sl \
-spotify-launcher \
-steam \
-sxiv \
-telegram-desktop \
-thunderbird \
-ttf-font-awesome \
-unclutter \
-upower \
-wal-telegram-git \
-wget \
-xclip \
-xorg-server \
-xorg-xinit \
-xorg-xrandr \
-zsh \
+# Install base shell
+if [ $1 -ge 1 ]; then
+
+    echo -e "\nInstalling base shell..."
+    yay -S --needed --noconfirm \
+        bat \
+        btop \
+        byobu \
+        fd \
+        fzf \
+        gimp \
+        man-db \
+        man-pages \
+        mosh \
+        neovim \
+        nnn \
+        oh-my-zsh-git \
+        rar \
+        ripgrep \
+        rsync \
+        sl \
+        wget \
+        zsh \
+
+fi
+
+# Install basic GUI
+if [ $1 -ge 2 ]; then
+
+    echo -e "\nInstalling basic GUI..."
+    yay -S --needed --noconfirm \
+        alacritty \
+        alsa-utils \
+        arandr \
+        awesome \
+        bluez \
+        chromium \
+        firefox-developer-edition \
+        light \
+        maim \
+        mpd \
+        otf-font-awesome \
+        picom \
+        playerctl \
+        polkit-gnome \
+        powerline-fonts \
+        python-pywal \
+        redshift \
+        sxiv \
+        ttf-font-awesome \
+        unclutter \
+        upower \
+        xclip \
+        xorg-server \
+        xorg-xinit \
+        xorg-xrandr \
+
+fi
+
+# Install extras
+if [ $1 -ge 3 ]; then
+
+    echo -e "\nInstalling extras..."
+    yay -S --needed --noconfirm \
+        beautiful-discord-git \
+        caprine \
+        discord \
+        python-pywalfox \
+        pywal-discord-git \
+        spotify-launcher \
+        steam \
+        telegram-desktop \
+        thunderbird \
+        wal-telegram-git \
+
+fi
 
 # Set shell
 echo ""
-sudo chsh -s /bin/zsh $USER
+if [ $SHELL == "/bin/zsh" ]; then
+    echo "Shell already set to zsh"
+
+else
+    sudo chsh -s /bin/zsh $USER
+    echo -e "\nLog out and back in for changes to take effect."
+fi
