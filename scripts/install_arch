@@ -33,14 +33,12 @@ if [ $1 -ge 1 ]; then
         byobu \
         fd \
         fzf \
-        gimp \
         man-db \
         man-pages \
         mosh \
         neovim \
         nnn \
         oh-my-zsh-git \
-        python-pywal \
         ripgrep \
         rsync \
         sl \
@@ -55,26 +53,23 @@ if [ $1 -ge 2 ]; then
 
     echo -e "\nInstalling basic GUI..."
     yay -S --needed --noconfirm \
+        acpi \
         alacritty \
-        alsa-utils \
         arandr \
         awesome \
         bluez \
         chromium \
         firefox-developer-edition \
-        light \
         maim \
-        mpd \
+        nsxiv \
         otf-font-awesome \
         picom \
         playerctl \
         polkit-gnome \
-        powerline-fonts \
+        python-pywal \
         redshift \
-        sxiv \
         ttf-font-awesome \
         unclutter \
-        upower \
         xclip \
         xorg-server \
         xorg-xinit \
@@ -90,6 +85,7 @@ if [ $1 -ge 3 ]; then
         beautiful-discord-git \
         caprine \
         discord \
+        gimp \
         python-pywalfox \
         pywal-discord-git \
         spotify-launcher \
