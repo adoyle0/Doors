@@ -8,16 +8,15 @@ This is my personal desktop environment that is:
 1. Simple (see above)
 1. Decent looking
 
-I try to use the terminal as much as possible for performance and also so it's the same experience whether 
-you're at the computer or connected via ssh.
+I try to use the terminal as much as possible for performance (I use old hardware) and so it's the same experience whether you're hands-on or remote. If it's not here then you probably don't need it
 
-If it's not here then you probably don't need it.
+This started as a script for quick deployment of some tools when connected to a remote system and then evolved into including the rest(almost) of my environment and configs as well. Now it's how I store and sync configs between my different systems and bootstrap a fresh install
 
 ## Features
 
 ### Base Shell
 
-This is the meat and potatoes and the main point of this project. It's meant for quick deployment when connected to a remote system
+The meat and potatoes
 
 - [Yay](https://github.com/Jguer/yay) - Easier to use Arch package manager that supports AUR
 - [bat](https://github.com/sharkdp/bat) -  Better cat for quickly viewing files
@@ -81,17 +80,11 @@ Eye candy, bloat, stuff that won't install on ARM devices
 
 
 ## Install
-The install script clones this repo, installs a few dependencies and copies my configs to `~/.config/`. It 
-then links `~/.xinitrc` and `~/.zprofile` to the ones copied from the repo, all while creating a **SINGLE** 
-backup for any files that already exist. **NOTE:** Only **ONE** backup per file is saved to prevent piling up backups. 
-It's only meant to catch small oversights and is very verbose. In other words, if you run the installer twice 
-**IT WILL OVERWRITE THE BACKUP!**
+The install script clones this repo, installs a few dependencies and copies my configs to `~/.config/`. It then links `~/.xinitrc` and `~/.zprofile` to the ones copied from the repo, all while creating a **SINGLE** backup for any files that already exist. **NOTE:** Only **ONE** backup per file is saved to prevent piling up backups. It's only meant to catch small oversights and is very verbose. In other words, if you run the installer twice **IT WILL OVERWRITE THE BACKUP!**
 
-The install script is only for Arch right now but I plan to include any distro with this software in their repos. 
-At least the popular ones
+The install script is only for Arch right now but I plan to include any distro with this software in their repos. At least the popular ones
 
-1. Create a new user or backup your home directory if you're unsure about anything. If you have nothing to lose then 
-go ahead and YOLO it. Just don't complain if something gets overwritten
+1. Create a new user or backup your home directory if you're unsure about anything. If you have nothing to lose then go ahead and YOLO it. Just don't complain if something gets overwritten
 
 1. ```sh <(curl -s https://doors.doordesk.net/setup)```
 1. Choose your adventure
@@ -108,10 +101,8 @@ Just run `startx` or start awesome from your display manager if you have one
 
 ### Colors
 Some manual setup is required for theming if you want eye candy. My scripts should handle everything else
-- Install [pywalfox](https://addons.mozilla.org/en-US/firefox/addon/pywalfox/) for firefox, then open it 
-and click the "Fetch Pywal colors" button. You shouldn't have to touch it ever again
-- Point telegram to [wal-telegram](https://github.com/guillaumeboehm/wal-telegram#set-the-color-palette)'s 
-generated theme. It should handle itself from here
+- Install [pywalfox](https://addons.mozilla.org/en-US/firefox/addon/pywalfox/) for firefox, then open it and click the "Fetch Pywal colors" button. You shouldn't have to touch it ever again
+- Point telegram to [wal-telegram](https://github.com/guillaumeboehm/wal-telegram#set-the-color-palette)'s generated theme. It should handle itself from here
 
 ## Future:
 - Polish nvim
