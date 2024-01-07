@@ -41,10 +41,10 @@ if [ $1 -ge 1 ]; then
         nnn \
         oh-my-zsh-git \
         python-pywal \
-        rar \
         ripgrep \
         rsync \
         sl \
+        unrar \
         wget \
         zsh \
 
