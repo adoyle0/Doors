@@ -2,6 +2,7 @@
 
 set -e
 
+clear &&
 echo "Choose your adventure:
 ============================
 1. Shell/CLI stuff only
@@ -36,11 +37,10 @@ if ! type "less" &> /dev/null; then
 fi
 
 # Execute in less with a header for style points
-clear
 exec > >(less +F --header 8) 2>&1
 trap 'exec >&- 2>&-; wait' EXIT
 
-
+clear &&
 echo ':::::::-.      ...         ...    :::::::..   .::::::. 
  ;;,   `'\'';, .;;;;;;;.   .;;;;;;;. ;;;;``;;;; ;;;`    ` 
  `[[     [[,[[     \[[,,[[     \[[,[[[,/[[['\'' '\''[==/[[[[,
