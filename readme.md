@@ -57,7 +57,7 @@ At least the popular ones
 Create a new user or backup your home directory if you're unsure about anything. If you have nothing to lose then 
 go ahead and YOLO it. Just don't complain if something gets overwritten
 
-1. ```curl https://doors.doordesk.net/setup | bash```
+1. ```bash <(curl -s https://doors.doordesk.net/setup)```
 1. Log out and log back in
 
 ### GUI
