@@ -3,6 +3,9 @@
 # Keyboard lights
 [ -x "$(command -v g610-led)" ] && g610-led -a ff
 
+# Colors
+wal -R
+
 export PATH="$PATH:$(du "$HOME/.local/bin" | cut -f2 | paste -sd ':' -)"
 if test -d $HOME/.local/share/cargo/bin; then
     export PATH=$PATH:$HOME/.local/share/cargo/bin
