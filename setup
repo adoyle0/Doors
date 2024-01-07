@@ -67,7 +67,7 @@ if [[ $OS == *Arch* ]]; then
             git clone https://github.com/adoyle0/Doors.git .doors
         fi
 
-        $HOME/projects/Doors/scripts/install_arch $input
+        $HOME/.doors/scripts/install_arch $input
 
 # These are broken for now
 # elif [[ $OS == *buntu* ]]; then
