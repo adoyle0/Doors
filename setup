@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 set -e
 
@@ -6,17 +6,19 @@ clear &&
 echo "Choose your adventure:
 ============================
 1. Shell/CLI stuff only
-2. Above plus basic GUI 
+2. Above plus basic GUI
 3. Above plus extras like steam, messengers (bloat)
-"
-read -p "Enter number[1-3]: " input
+
+Enter number[1-3]: "
+
+read -r  input
 
 if ! [ "$input" -eq "$input" ] 2> /dev/null; then
 
     echo "Error: Not a number"
     exit 1
 
-elif [ $input -lt 1 ] || [ $input -gt 3 ]; then
+elif [ "$input" -lt 1 ] || [ "$input" -gt 3 ]; then
 
     echo "Error: Input out of range"
     exit 1
@@ -31,7 +33,7 @@ sudo echo ''
 OS=$NAME
 
 # Check for less and install if not found
-if ! type "less" &> /dev/null; then
+if ! type "less" > /dev/null 2>&1; then
     echo "less not found, installing..."
     sudo pacman -S --noconfirm less # <<< should handle other distros here
 fi
@@ -41,35 +43,42 @@ clear &&
 exec > >(less +F --header 8) 2>&1
 trap 'exec >&- 2>&-; wait' EXIT
 
-echo ':::::::-.      ...         ...    :::::::..   .::::::. 
- ;;,   `'\'';, .;;;;;;;.   .;;;;;;;. ;;;;``;;;; ;;;`    ` 
+echo ':::::::-.      ...         ...    :::::::..   .::::::.
+ ;;,   `'\'';, .;;;;;;;.   .;;;;;;;. ;;;;``;;;; ;;;`    `
  `[[     [[,[[     \[[,,[[     \[[,[[[,/[[['\'' '\''[==/[[[[,
   $$,    $$$$$,     $$$$$$,     $$$$$$$$$c     '\'''\'''\''    $
   888_,o8P'\''"888,_ _,88P"888,_ _,88P888b "88bo,88b    dP
   MMMMP"`    "YMMMMMP"   "YMMMMMP" MMMM   "W"  "YMmMY" '
 echo "Doors are sturdier than windows.
 -------------------------------------------------------"
-echo -e "\nSetup for $OS"
+printf "\nSetup for %s" "$OS"
 
-if [[ $OS == *Arch* ]]; then
+case "$OS" in
+    *Arch*)
     cd
         echo "Enabling Pacman colors..."
         sudo sed '/Color/s/^#//' -i /etc/pacman.conf
 
-        echo -e "\nVerifying base requirements..."
+        printf  '\nVerifying base requirements...'
         sudo pacman -S --needed --noconfirm git base-devel
 
         if test -d .doors; then
-            echo -e "\n$HOME/.doors found, checking for updates..."
+            printf  '\n%s/.doors found, checking for updates...' "$HOME"
             cd .doors
             git pull
             cd
         else
-            echo -e "\n$HOME/.doors not found, creating..."
+            printf  '\n%s/.doors not found, creating...' "$HOME"
             git clone https://github.com/adoyle0/Doors.git .doors
         fi
 
-        $HOME/.doors/scripts/install_arch $input
+        "$HOME"/.doors/scripts/install_arch "$input"
+        ;;
+    *)
+    echo "$OS is not supported by this script at this time."
+    exit 1
+    ;;
+esac
 
 # These are broken for now
 # elif [[ $OS == *buntu* ]]; then
@@ -77,41 +86,36 @@ if [[ $OS == *Arch* ]]; then
 #         sudo apt-get -y install git rsync
 #         git clone https://github.com/adoyle0/Doors.git .doors
 #         $HOME/.doors/scripts/install_min_ubuntu
-# 
+#
 # elif [[ $OS == *Fedora* ]]; then
 #     cd
 #         sudo dnf install -y git rsync
 #         git clone https://github.com/adoyle0/Doors.git .doors
 #         $HOME/.doors/scripts/install_min_fedora
 
-else
-    echo "$OS is not supported by this script at this time."
-    exit 1
-fi
-
 # Init and update awesome widgets submodule
-cd $HOME/.doors &&
+cd "$HOME"/.doors &&
 git submodule init && git submodule update
 
 # Copy and link files
-cd $HOME/.doors &&
-$HOME/.doors/scripts/copy_and_link $input
+cd "$HOME"/.doors &&
+"$HOME"/.doors/scripts/copy_and_link "$input"
 
 # Copy default wallpaper
-if ! test -d $HOME/Pictures; then
-    mkdir $HOME/Pictures
-    if ! test -d $HOME/Pictures/Wallpapers; then
-        mkdir $HOME/Pictures/Wallpapers
+if ! test -d "$HOME"/Pictures; then
+    mkdir "$HOME"/Pictures
+    if ! test -d "$HOME"/Pictures/Wallpapers; then
+        mkdir "$HOME"/Pictures/Wallpapers
     fi
 
-    if ! test -f $HOME/Pictures/Wallpapers/door2.jpg; then
-        curl -o $HOME/Pictures/Wallpapers/door2.jpg https://old.doordesk.net/door2.jpg
-        $HOME/.local/bin/doorsbg
+    if ! test -f "$HOME"/Pictures/Wallpapers/door2.jpg; then
+        curl -o "$HOME"/Pictures/Wallpapers/door2.jpg https://old.doordesk.net/door2.jpg
+        "$HOME"/.local/bin/doorsbg
     fi
 fi
 
 # Wrap up
-echo -e "\nDone!\nLog out and back in for changes to take effect."
+printf "\nDone!\nLog out and back in for changes to take effect."
 
 # Give less time to catch up and tell it we're done
 sleep 1 && killall -s SIGINT less
