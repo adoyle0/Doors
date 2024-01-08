@@ -36,11 +36,11 @@ if ! type "less" &> /dev/null; then
     sudo pacman -S --noconfirm less # <<< should handle other distros here
 fi
 
+clear &&
 # Execute in less with a header for style points
 exec > >(less +F --header 8) 2>&1
 trap 'exec >&- 2>&-; wait' EXIT
 
-clear &&
 echo ':::::::-.      ...         ...    :::::::..   .::::::. 
  ;;,   `'\'';, .;;;;;;;.   .;;;;;;;. ;;;;``;;;; ;;;`    ` 
  `[[     [[,[[     \[[,,[[     \[[,[[[,/[[['\'' '\''[==/[[[[,
