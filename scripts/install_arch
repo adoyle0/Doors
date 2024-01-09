@@ -41,8 +41,11 @@ if [ $1 -ge 1 ]; then
         oh-my-zsh-git \
         ripgrep \
         rsync \
+        rubygems \
+        rustup \
         sl \
         unrar \
+        unzip \
         wget \
         zsh \
 
