@@ -21,7 +21,11 @@ require('lazy').setup({
     'neovim/nvim-lspconfig',
     dependencies = {
       -- Automatically install LSPs to stdpath for neovim
-      { 'williamboman/mason.nvim', config = true },
+      { 'williamboman/mason.nvim', config = true,
+        dependencies = {
+          "WhoIsSethDaniel/mason-tool-installer.nvim",
+        },
+      },
       'williamboman/mason-lspconfig.nvim',
 
       -- Useful status updates for LSP
@@ -201,7 +205,7 @@ require('lazy').setup({
           json = { { 'prettierd', 'prettier' } },
           lua = { 'stylua' },
           markdown = { { 'prettierd', 'prettier' } },
-          rust = { 'rustfmt' },
+          rust = { 'rustywind', 'rustfmt' },
           scss = { { 'prettierd', 'prettier' } },
           sh = { 'shellharden', 'beautysh' },
           toml = { 'taplo' },
