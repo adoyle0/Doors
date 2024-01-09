@@ -4,7 +4,7 @@
 [ -x "$(command -v g610-led)" ] && g610-led -a ff
 
 # Colors
-[ -x "$(command -v wal)" ] && wal -R
+[ -x "$(command -v wal)" ] && wal -Rnq
 
 export PATH
 PATH="$PATH:$(du "$HOME/.local/bin" | cut -f2 | paste -sd ':' -)"
