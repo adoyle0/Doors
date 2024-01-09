@@ -191,13 +191,12 @@ require('lazy').setup({
 
       conform.setup {
         formatters_by_ft = {
-          bash = { 'beautysh', 'shellharden' },
+          bash = { 'shellharden', 'beautysh' },
           css = { { 'prettierd', 'prettier' } },
           html = { 'htmlbeautifier' },
           javascript = { { 'prettierd', 'prettier' } },
           javascriptreact = { { 'prettierd', 'prettier' } },
           json = { { 'prettierd', 'prettier' } },
-          kotlin = { 'ktlint' },
           lua = { 'stylua' },
           markdown = { { 'prettierd', 'prettier' } },
           rust = { 'rustfmt' },
