@@ -61,4 +61,11 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   pattern = '*',
 })
 
+-- Git stuff
+vim.keymap.set('n', '<leader>gs', ":G status<CR>")
+vim.keymap.set('n', '<leader>ga', ":G add %<CR>")
+vim.keymap.set('n', '<leader>gc', [[:G commit -m ''<Left>]])
+vim.keymap.set('n', '<leader>gp', ":G push<CR>")
+
+
 -- vim: ts=2 sts=2 sw=2 et
