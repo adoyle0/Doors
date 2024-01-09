@@ -80,7 +80,7 @@ case "$OS" in
     ;;
 esac
 
-# Add "Arch ARM"
+# TODO: Add "Arch ARM"
 
 # These are broken for now
 # elif [[ $OS == *buntu* ]]; then
