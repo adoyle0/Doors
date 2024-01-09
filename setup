@@ -69,7 +69,7 @@ case "$OS" in
             cd
         else
             printf  '\n%s/.doors not found, creating...' "$HOME"
-            git clone https://github.com/adoyle0/Doors.git .doors
+            git clone https://git.doordesk.net/adam/Doors.git .doors
         fi
 
         "$HOME"/.doors/scripts/install_arch "$input"
