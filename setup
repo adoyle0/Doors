@@ -86,13 +86,13 @@ esac
 # elif [[ $OS == *buntu* ]]; then
 #     cd
 #         sudo apt-get -y install git rsync
-#         git clone https://github.com/adoyle0/Doors.git .doors
+#         git clone https://git.doordesk.net/adam/Doors.git .doors
 #         $HOME/.doors/scripts/install_min_ubuntu
 #
 # elif [[ $OS == *Fedora* ]]; then
 #     cd
 #         sudo dnf install -y git rsync
-#         git clone https://github.com/adoyle0/Doors.git .doors
+#         git clone https://git.doordesk.net/adam/Doors.git .doors
 #         $HOME/.doors/scripts/install_min_fedora
 
 # Init and update awesome widgets submodule
