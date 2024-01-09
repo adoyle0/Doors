@@ -206,6 +206,7 @@ require('lazy').setup({
           typescript = { { 'prettierd', 'prettier' } },
           typescriptreact = { { 'prettierd', 'prettier' } },
           yaml = { 'yamlfix' },
+          zsh = { 'shellharden', 'beautysh' },
         },
       }
 

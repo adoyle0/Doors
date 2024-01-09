@@ -24,38 +24,38 @@ VI_MODE_SET_CURSOR=true
 
 # /comfy/
 alias \
-v="vim ." \
-x="exit" \
-ka="killall" \
-bb="byobu" \
-t="tree -L" \
-glow="clear && glow" \
-push="rsync -avzP" \
-vs="source bin/activate" \
-vd="deactivate" \
-drm='docker rm -vf $(docker ps -aq)' \
-drmi='docker rmi -f $(docker images -aq)' \
-drmv='docker volume rm $(docker volume ls -q)' \
-dicheck='rsync -havn . /dev/shm --exclude-from .dockerignore' \
+    v="vim ." \
+    x="exit" \
+    ka="killall" \
+    bb="byobu" \
+    t="tree -L" \
+    glow="clear && glow" \
+    push="rsync -avzP" \
+    vs="source bin/activate" \
+    vd="deactivate" \
+    drm='docker rm -vf $(docker ps -aq)' \
+    drmi='docker rmi -f $(docker images -aq)' \
+    drmv='docker volume rm $(docker volume ls -q)' \
+    dicheck='rsync -havn . /dev/shm --exclude-from .dockerignore' \
 
-# Add verbosity
+    # Add verbosity
 alias \
-cp="cp -iv" \
-mv="mv -iv" \
-rm="rm -vI" \
-mkd="mkdir -pv" \
+    cp="cp -iv" \
+    mv="mv -iv" \
+    rm="rm -vI" \
+    mkd="mkdir -pv" \
 
-# Add color
+    # Add color
 alias \
-ls="ls -hN --color=auto --group-directories-first" \
-grep="grep --color=auto" \
-diff="diff --color=auto" \
-ccat="highlight --out-format=ansi" \
+    ls="ls -hN --color=auto --group-directories-first" \
+    grep="grep --color=auto" \
+    diff="diff --color=auto" \
+    ccat="highlight --out-format=ansi" \
 
 
-ZSH_CACHE_DIR=$HOME/.cache/oh-my-zsh
+    ZSH_CACHE_DIR=$HOME/.cache/oh-my-zsh
 if [[ ! -d $ZSH_CACHE_DIR ]]; then
-  mkdir $ZSH_CACHE_DIR
+    mkdir "$ZSH_CACHE_DIR"
 fi
 
-source $ZSH/oh-my-zsh.sh
+source "$ZSH"/oh-my-zsh.sh
