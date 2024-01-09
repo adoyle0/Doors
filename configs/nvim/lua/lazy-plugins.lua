@@ -201,7 +201,7 @@ require('lazy').setup({
           json = { { 'prettierd', 'prettier' } },
           lua = { 'stylua' },
           markdown = { { 'prettierd', 'prettier' } },
-          rust = { { 'leptosfmt', 'rustfmt' } },
+          rust = { 'rustfmt' },
           scss = { { 'prettierd', 'prettier' } },
           sh = { 'shellharden', 'beautysh' },
           toml = { 'taplo' },
