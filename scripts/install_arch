@@ -15,18 +15,18 @@ if ! type "yay" &> /dev/null; then
     fi
 
     git clone https://aur.archlinux.org/yay.git
-        cd yay
-        makepkg -si --noconfirm
-        cd
-        rm -rf yay
+    cd yay
+    makepkg -si --noconfirm
+    cd
+    rm -rf yay
 else
-    echo -e  "\nYay is already installed, skipping..."
+    printf  "\nYay is already installed, skipping..."
 fi
 
 # Install base shell
-if [ $1 -ge 1 ]; then
+if [ "$1" -ge 1 ]; then
 
-    echo -e "\nInstalling base shell..."
+    printf "\nInstalling base shell..."
     yay -S --needed --noconfirm \
         bat \
         btop \
@@ -42,19 +42,20 @@ if [ $1 -ge 1 ]; then
         ripgrep \
         rsync \
         rubygems \
-        rustup \
         sl \
         unrar \
         unzip \
         wget \
         zsh \
 
+        [ -x "$(command -v rustup)" ] && yay -S --needed --noconfirm rust
+
 fi
 
 # Install basic GUI
-if [ $1 -ge 2 ]; then
+if [ "$1" -ge 2 ]; then
 
-    echo -e "\nInstalling basic GUI..."
+    printf "\nInstalling basic GUI..."
     yay -S --needed --noconfirm \
         acpi \
         alacritty \
@@ -78,12 +79,12 @@ if [ $1 -ge 2 ]; then
         xorg-xinit \
         xorg-xrandr \
 
-fi
+    fi
 
 # Install extras
-if [ $1 -ge 3 ]; then
+if [ "$1" -ge 3 ]; then
 
-    echo -e "\nInstalling extras..."
+    printf "\nInstalling extras..."
     yay -S --needed --noconfirm \
         beautiful-discord-git \
         caprine \
@@ -97,14 +98,14 @@ if [ $1 -ge 3 ]; then
         thunderbird \
         wal-telegram-git \
 
-fi
+    fi
 
 # Set shell
 echo ""
-if [ $SHELL == "/bin/zsh" ]; then
+if [ "$SHELL" = "/bin/zsh" ]; then
     echo "Shell already set to zsh"
 
 else
-    sudo chsh -s /bin/zsh $USER
-    echo -e "\nLog out and back in for changes to take effect."
+    sudo chsh -s /bin/zsh "$USER"
+    printf "\nLog out and back in for changes to take effect."
 fi
