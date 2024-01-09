@@ -6,7 +6,7 @@ set -e
 
 # Install yay
 cd
-if ! type "yay" &> /dev/null; then
+if [ ! "$(command -v rustup)" ]; then
 
     echo "Yay not found, installing..."
 
@@ -48,8 +48,9 @@ if [ "$1" -ge 1 ]; then
         wget \
         zsh \
 
-        [ -x "$(command -v rustup)" ] && yay -S --needed --noconfirm rust
-
+        if [ ! "$(command -v rustup)" ]; then
+        yay -S --needed --noconfirm rust
+    fi
 fi
 
 # Install basic GUI
