@@ -98,7 +98,6 @@ local servers = {
   tsserver = {},
   yamlls = {},
   zls = {},
-
 }
 
 -- Setup neovim lua configuration
