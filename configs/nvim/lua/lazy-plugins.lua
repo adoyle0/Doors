@@ -189,6 +189,8 @@ require('lazy').setup({
     config = function()
       local conform = require 'conform'
 
+      -- single lists run sequential
+      -- sub-lists run first available
       conform.setup {
         formatters_by_ft = {
           bash = { 'shellharden', 'beautysh' },
@@ -199,7 +201,7 @@ require('lazy').setup({
           json = { { 'prettierd', 'prettier' } },
           lua = { 'stylua' },
           markdown = { { 'prettierd', 'prettier' } },
-          rust = { 'rustfmt' },
+          rust = { { 'leptosfmt', 'rustfmt' } },
           scss = { { 'prettierd', 'prettier' } },
           sh = { 'shellharden', 'beautysh' },
           toml = { 'taplo' },
