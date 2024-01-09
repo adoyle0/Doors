@@ -82,7 +82,6 @@ local servers = {
   gopls = {},
   html = {},
   jsonls = {},
-  kotlin_language_server = {},
   lua_ls = {
     Lua = {
       workspace = { checkThirdParty = false },
