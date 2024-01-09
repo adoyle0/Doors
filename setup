@@ -51,7 +51,7 @@ echo ':::::::-.      ...         ...    :::::::..   .::::::.
   MMMMP"`    "YMMMMMP"   "YMMMMMP" MMMM   "W"  "YMmMY" '
 echo "Doors are sturdier than windows.
 -------------------------------------------------------"
-printf "\nSetup for %s" "$OS"
+printf "\nSetup for %s\n" "$OS"
 
 case "$OS" in
     *Arch*)
@@ -79,6 +79,8 @@ case "$OS" in
     exit 1
     ;;
 esac
+
+# Add "Arch ARM"
 
 # These are broken for now
 # elif [[ $OS == *buntu* ]]; then
