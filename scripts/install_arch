@@ -6,7 +6,7 @@ set -e
 
 # Install yay
 cd
-if [ ! "$(command -v rustup)" ]; then
+if [ ! "$(command -v yay)" ]; then
 
     echo "Yay not found, installing..."
 
