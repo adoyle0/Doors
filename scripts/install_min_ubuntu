@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # Minimal setup for Ubuntu
 
@@ -37,4 +37,4 @@ if ! test -d .config/zsh/ohmyzsh; then
 fi
 
 # Set shell
-sudo chsh -s /bin/zsh $USER
+sudo chsh -s /bin/zsh "$USER"

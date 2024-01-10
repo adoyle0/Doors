@@ -19,7 +19,7 @@ This started as a script for quick deployment of some tools when connected to a 
 The meat and potatoes
 
 - [Yay](https://github.com/Jguer/yay) - Easier to use Arch package manager that supports AUR
-- [bat](https://github.com/sharkdp/bat) -  Better cat for quickly viewing files
+- [bat](https://github.com/sharkdp/bat) - Better cat for quickly viewing files
 - [btop](https://github.com/aristocratos/btop) - Top++
 - [byobu](https://www.byobu.org/) - Comfy multiplexer
 - [fd](https://github.com/sharkdp/fd) - Alternative to find, used by bat and made by the same guy
@@ -29,7 +29,7 @@ The meat and potatoes
 - [neovim](https://github.com/neovim/neovim) - Edit text blazingly fast (even over ssh!)
 - [nnn](https://github.com/jarun/nnn) - Lightning fast file manager
 - [Oh My Zsh](https://github.com/ohmyzsh/ohmyzsh) - Community enhancements for zsh. Easier than DIY
-- [pywal](https://github.com/dylanaraps/pywal) - Set whole system color scheme from wallpaper colors 
+- [pywal](https://github.com/dylanaraps/pywal) - Set whole system color scheme from wallpaper colors
 - [ripgrep](https://github.com/BurntSushi/ripgrep) - Extremely fast grep replacement
 - [rsync](https://rsync.samba.org/) - For my 'push' alias
 - [sl](https://github.com/eyJhb/sl) - For when you're too fast
@@ -42,6 +42,7 @@ The meat and potatoes
 AwesomeWM starter kit
 
 Base:
+
 - [acpi](https://wiki.archlinux.org/title/ACPI_modules) - For battery widget
 - [alacritty](https://github.com/alacritty/alacritty) - Terminal emulator
 - [arandr](https://christian.amsuess.com/tools/arandr) - To configure screens
@@ -78,15 +79,15 @@ Eye candy, bloat, stuff that won't install on ARM devices
 - [thunderbird](https://www.thunderbird.net) - Email client
 - [wal-telegram-git](https://github.com/guillaumeboehm/wal-telegram) - Generate telegram-desktop theme
 
-
 ## Install
+
 The install script clones this repo, installs a few dependencies and copies my configs to `~/.config/`. It then links `~/.xinitrc` and `~/.zprofile` to the ones copied from the repo, all while creating a **SINGLE** backup for any files that already exist. **NOTE:** Only **ONE** backup per file is saved to prevent piling up backups. It's only meant to catch small oversights and is very verbose. In other words, if you run the installer twice **IT WILL OVERWRITE THE BACKUP!**
 
 The install script is only for Arch right now but I plan to include any distro with this software in their repos. At least the popular ones
 
 1. Create a new user or backup your home directory if you're unsure about anything. If you have nothing to lose then go ahead and YOLO it. Just don't complain if something gets overwritten
 
-1. ```sh <(curl -s https://doors.doordesk.net/setup)```
+1. `sh <(curl -s https://doors.doordesk.net/setup)`
 1. Choose your adventure
 1. Log out and log back in
 
@@ -100,11 +101,14 @@ Just run `startx` or start awesome from your display manager if you have one
 ## Post Install
 
 ### Colors
+
 Some manual setup is required for theming if you want eye candy. My scripts should handle everything else
+
 - Install [pywalfox](https://addons.mozilla.org/en-US/firefox/addon/pywalfox/) for firefox, then open it and click the "Fetch Pywal colors" button. You shouldn't have to touch it ever again
 - Point telegram to [wal-telegram](https://github.com/guillaumeboehm/wal-telegram#set-the-color-palette)'s generated theme. It should handle itself from here
 
 ## Future:
+
 - Polish nvim
 - nnn setup
 - posix compliance

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # Minimal setup for Fedora
 
@@ -7,16 +7,16 @@ set -e
 cd
 
 sudo dnf -y install \
-sl \
-btop \
-neovim \
-byobu \
-zsh \
-nnn \
-mosh \
-clang \
+    sl \
+    btop \
+    neovim \
+    byobu \
+    zsh \
+    nnn \
+    mosh \
+    clang \
 
-# Packer
+    # Packer
 if ! test -d ~/.local/share/nvim/site/pack/packer/start/packer.nvim; then
     git clone --depth 1 https://github.com/wbthomason/packer.nvim\
         ~/.local/share/nvim/site/pack/packer/start/packer.nvim
@@ -28,4 +28,4 @@ if ! test -d .config/zsh/ohmyzsh; then
 fi
 
 # Set shell
-sudo usermod -s /bin/zsh $USER
+sudo usermod -s /bin/zsh "$USER"
