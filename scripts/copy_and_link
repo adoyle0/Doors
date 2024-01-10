@@ -4,22 +4,24 @@ set -e
 
 # Copy configs and make a backup if it already exists
 printf "\nInstalling Configs..."
-for file in configs/*
+cd configs
+for file in *
 do
     printf "\n%s..." "$file"
-    cp -rbv "$file" "$HOME"/.config/
+    cp -rb "$file" "$HOME"/.config/
 done
 
 # Copy scripts and make a backup if it already exists
-printf "\nInstalling Scripts..."
+printf "\n\nInstalling Scripts..."
+cd ../
 
 if [ ! -d "$HOME/.local/bin" ]; then
     mkdir "$HOME/.local/bin"
 fi
 
-cp -rbv bin "$HOME"/.local
+cp -rb bin "$HOME"/.local
 
 # Link shell files and make a backup if it already exists
-printf "\nLinking shell..."
-cp -sbv "$HOME"/.config/shell/profile ~/.zprofile
-cp -sbv "$HOME"/.config/x11/xinitrc ~/.xinitrc
+printf "\nLinking shell...\n"
+cp -sb "$HOME"/.config/shell/profile ~/.zprofile
+cp -sb "$HOME"/.config/x11/xinitrc ~/.xinitrc

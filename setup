@@ -1,6 +1,7 @@
 #!/bin/sh
 
 set -e
+cd
 
 clear &&
 echo "Choose your adventure:
@@ -32,32 +33,33 @@ sudo echo ''
 . /etc/os-release
 OS=$NAME
 
-# Check for less and install if not found
-if ! type "less" > /dev/null 2>&1; then
-    echo "less not found, installing..."
-    sudo pacman -S --noconfirm less # <<< should handle other distros here
-fi
-
-clear &&
-# Execute in less with a header for style points
-exec > >(less +F --header 8) 2>&1
-trap 'exec >&- 2>&-; wait' EXIT
-
-echo ':::::::-.      ...         ...    :::::::..   .::::::.
+HEADER=':::::::-.      ...         ...    :::::::..   .::::::.
  ;;,   `'\'';, .;;;;;;;.   .;;;;;;;. ;;;;``;;;; ;;;`    `
  `[[     [[,[[     \[[,,[[     \[[,[[[,/[[['\'' '\''[==/[[[[,
   $$,    $$$$$,     $$$$$$,     $$$$$$$$$c     '\'''\'''\''    $
   888_,o8P'\''"888,_ _,88P"888,_ _,88P888b "88bo,88b    dP
-  MMMMP"`    "YMMMMMP"   "YMMMMMP" MMMM   "W"  "YMmMY" '
-echo "Doors are sturdier than windows.
--------------------------------------------------------"
+  MMMMP"`    "YMMMMMP"   "YMMMMMP" MMMM   "W"  "YMmMY" 
+Doors are sturdier than windows.
+-------------------------------------------------------'
 printf "\nSetup for %s\n" "$OS"
 
 case "$OS" in
     *Arch*)
-    cd
+        # Check for less and install if not found
+        if ! type "less" > /dev/null 2>&1; then
+            echo "less not found, installing..."
+            sudo pacman -S --noconfirm less # <<< should handle other distros here
+        fi
+        clear &&
+            # Execute in less with a header for style points
+                    exec > >(less +F -X --header 8) 2>&1
+                    trap 'exec >&- 2>&-; wait' EXIT
+        echo "$HEADER"
         echo "Enabling Pacman colors..."
         sudo sed '/Color/s/^#//' -i /etc/pacman.conf
+
+        printf "Upgrading system...\n"
+        sudo pacman -Syyu --noconfirm
 
         printf  '\nVerifying base requirements...'
         sudo pacman -S --needed --noconfirm git base-devel
@@ -120,4 +122,4 @@ fi
 printf "\nDone!\nLog out and back in for changes to take effect."
 
 # Give less time to catch up and tell it we're done
-sleep 1 && killall -s SIGINT less
+sleep .5 && killall -s SIGINT less
