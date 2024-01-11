@@ -112,5 +112,5 @@ if [ "$SHELL" = "/bin/zsh" ]; then
 
 else
     sudo chsh -s /bin/zsh "$USER"
-    printf "\nLog out and back in for changes to take effect."
+    printf "\nLog out and back in for changes to take effect.\n"
 fi
