@@ -69,6 +69,8 @@ if [ "$1" -ge 2 ]; then
         firefox-developer-edition \
         maim \
         nsxiv \
+        noto-fonts \
+        noto-fonts-emoji \
         otf-font-awesome \
         picom \
         playerctl \
