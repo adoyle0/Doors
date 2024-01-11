@@ -114,7 +114,7 @@ if ! test -d "$HOME"/Pictures; then
 
     if ! test -f "$HOME"/Pictures/Wallpapers/door2.jpg; then
         curl -o "$HOME"/Pictures/Wallpapers/door2.jpg https://old.doordesk.net/door2.jpg
-        "$HOME"/.local/bin/doorsbg && wal -qi "$HOME"/Pictures/Wallpapers
+        "$HOME"/.local/bin/doorsbg
     fi
 fi
 
