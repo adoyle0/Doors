@@ -68,12 +68,16 @@ if [ "$1" -ge 2 ]; then
         chromium \
         firefox-developer-edition \
         maim \
-        nerd-fonts \
+        noto-fonts \
+        noto-fonts-cjk \
+        noto-fonts-emoji \
         nsxiv \
+        otf-font-awesome \
         picom \
         playerctl \
         polkit-gnome \
         redshift \
+        ttf-font-awesome \
         unclutter \
         xclip \
         xorg-server \
@@ -81,11 +85,6 @@ if [ "$1" -ge 2 ]; then
         xorg-xrandr \
 
     fi
-        # otf-font-awesome \
-        # ttf-font-awesome \
-        # noto-fonts \
-        # noto-fonts-cjk \
-        # noto-fonts-emoji \
 
 # Install extras
 if [ "$1" -ge 3 ]; then
