@@ -115,7 +115,7 @@ if ! test -d "$HOME"/Pictures; then
     if ! test -f "$HOME"/Pictures/Wallpapers/door2.jpg; then
         printf "\nDownloading default wallpaper..."
         curl -so "$HOME"/Pictures/Wallpapers/door2.jpg https://old.doordesk.net/door2.jpg
-        "$HOME"/.local/bin/doorsbg
+        wal -esqni "$HOME"/Pictues/Wallpapers
     fi
 fi
 

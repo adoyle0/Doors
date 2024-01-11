@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # Pick a random wallpaper and save a copy
-wal -sqi ~/Pictures/Wallpapers &&
+wal -esqi ~/Pictures/Wallpapers &&
 cp "$(awk "{print}" "$HOME/.cache/wal/wal")" ~/.cache/wal/bg &&
 
 # Update themes for other stuff it it exists
