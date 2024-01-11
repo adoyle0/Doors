@@ -3,6 +3,13 @@
 globalkeys = Gears.table.join(
   globalkeys,
 
+  Awful.key({ Modkey }, 'a', function()
+    Awful.spawn 'arandr'
+  end, {
+    description = 'open arandr',
+    group = 'launcher',
+  }),
+
   Awful.key({ Modkey }, 'c', function()
     Awful.spawn 'caprine'
   end, {
