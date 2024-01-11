@@ -81,7 +81,7 @@ Eye candy, bloat, stuff that won't install on ARM devices
 
 ## Install
 
-The install script clones this repo, installs a few dependencies and copies my configs to `~/.config/`. It then links `~/.xinitrc` and `~/.zprofile` to the ones copied from the repo, all while creating a **SINGLE** backup for any files that already exist. **NOTE:** Only **ONE** backup per file is saved to prevent piling up backups. It's only meant to catch small oversights and is very verbose. In other words, if you run the installer twice **IT WILL OVERWRITE THE BACKUP!**
+The install script clones this repo, installs a few dependencies and copies my configs to `~/.config/`. It then links `~/.xinitrc` and `~/.zprofile` to the ones copied from the repo, all while creating a **SINGLE** backup for any files that already exist. **NOTE:** Only **ONE** backup per file is saved to prevent piling up backups. It's only meant to catch small oversights. In other words, if you run the installer twice **IT WILL OVERWRITE THE BACKUP!**
 
 The install script is only for Arch right now but I plan to include any distro with this software in their repos. At least the popular ones
 
