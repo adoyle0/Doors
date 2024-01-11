@@ -15,15 +15,11 @@ Enter number[1-3]: "
 read -r  input
 
 if ! [ "$input" -eq "$input" ] 2> /dev/null; then
-
     echo "Error: Not a number"
     exit 1
-
 elif [ "$input" -lt 1 ] || [ "$input" -gt 3 ]; then
-
     echo "Error: Input out of range"
     exit 1
-
 fi
 
 # Trigger sudo prompt before less can block password input
@@ -108,15 +104,16 @@ cd "$HOME"/.doors &&
 # Copy default wallpaper
 if ! test -d "$HOME"/Pictures; then
     mkdir "$HOME"/Pictures
-    if ! test -d "$HOME"/Pictures/Wallpapers; then
-        mkdir "$HOME"/Pictures/Wallpapers
-    fi
+fi
 
-    if ! test -f "$HOME"/Pictures/Wallpapers/door2.jpg; then
-        printf "\nDownloading default wallpaper..."
-        curl -so "$HOME"/Pictures/Wallpapers/door2.jpg https://old.doordesk.net/door2.jpg
-        wal -esqni "$HOME"/Pictues/Wallpapers
-    fi
+if ! test -d "$HOME"/Pictures/Wallpapers; then
+    mkdir "$HOME"/Pictures/Wallpapers
+fi
+
+if ! test -f "$HOME"/Pictures/Wallpapers/door2.jpg; then
+    printf "Downloading default wallpaper...\n"
+    curl -o "$HOME"/Pictures/Wallpapers/door2.jpg https://old.doordesk.net/door2.jpg &&
+    wal -ensqi "$HOME"/Pictures/Wallpapers
 fi
 
 # Wrap up
