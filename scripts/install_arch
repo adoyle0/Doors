@@ -38,6 +38,7 @@ if [ "$1" -ge 1 ]; then
         mosh \
         neovim \
         nnn \
+        npm \
         oh-my-zsh-git \
         python-pywal \
         ripgrep \

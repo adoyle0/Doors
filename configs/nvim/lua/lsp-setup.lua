@@ -113,6 +113,7 @@ mason_tool_installer.setup {
     'shellcheck',
     'shellharden',
     'stylua',
+    'taplo',
     'yamlfix',
   },
 }
