@@ -19,18 +19,21 @@ echo "Choose your adventure:
 1. Shell/CLI stuff only
 2. Above plus basic GUI
 3. Above plus extras like steam, messengers (bloat)
+4. Clean neovim data (only if you have problems or still have pre-2024 setup)
 
-Enter number[1-3]: "
+Enter number: "
 
 read -r  input
 
 if ! [ "$input" -eq "$input" ] 2> /dev/null; then
     echo "Error: Not a number"
     exit 1
-elif [ "$input" -lt 1 ] || [ "$input" -gt 3 ]; then
+elif [ "$input" -lt 1 ] || [ "$input" -gt 4 ]; then
     echo "Error: Input out of range"
     exit 1
 fi
+
+
 
 # Trigger sudo prompt before less can block password input
 sudo echo ''
@@ -70,6 +73,19 @@ case "$OS" in
         else
             printf  '\n%s/.doors not found, creating...' "$HOME"
             git clone https://git.doordesk.net/adam/Doors.git .doors
+        fi
+
+        if [ "$input" -eq 4 ]; then
+            echo "Killing nvim if it's running"
+            ka nvim
+            echo "Cleaning nvim..."
+            "$HOME"/.doors/scripts/nvim_clean
+            echo "Done! Run setup to refresh"
+            
+            # Give less time to catch up and tell it we're done
+            sleep .5 && killall -s SIGINT less
+
+            exit 0
         fi
 
         "$HOME"/.doors/scripts/install_arch "$input"
