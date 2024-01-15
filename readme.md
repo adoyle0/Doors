@@ -105,7 +105,7 @@ Just run `startx` or start awesome from your display manager if you have one
 Some manual setup is required for theming if you want eye candy. My scripts should handle everything else
 
 - Install [pywalfox](https://addons.mozilla.org/en-US/firefox/addon/pywalfox/) for firefox, then open it and click the "Fetch Pywal colors" button. You shouldn't have to touch it ever again
-- Point telegram to [wal-telegram](https://github.com/guillaumeboehm/wal-telegram#set-the-color-palette)'s generated theme. It should handle itself from here
+- [Point telegram to wal-telegram's generated theme](https://github.com/guillaumeboehm/wal-telegram#set-the-color-palette). It should handle itself from there
 
 ## Future:
 
