@@ -93,7 +93,7 @@ The install script is only for Arch right now but I plan to include any distro w
 
 ### Starting the GUI
 
-Just run `startx` or start awesome from your display manager if you have one
+Just run `startx` if you log in to TTY like a boss, or start awesome from your display manager if that's more your thing
 
 - The mod keys are Super, Menu, and Meta
 - Once in awesome press Mod + F1 for a quick reference of all keybinds
