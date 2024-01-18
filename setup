@@ -76,8 +76,6 @@ case "$OS" in
         fi
 
         if [ "$input" -eq 4 ]; then
-            echo "Killing nvim if it's running"
-            killall nvim
             echo "Cleaning nvim..."
             "$HOME"/.doors/scripts/nvim_clean
             echo "Done! Run setup to refresh"
