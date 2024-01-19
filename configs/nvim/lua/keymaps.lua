@@ -6,8 +6,8 @@ vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 vim.keymap.set('n', '<leader>pv', vim.cmd.Ex)
 
 -- Select and Drag
-vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
-vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv")
+vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv")
 
 --  J without moving cursor
 vim.keymap.set('n', 'J', 'mzJ`z')
@@ -21,10 +21,10 @@ vim.keymap.set('n', 'n', 'nzzzv')
 vim.keymap.set('n', 'N', 'Nzzzv')
 
 -- Paste without yank
-vim.keymap.set('x', '<leader>p', '\"_dP')
+vim.keymap.set('x', '<leader>p', '"_dP')
 
 -- Delete without yank
-vim.keymap.set({ 'n', 'v' }, '<leader>d', '\"_d')
+vim.keymap.set({ 'n', 'v' }, '<leader>d', '"_d')
 
 -- no
 vim.keymap.set('n', 'Q', '<nop>')
@@ -62,10 +62,9 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 })
 
 -- Git stuff
-vim.keymap.set('n', '<leader>gs', ":G status<CR>")
-vim.keymap.set('n', '<leader>ga', ":G add %<CR>")
+vim.keymap.set('n', '<leader>gs', ':G status<CR>')
+vim.keymap.set('n', '<leader>ga', ':G add %<CR>')
 vim.keymap.set('n', '<leader>gc', [[:G commit -m ""<Left>]])
-vim.keymap.set('n', '<leader>gp', ":G push<CR>")
-
+vim.keymap.set('n', '<leader>gp', ':G push<CR>')
 
 -- vim: ts=2 sts=2 sw=2 et
