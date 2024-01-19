@@ -21,11 +21,9 @@ require('lazy').setup({
     'neovim/nvim-lspconfig',
     dependencies = {
       -- Automatically install LSPs to stdpath for neovim
-      { 'williamboman/mason.nvim', config = true,
-        dependencies = {
-          "WhoIsSethDaniel/mason-tool-installer.nvim",
-        },
-      },
+      { 'williamboman/mason.nvim', config = true, dependencies = {
+        'WhoIsSethDaniel/mason-tool-installer.nvim',
+      } },
       'williamboman/mason-lspconfig.nvim',
 
       -- Useful status updates for LSP
@@ -35,6 +33,14 @@ require('lazy').setup({
       -- Additional lua configuration, makes nvim stuff amazing!
       'folke/neodev.nvim',
     },
+  },
+
+  --UndoTree
+  {
+    'mbbill/undotree',
+    init = function()
+      vim.keymap.set('n', '<leader>u', '<cmd>UndotreeToggle<CR>', { desc = 'UndotreeToggle' })
+    end,
   },
 
   {
