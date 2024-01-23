@@ -24,33 +24,34 @@ VI_MODE_SET_CURSOR=true
 
 # /comfy/
 alias \
-    v="vim ." \
-    x="exit" \
-    ka="killall" \
     bb="byobu" \
-    t="tree -L" \
-    glow="clear && glow" \
-    push="rsync -avzP" \
-    vs="source bin/activate" \
-    vd="deactivate" \
+    dicheck='rsync -havn . /dev/shm --exclude-from .dockerignore' \
     drm='docker rm -vf $(docker ps -aq)' \
     drmi='docker rmi -f $(docker images -aq)' \
     drmv='docker volume rm $(docker volume ls -q)' \
-    dicheck='rsync -havn . /dev/shm --exclude-from .dockerignore' \
+    glow="clear && glow" \
+    jf="sudo journalctl -f" \
+    ka="killall" \
+    push="rsync -avzP" \
+    t="tree -L" \
+    v="vim ." \
+    vd="deactivate" \
+    vs="source bin/activate" \
+    x="exit" \
 
     # Add verbosity
 alias \
     cp="cp -iv" \
+    mkd="mkdir -pv" \
     mv="mv -iv" \
     rm="rm -vI" \
-    mkd="mkdir -pv" \
 
     # Add color
 alias \
-    ls="ls -hN --color=auto --group-directories-first" \
-    grep="grep --color=auto" \
-    diff="diff --color=auto" \
     ccat="highlight --out-format=ansi" \
+    diff="diff --color=auto" \
+    grep="grep --color=auto" \
+    ls="ls -hN --color=auto --group-directories-first" \
 
 
     ZSH_CACHE_DIR=$HOME/.cache/oh-my-zsh
