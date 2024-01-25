@@ -1,7 +1,11 @@
 #!/bin/sh
 
 # NNN
-export NNN_FIFO=/tmp/nnn.fifo # to enable plugins
+export NNN_TERMINAL='alacritty'
+# export NNN_PREVIEWIMGPROG='chafa'
+
+# enable plugins
+export NNN_FIFO=/tmp/nnn.fifo 
 export NNN_PLUG='f:preview-tui'
 
 nnn -P f

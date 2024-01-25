@@ -55,6 +55,7 @@ if [ "$1" -ge 1 ]; then
         tree \
         unrar \
         unzip \
+        w3m \
         wget \
         zsh \
 
