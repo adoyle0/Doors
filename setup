@@ -109,10 +109,6 @@ esac
 #         git clone https://git.doordesk.net/adam/Doors.git .doors
 #         $HOME/.doors/scripts/install_min_fedora
 
-# Init and update awesome widgets submodule
-cd "$HOME"/.doors &&
-git submodule init && git submodule update
-
 # Copy and link files
 cd "$HOME"/.doors &&
 "$HOME"/.doors/scripts/copy_and_link "$input"

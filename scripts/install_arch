@@ -28,13 +28,19 @@ if [ "$1" -ge 1 ]; then
 
     printf "\nInstalling base shell..."
     yay -S --needed --noconfirm \
+        atool \
         bat \
         btop \
         byobu \
+        coreutils \
         fd \
+        ffmpegthumbnailer \
+        file \
         fzf \
+        glow \
         man-db \
         man-pages \
+        mediainfo \
         mosh \
         neovim \
         nnn \
@@ -45,6 +51,8 @@ if [ "$1" -ge 1 ]; then
         rsync \
         rubygems \
         sl \
+        tar \
+        tree \
         unrar \
         unzip \
         wget \
@@ -84,7 +92,10 @@ if [ "$1" -ge 2 ]; then
         xorg-xinit \
         xorg-xrandr \
 
-    fi
+        # Init and update awesome widgets submodule
+    cd "$HOME"/.doors &&
+    git submodule init && git submodule update
+fi
 
 # Install extras
 if [ "$1" -ge 3 ]; then
