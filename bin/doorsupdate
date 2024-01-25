@@ -2,4 +2,4 @@
 
 # Simple update doors
 
-cd $HOME/.doors && git pull && ./setup
+cd "$HOME"/.doors && git pull && ./scripts/copy_and_link
