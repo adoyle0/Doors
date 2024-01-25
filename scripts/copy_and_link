@@ -16,7 +16,7 @@ printf "\n\nInstalling Scripts..."
 cd ../
 
 if [ ! -d "$HOME/.local/bin" ]; then
-    mkdir "$HOME/.local/bin"
+    mkdir -p "$HOME/.local/bin"
 fi
 
 cp -rb bin "$HOME"/.local

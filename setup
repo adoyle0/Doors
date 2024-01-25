@@ -118,18 +118,14 @@ cd "$HOME"/.doors &&
 "$HOME"/.doors/scripts/copy_and_link "$input"
 
 # Copy default wallpaper
-if ! test -d "$HOME"/Pictures; then
-    mkdir "$HOME"/Pictures
-fi
-
-if ! test -d "$HOME"/Pictures/Wallpapers; then
-    mkdir "$HOME"/Pictures/Wallpapers
-fi
 
 if ! test -f "$HOME"/Pictures/Wallpapers/door2.jpg; then
+    if ! test -d "$HOME"/Pictures/Wallpapers; then
+        mkdir -p "$HOME"/Pictures/Wallpapers
     printf "Downloading default wallpaper...\n"
     curl -so "$HOME"/Pictures/Wallpapers/door2.jpg https://old.doordesk.net/door2.jpg &&
     wal -ensqi "$HOME"/Pictures/Wallpapers
+    fi
 fi
 
 # Wrap up
