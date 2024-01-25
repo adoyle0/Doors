@@ -1,5 +1,7 @@
 #!/bin/bash
 
 # Simple update doors
-
 cd "$HOME"/.doors && git pull && ./scripts/copy_and_link
+
+echo "Updating nnn plugins..."
+sh -c "$(curl -Ls https://raw.githubusercontent.com/jarun/nnn/master/plugins/getplugs)"
