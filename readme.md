@@ -33,7 +33,7 @@ The meat and potatoes
 - [ripgrep](https://github.com/BurntSushi/ripgrep) - Extremely fast grep replacement
 - [rsync](https://rsync.samba.org/) - For my 'push' alias
 - [sl](https://github.com/eyJhb/sl) - For when you're too fast
-- [unrar](https://www.rarlab.com/rar_add.htm) - For decomressing .rar
+- [unrar](https://www.rarlab.com/rar_add.htm) - For decompressing .rar
 - [wget](https://www.gnu.org/software/wget/wget.html) - Tool to get things from the web
 - [zsh](https://www.zsh.org/) - Comfy shell
 
