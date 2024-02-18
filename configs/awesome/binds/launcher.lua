@@ -31,6 +31,13 @@ globalkeys = Gears.table.join(
     group = 'launcher',
   }),
 
+  Awful.key({ Modkey, 'Shift' }, 'd', function()
+    Awful.spawn 'element-desktop'
+  end, {
+    description = 'open element-desktop',
+    group = 'launcher',
+  }),
+
   Awful.key({ Modkey }, 'e', function()
     Awful.spawn(Email)
   end, {
