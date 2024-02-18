@@ -1,0 +1,17 @@
+#!/bin/sh
+
+. /etc/os-release
+OS=$NAME
+
+case "$OS" in
+    "Arch Linux")
+        rate-mirrors arch | sudo tee /etc/pacman.d/mirrorlist
+        ;;
+    "Arch Linux ARM")
+        rate-mirrors archarm | sudo tee /etc/pacman.d/mirrorlist
+        ;;
+    *)
+        echo "$OS is not supported by this script at this time."
+        exit 1
+        ;;
+esac
