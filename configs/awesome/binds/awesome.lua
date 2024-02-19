@@ -27,6 +27,11 @@ globalkeys = Gears.table.join(
     group = 'awesome',
   }),
 
+  Awful.key({ Modkey, 'Shift' }, '/', Hotkeys_popup.show_help, {
+    description = 'show help',
+    group = 'awesome',
+  }),
+
   Awful.key({}, 'Print', function()
     os.execute 'maimpick'
   end, {
