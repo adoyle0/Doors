@@ -5,7 +5,7 @@ vim.defer_fn(function()
   require('nvim-treesitter.configs').setup {
     -- Add languages to be installed here that you want installed for treesitter
     ensure_installed = {
-      'markdown_inline' -- Markdown has/needs(atm) 2 packages and this one isn't installed automatically
+      'markdown_inline', -- Markdown has/needs(atm) 2 packages and this one isn't installed automatically
     },
 
     -- Autoinstall languages that are not installed. Defaults to false (but you can change for yourself!)
@@ -15,7 +15,10 @@ vim.defer_fn(function()
       enable = true,
       additional_vim_regex_highlighting = false,
     },
-    indent = { enable = true },
+    indent = {
+      enable = true,
+      disable = { 'python' },
+    },
     incremental_selection = {
       enable = true,
       keymaps = {
