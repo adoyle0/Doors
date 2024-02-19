@@ -315,6 +315,11 @@ Manifest = [
         group="extra",
     ),
     Dependency(
+        name_arch="watchexec",
+        name_arch_arm="watchexec",
+        group="shell",
+    ),
+    Dependency(
         name_arch="w3m",
         name_arch_arm="w3m",
         group="shell",
@@ -387,20 +392,42 @@ def dump_arch_arm(Manifest):
             print(data.name_arch_arm)
 
 
+def dump_shell(Manifest):
+    print("Shell:")
+    for data in Manifest:
+        if data.group == "shell":
+            print(data.name_arch)
+
+    print(sep)
+
+
+def dump_gui(Manifest):
+    print("GUI:")
+    for data in Manifest:
+        if data.group == "gui":
+            print(data.name_arch)
+
+    print(sep)
+
+
+def dump_extra(Manifest):
+    print("Extra:")
+    for data in Manifest:
+        if data.group == "extra":
+            print(data.name_arch)
+
+    print(sep)
+
+
 # test for base deps: git, yay, etc
 # test for package manager
 
 print(header)
 # dump_manifest(Manifest)
-dump_arch(Manifest)
+# dump_arch(Manifest)
 # dump_arch_arm(Manifest)
+dump_shell(Manifest)
+dump_gui(Manifest)
+dump_extra(Manifest)
 
 subprocess.run(f"python --version", shell=True, check=True)
-
-
-mystring = ""
-
-if not mystring:
-    print("no string")
-else:
-    print(mystring)
