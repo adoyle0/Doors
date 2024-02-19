@@ -211,6 +211,7 @@ require('lazy').setup({
           json = { { 'prettierd', 'prettier' } },
           lua = { 'stylua' },
           markdown = { { 'prettierd', 'prettier' } },
+          python = { 'isort', 'black' },
           rust = { 'rustywind', 'rustfmt' },
           scss = { { 'prettierd', 'prettier' } },
           sh = { 'shellharden', 'beautysh' },
