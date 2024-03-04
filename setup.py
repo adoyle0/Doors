@@ -1,3 +1,4 @@
+import platform
 import subprocess
 from dataclasses import dataclass
 
@@ -11,8 +12,7 @@ header = f"""\033c\
    MMMMP"`    "YMMMMMP"   "YMMMMMP" MMMM   "W"  "YMmMY" 
  
  Doors are sturdier than windows.
-{sep}
-"""
+{sep}"""
 
 
 @dataclass
@@ -419,15 +419,65 @@ def dump_extra(Manifest):
     print(sep)
 
 
-# test for base deps: git, yay, etc
-# test for package manager
+def adventure_input() -> int:
+    response: str = input(
+        f""" Choose your adventure:
+{sep}
+  1. Shell/CLI stuff only
+  2. Above plus basic GUI
+  3. Above plus extras like steam, messengers (bloat)
+  4. Clean neovim data (only if you have problems or still have pre-2024 setup)
+  
+Enter number: """
+    )
+    try:
+        input_int: int = int(response)
+    except Exception:
+        print("Invalid input. Input needs to be able to be parsed as an integer!")
+        exit()
 
-print(header)
-# dump_manifest(Manifest)
-# dump_arch(Manifest)
-# dump_arch_arm(Manifest)
-dump_shell(Manifest)
-dump_gui(Manifest)
-dump_extra(Manifest)
+    if input_int in range(1, 5):
+        return input_int
+    else:
+        print(f"Input out of range: {input_int}")
+        exit()
 
-subprocess.run(f"python --version", shell=True, check=True)
+
+def main():
+    print(header)
+
+    adventure = adventure_input()
+
+    print(f"{sep}")
+
+    # match statement is python >=3.10
+    if adventure == 1:
+        print("shell!")
+    elif adventure == 2:
+        print("basic gui!")
+    elif adventure == 3:
+        print("bloat!")
+    elif adventure == 4:
+        print("nvim clean!")
+    else:
+        print("error! this code should never run btw...")
+
+    print(f"{sep}")
+
+    # test for base deps: git, yay, etc
+    # test for package manager
+
+
+    # shell
+    subprocess.run(f"python --version", shell=True, check=True)
+    print(platform.freedesktop_os_release().get("NAME"))
+
+    # -- debug stuff --
+    # dump_manifest(Manifest)
+    # dump_arch(Manifest)
+    # dump_arch_arm(Manifest)
+    # dump_shell(Manifest)
+    # dump_gui(Manifest)
+    # dump_extra(Manifest)
+
+main()
