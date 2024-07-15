@@ -151,15 +151,4 @@ mason_lspconfig.setup_handlers {
   end,
 }
 
-require('lspconfig').jdtls.setup {
-  cmd = { 'jdtls' },
-  -- Specify your workspace directory
-  root_dir = function(fname)
-    return require('lspconfig').util.root_pattern('pom.xml', '.git')(fname) or vim.loop.os_homedir()
-  end,
-  settings = {
-    java = {},
-  },
-}
-
 -- vim: ts=2 sts=2 sw=2 et
