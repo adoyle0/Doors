@@ -212,7 +212,7 @@ require('lazy').setup({
           lua = { 'stylua' },
           markdown = { { 'prettierd', 'prettier' } },
           python = { 'isort', 'black' },
-          rust = { 'rustywind', 'rustfmt' },
+          rust = { 'leptosfmt', 'rustfmt' },
           scss = { { 'prettierd', 'prettier' } },
           sh = { 'shellharden', 'beautysh' },
           toml = { 'taplo' },

@@ -62,6 +62,9 @@ if [ "$1" -ge 1 ]; then
 
         if [ ! "$(command -v rustup)" ]; then
         yay -S --needed --noconfirm rust
+
+        if [ ! "$(command -v leptosfmt)" ]; then
+        cargo install leptosfmt
     fi
 fi
 
