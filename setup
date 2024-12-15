@@ -35,8 +35,8 @@ fi
 
 
 
-# Trigger sudo prompt before less can block password input
-sudo echo ''
+# # Trigger sudo prompt before less can block password input
+# sudo echo ''
 
 # Detect OS and act accordingly
 . /etc/os-release
@@ -46,15 +46,15 @@ printf "\nSetup for %s\n" "$OS"
 
 case "$OS" in
     *Arch*)
-        # Check for less and install if not found
-        if ! type "less" > /dev/null 2>&1; then
-            echo "less not found, installing..."
-            sudo pacman -S --noconfirm less # <<< should handle other distros here
-        fi
-        clear &&
-            # Execute in less with a header for style points
-                    exec > >(less +F -X --header 8) 2>&1
-                    trap 'exec >&- 2>&-; wait' EXIT
+        # # Check for less and install if not found
+        # if ! type "less" > /dev/null 2>&1; then
+        #     echo "less not found, installing..."
+        #     sudo pacman -S --noconfirm less # <<< should handle other distros here
+        # fi
+        # clear &&
+        #     # Execute in less with a header for style points
+        #             exec > >(less +F -X --header 8) 2>&1
+        #             trap 'exec >&- 2>&-; wait' EXIT
         echo "$HEADER"
         echo "Enabling Pacman colors..."
         sudo sed '/Color/s/^#//' -i /etc/pacman.conf
@@ -80,8 +80,8 @@ case "$OS" in
             "$HOME"/.doors/scripts/nvim_clean
             echo "Done! Run setup to refresh"
             
-            # Give less time to catch up and tell it we're done
-            sleep .5 && killall -s SIGINT less
+            # # Give less time to catch up and tell it we're done
+            # sleep .5 && killall -s SIGINT less
 
             exit 0
         fi
@@ -127,5 +127,5 @@ fi
 # Wrap up
 printf "\nDone!\nLog out and back in for changes to take effect."
 
-# Give less time to catch up and tell it we're done
-sleep .5 && killall -s SIGINT less
+# # Give less time to catch up and tell it we're done
+# sleep .5 && killall -s SIGINT less
