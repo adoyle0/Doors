@@ -33,7 +33,7 @@ elif [ "$input" -lt 1 ] || [ "$input" -gt 4 ]; then
     exit 1
 fi
 
-
+clear
 
 # # Trigger sudo prompt before less can block password input
 # sudo echo ''
