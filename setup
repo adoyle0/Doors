@@ -42,6 +42,7 @@ clear
 . /etc/os-release
 OS=$NAME
 
+echo "$HEADER"
 printf "\nSetup for %s\n" "$OS"
 
 case "$OS" in
@@ -55,7 +56,6 @@ case "$OS" in
         #     # Execute in less with a header for style points
         #             exec > >(less +F -X --header 8) 2>&1
         #             trap 'exec >&- 2>&-; wait' EXIT
-        echo "$HEADER"
         echo "Enabling Pacman colors..."
         sudo sed '/Color/s/^#//' -i /etc/pacman.conf
 
