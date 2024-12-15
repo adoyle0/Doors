@@ -62,10 +62,11 @@ if [ "$1" -ge 1 ]; then
 
         if [ ! "$(command -v rustup)" ]; then
         yay -S --needed --noconfirm rust
+        fi
 
         if [ ! "$(command -v leptosfmt)" ]; then
         cargo install leptosfmt
-    fi
+        fi
 fi
 
 # Install basic GUI
@@ -125,7 +126,6 @@ if [ "$1" -ge 3 ]; then
 echo ""
 if [ "$SHELL" = "/bin/zsh" ]; then
     echo "Shell already set to zsh"
-
 else
     sudo chsh -s /bin/zsh "$USER"
     printf "\nLog out and back in for changes to take effect.\n"
