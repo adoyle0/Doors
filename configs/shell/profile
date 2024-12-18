@@ -19,6 +19,7 @@ unsetopt PROMPT_SP
 export BROWSER="firefox-developer-edition"
 export EDITOR="nvim"
 export TERMINAL="alacritty"
+export PAGER="bat"
 
 # Move config files out of home and into .config/
 export ANDROID_SDK_HOME="${XDG_CONFIG_HOME:-$HOME/.config}/android"

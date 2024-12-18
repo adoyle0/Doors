@@ -125,7 +125,7 @@ if ! test -f "$HOME"/Pictures/Wallpapers/door2.jpg; then
 fi
 
 # Wrap up
-printf "\nDone!\nLog out and back in for changes to take effect."
+printf "\nDone!\nLog out and back in for changes to take effect.\n"
 
 # # Give less time to catch up and tell it we're done
 # sleep .5 && killall -s SIGINT less

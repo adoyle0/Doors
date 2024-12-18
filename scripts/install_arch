@@ -61,11 +61,11 @@ if [ "$1" -ge 1 ]; then
         zsh \
 
         if [ ! "$(command -v rustup)" ]; then
-        yay -S --needed --noconfirm rust
+        yay -S --needed --noconfirm rust cargo-binstall
         fi
 
         if [ ! "$(command -v leptosfmt)" ]; then
-        cargo install leptosfmt
+        cargo binstall leptosfmt
         fi
 fi
 
