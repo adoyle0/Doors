@@ -118,7 +118,7 @@ mason_tool_installer.setup {
     'pbls',
     'prettier',
     'prettierd',
-    { 'rust-analyzer', version = '2024-10-14' },
+    'rust-analyzer',
     'rustywind',
     'shellcheck',
     'shellharden',
