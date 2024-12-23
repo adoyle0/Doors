@@ -1,5 +1,5 @@
 [general]
-import = ["/home/adam/.cache/wal/colors-alacritty.toml"]
+import = ["~/.cache/wal/colors-alacritty.toml"]
 
 [font]
 size = 12
