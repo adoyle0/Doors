@@ -47,7 +47,7 @@ if [ "$1" -ge 1 ]; then
         npm \
         oh-my-zsh-git \
         python-pywal \
-        rate-mirrors \
+        rate-mirrors-bin \
         ripgrep \
         rsync \
         rubygems \
