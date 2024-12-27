@@ -9,6 +9,7 @@ HEADER=':::::::-.      ...         ...    :::::::..   .::::::.
   $$,    $$$$$,     $$$$$$,     $$$$$$$$$c     '\'''\'''\''    $
   888_,o8P'\''"888,_ _,88P"888,_ _,88P888b "88bo,88b    dP
   MMMMP"`    "YMMMMMP"   "YMMMMMP" MMMM   "W"  "YMmMY" 
+
 Doors are sturdier than windows.
 -------------------------------------------------------'
 
@@ -43,7 +44,7 @@ clear
 OS=$NAME
 
 echo "$HEADER"
-printf "\nSetup for %s\n" "$OS"
+printf "\nSetup for %s\n\n" "$OS"
 
 case "$OS" in
     *Arch*)
