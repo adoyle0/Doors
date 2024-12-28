@@ -65,7 +65,7 @@ if [ "$1" -ge 1 ]; then
         fi
 
         if [ ! "$(command -v leptosfmt)" ]; then
-        cargo binstall leptosfmt
+        cargo binstall --no-confirm leptosfmt
         fi
 fi
 
