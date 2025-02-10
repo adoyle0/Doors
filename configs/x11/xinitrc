@@ -12,5 +12,9 @@ fi
 # Set system colors
 wal -R
 
+# Optimus
+[ -x "$(command -v prime-offload)" ] && prime-offload
+
 # Start awesome
 ssh-agent awesome
+
