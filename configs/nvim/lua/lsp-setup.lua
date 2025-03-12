@@ -99,7 +99,13 @@ local servers = {
   mutt_ls = {},
   pbls = {},
   pyright = {},
-  rust_analyzer = {},
+  rust_analyzer = {
+    ['rust-analyzer'] = {
+      cargo = {
+        allFeatures = true,
+      },
+    },
+  },
   tailwindcss = {},
   ts_ls = {},
   yamlls = {},
@@ -118,7 +124,7 @@ mason_tool_installer.setup {
     'pbls',
     'prettier',
     'prettierd',
-    'rust-analyzer',
+    { 'rust-analyzer', version = '2024-10-14' },
     'rustywind',
     'shellcheck',
     'shellharden',
