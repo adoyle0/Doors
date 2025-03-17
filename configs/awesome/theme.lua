@@ -19,7 +19,7 @@ theme.bg_focus = xrdb.color4
 theme.bg_minimize = xrdb.color4
 theme.bg_normal = xrdb.background
 theme.bg_systray = theme.bg_normal
--- theme.bg_urgent = xrdb.color1
+theme.bg_urgent = xrdb.color1
 
 theme.border_focus = xrdb.color4
 theme.border_marked = xrdb.color10
