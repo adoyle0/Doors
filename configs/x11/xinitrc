@@ -15,6 +15,9 @@ wal -R
 # Optimus
 [ -x "$(command -v prime-offload)" ] && prime-offload
 
+# Keyboard lights
+[ -x "$(command -v keyledsd)" ] && keyledsd &
+
 # Start awesome
 ssh-agent awesome
 

@@ -1,8 +1,5 @@
 #!/bin/sh
 
-# Keyboard lights
-[ -x "$(command -v g610-led)" ] && g610-led -a ff
-
 # Colors
 [ -x "$(command -v wal)" ] && wal -Rnq
 
