@@ -80,7 +80,7 @@ globalkeys = Gears.table.join(
     group = 'launcher',
   }),
 
-  Awful.key({ Modkey, 'Shift' }, ',', function()
+  Awful.key({ Modkey, 'Shift' }, 'm', function()
     Awful.spawn 'lmms'
   end, {
     description = 'open lmms',
