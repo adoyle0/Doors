@@ -80,6 +80,13 @@ globalkeys = Gears.table.join(
     group = 'launcher',
   }),
 
+  Awful.key({ Modkey, 'Shift' }, ',', function()
+    Awful.spawn 'lmms'
+  end, {
+    description = 'open lmms',
+    group = 'launcher',
+  }),
+
   Awful.key({ Modkey }, 'r', function()
     Awful.screen.focused().mypromptbox:run()
   end, {
