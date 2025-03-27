@@ -64,10 +64,6 @@ Manifest = [
         group="shell",
     ),
     Dependency(
-        name_arch="beautiful-discord-git",
-        group="extra",
-    ),
-    Dependency(
         name_arch="bluez",
         name_arch_arm="bluez",
         group="gui",
@@ -226,10 +222,6 @@ Manifest = [
     Dependency(
         name_arch="python-pywalfox",
         name_arch_arm="python-pywalfox",
-        group="extra",
-    ),
-    Dependency(
-        name_arch="pywal-discord-git",
         group="extra",
     ),
     Dependency(

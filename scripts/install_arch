@@ -108,12 +108,10 @@ if [ "$1" -ge 3 ]; then
 
     printf "\nInstalling extras..."
     yay -S --needed --noconfirm \
-        beautiful-discord-git \
         caprine \
         discord \
         gimp \
         python-pywalfox \
-        pywal-discord-git \
         spotify-launcher \
         steam \
         telegram-desktop \
