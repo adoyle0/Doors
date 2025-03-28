@@ -2,11 +2,6 @@
 
 # This is called by xinitrc during x startup
 
-# Run multi-monitor config if it exists
-if [ -f ".screenlayout/default.sh" ]; then
-	. ".screenlayout/default.sh" &
-fi
-
 # Tint screen at night    
 redshift -l \
     "$(curl -s "https://location.services.mozilla.com/v1/geolocate?key=geoclue" \
@@ -26,4 +21,3 @@ unclutter &
 
 # Make clipboard work
 xclip &               
-
