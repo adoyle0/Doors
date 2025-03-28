@@ -5,5 +5,5 @@ wal -esqi ~/Pictures/Wallpapers &&
 cp "$(awk "{print}" "$HOME/.cache/wal/wal")" ~/.cache/wal/bg &&
 
 # Update themes for other stuff it it exists
-([ -x "$(command -v pywalfox)" ] && pywalfox update &
+[ -x "$(command -v pywalfox)" ] && pywalfox update &
 [ -x "$(command -v wal-telegram )" ] && wal-telegram -g &
