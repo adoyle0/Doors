@@ -32,6 +32,7 @@ alias \
     glow="clear && glow" \
     jf="sudo journalctl -f" \
     ka="killall" \
+    orphans="yay -Qdtq | yay -Rns -" \
     push="rsync -avzP" \
     t="tree -L" \
     v="vim ." \
