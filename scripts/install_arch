@@ -29,6 +29,7 @@ if [ "$1" -ge 1 ]; then
     printf "\nInstalling base shell..."
     yay -S --needed --noconfirm \
         atool \
+        archlinux-contrib \
         bat \
         btop \
         byobu \
@@ -46,6 +47,7 @@ if [ "$1" -ge 1 ]; then
         nnn \
         npm \
         oh-my-zsh-git \
+        pacman-contrib \
         python-pywal \
         rate-mirrors-bin \
         ripgrep \

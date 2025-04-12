@@ -33,6 +33,7 @@ alias \
     jf="sudo journalctl -f" \
     ka="killall" \
     orphans="yay -Qdtq | yay -Rns -" \
+    packages="yay -Qqe" \
     push="rsync -avzP" \
     t="tree -L" \
     v="vim ." \
