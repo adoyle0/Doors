@@ -51,6 +51,7 @@ Base:
 - [chromium](https://www.chromium.org/Home/) - Backup browser
 - [firefox-developer-edition](https://www.mozilla.org/en-US/firefox/developer/) - Main browser
 - [font-awesome](https://fontawesome.com/) - Icon font
+- [gnome-themes-extra](https://gitlab.gnome.org/Archive/gnome-themes-extra) - Provides dark GTK theme
 - [maim](https://github.com/naelstrof/maim) - Screenshot tool, script included in bin for ease of use
 - [nsxiv](https://nsxiv.codeberg.page/) - Image viewer
 - [picom](https://github.com/yshui/picom) - Vsync, shadows, transparency, etc

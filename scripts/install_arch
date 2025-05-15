@@ -83,6 +83,7 @@ if [ "$1" -ge 2 ]; then
         bluez \
         chromium \
         firefox-developer-edition \
+        gnome-themes-extra \
         maim \
         noto-fonts \
         noto-fonts-cjk \

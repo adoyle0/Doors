@@ -32,7 +32,4 @@ export ZDOTDIR="${XDG_CONFIG_HOME:-$HOME/.config}/shell/zsh"
 
 # Other program settings:
 export FZF_DEFAULT_OPTS="--layout=reverse --height 40%"
-export QT_QPA_PLATFORMTHEME="gtk2"	# Have QT use gtk2 theme.
-
-# Multithreading
 export XZ_DEFAULTS="-T 0"
