@@ -2,15 +2,27 @@
 
 # startx/xinit run this script
 
-# Run xprofile
-if [ -f "${XDG_CONFIG_HOME:-$HOME/.config}/x11/xprofile" ]; then
-    . "${XDG_CONFIG_HOME:-$HOME/.config}/x11/xprofile"
-else
-    . "$HOME/.xprofile"
-fi
+# Tint screen at night    
+redshift -l \
+    "$(curl -s "https://location.services.mozilla.com/v1/geolocate?key=geoclue" \
+    | sed 's/.*"lat": \(-\?[0-9.]*\).*"lng": \(-\?[0-9.]*\).*/\1:\2/')" &
+
+# Password prompt popup
+/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
+
+# Compositor
+picom -b &            
+
+# Hide mouse cursor after inactivity
+unclutter &           
+
+# Make clipboard work
+xclip &               
 
 # Set system colors
 wal -R
+
+export XDG_CURRENT_DESKTOP=GNOME
 
 # Optimus
 [ -x "$(command -v prime-offload)" ] && prime-offload

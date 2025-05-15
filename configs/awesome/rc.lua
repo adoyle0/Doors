@@ -3,6 +3,11 @@ require 'core'
 -- Set up key remaps
 os.execute 'setxkbmap -option "caps:escape,altwin:menu_win,altwin:meta_win"'
 
+-- Key repeat rate
+os.execute 'xset r rate 200 100'
+
+os.execute 'nitrogen --set-zoom-fill ~/.cache/wal/bg'
+
 -- Some defaults
 Browser = 'firefox-developer-edition'
 Browser2 = 'chromium'
