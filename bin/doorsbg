@@ -1,9 +1,9 @@
 #!/bin/sh
 
 # Pick a random wallpaper and save a copy
-wal -esqi ~/Pictures/Wallpapers &&
-cp "$(awk "{print}" "$HOME/.cache/wal/wal")" ~/.cache/wal/bg &&
+wal -nestqi ~/Pictures/Wallpapers
+cp "$(awk "{print}" "$HOME/.cache/wal/wal")" ~/.cache/wal/bg
 
 # Update themes for other stuff it it exists
-[ -x "$(command -v pywalfox)" ] && pywalfox update &
-[ -x "$(command -v wal-telegram )" ] && wal-telegram -g &
+[ -x "$(command -v pywalfox)" ] && pywalfox update
+[ -x "$(command -v wal-telegram )" ] && wal-telegram -g

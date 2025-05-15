@@ -20,7 +20,7 @@ unclutter &
 xclip &               
 
 # Set system colors
-wal -R
+wal -Rnq
 
 export XDG_CURRENT_DESKTOP=GNOME
 
