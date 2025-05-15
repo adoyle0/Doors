@@ -18,13 +18,14 @@ require('lazy').setup({
   --  The configuration is done below. Search for lspconfig to find it below.
   {
     -- LSP Configuration & Plugins
+    -- TODO: Unpin mason https://github.com/LazyVim/LazyVim/pull/6053
     'neovim/nvim-lspconfig',
     dependencies = {
       -- Automatically install LSPs to stdpath for neovim
-      { 'williamboman/mason.nvim', config = true, dependencies = {
+      { 'williamboman/mason.nvim', version = '^1.0.0', config = true, dependencies = {
         'WhoIsSethDaniel/mason-tool-installer.nvim',
       } },
-      'williamboman/mason-lspconfig.nvim',
+      { 'williamboman/mason-lspconfig.nvim', version = '^1.0.0' },
 
       -- Useful status updates for LSP
       -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
