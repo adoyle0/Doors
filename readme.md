@@ -77,7 +77,7 @@ Eye candy, bloat, stuff that won't install on ARM devices
 - [steam](https://store.steampowered.com/) - Steam
 - [telegram-desktop](https://telegram.org/) - Telegram messenger
 - [thunderbird](https://www.thunderbird.net) - Email client
-- [wal-telegram-git](https://github.com/guillaumeboehm/wal-telegram) - Generate telegram-desktop theme
+- [walogram-git](https://codeberg.org/thirtysix/walogram) - Generate telegram-desktop theme
 
 ## Install
 
@@ -105,7 +105,7 @@ Just run `startx` if you log in to TTY like a boss, or start awesome from your d
 Some manual setup is required for theming if you want eye candy. My scripts should handle everything else
 
 - Install [pywalfox](https://addons.mozilla.org/en-US/firefox/addon/pywalfox/) for firefox, then open it and click the "Fetch Pywal colors" button. You shouldn't have to touch it ever again
-- [Point telegram to wal-telegram's generated theme](https://github.com/guillaumeboehm/wal-telegram#set-the-color-palette). It should handle itself from there
+- [Point telegram to walogram's generated theme](https://codeberg.org/thirtysix/walogram#applying-theme). It should handle itself from there
 
 ## Future:
 

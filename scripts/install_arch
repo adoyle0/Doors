@@ -117,7 +117,7 @@ if [ "$1" -ge 3 ]; then
         steam \
         telegram-desktop \
         thunderbird \
-        wal-telegram-git \
+        walogram-git \
 
     fi
 

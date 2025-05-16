@@ -8,5 +8,5 @@ done
 
 # Use the new colors
 [ -x "$(command -v pywalfox)" ] && pywalfox update
-[ -x "$(command -v wal-telegram )" ] && wal-telegram -g
+[ -x "$(command -v walogram )" ] && walogram -B
 xrdb -merge -quiet ~/.cache/wal/colors.Xresources
