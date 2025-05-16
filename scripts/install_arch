@@ -105,7 +105,7 @@ if [ "$1" -ge 3 ]; then
 
     printf "\nInstalling extras..."
     yay -S --needed --noconfirm \
-        caprine \
+        caprine-bin \
         discord \
         gimp \
         python-pywalfox \
