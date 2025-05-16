@@ -1,7 +1,4 @@
 #!/bin/sh
-
-# Full (probably) setup for arch
-
 set -e
 
 # Install yay
@@ -55,12 +52,9 @@ if [ "$1" -ge 1 ]; then
         unrar \
         unzip \
         wget \
-        zsh \
+        zsh 
 
-        if [ ! "$(command -v leptosfmt)" ]; then
-        yay -S --needed --noconfirm rust cargo-binstall
-        cargo binstall --no-confirm leptosfmt
-        fi
+    cargo binstall --no-confirm leptosfmt
 fi
 
 # Install basic GUI
@@ -93,9 +87,9 @@ if [ "$1" -ge 2 ]; then
         xorg-server \
         xorg-xinit \
         xorg-xrandr \
-        xwallpaper \
+        xwallpaper 
 
-        # Init and update awesome widgets submodule
+    # Init and update awesome widgets submodule
     cd "$HOME"/.doors &&
     git submodule init && git submodule update
 fi
@@ -113,8 +107,7 @@ if [ "$1" -ge 3 ]; then
         steam \
         telegram-desktop \
         thunderbird \
-        walogram-git \
-
+        walogram-git 
     fi
 
 # Set shell

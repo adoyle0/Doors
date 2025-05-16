@@ -1,5 +1,4 @@
 #!/bin/sh
-
 set -e
 
 # Copy configs and make a backup if it already exists

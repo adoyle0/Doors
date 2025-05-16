@@ -1,7 +1,5 @@
 #!/bin/sh
-
 set -e
-cd
 
 HEADER=':::::::-.      ...         ...    :::::::..   .::::::.
  ;;,   `'\'';, .;;;;;;;.   .;;;;;;;. ;;;;``;;;; ;;;`    `
@@ -13,7 +11,7 @@ HEADER=':::::::-.      ...         ...    :::::::..   .::::::.
 Doors are sturdier than windows.
 -------------------------------------------------------'
 
-clear &&
+clear
 echo "$HEADER"
 echo "Choose your adventure:
 ============================
@@ -24,7 +22,7 @@ echo "Choose your adventure:
 
 Enter number: "
 
-read -r  input
+read -r input
 
 if ! [ "$input" -eq "$input" ] 2> /dev/null; then
     echo "Error: Not a number"
@@ -56,14 +54,13 @@ case "$OS" in
         printf  '\nVerifying base requirements...'
         sudo pacman -S --needed --noconfirm git base-devel
 
-        if test -d .doors; then
+        if test -d "$HOME"/.doors; then
             printf  '\n%s/.doors found, checking for updates...' "$HOME"
-            cd .doors
-            git pull
-            cd
+            cd "$HOME"/.doors &&
+                git pull
         else
             printf  '\n%s/.doors not found, creating...' "$HOME"
-            git clone https://git.doordesk.net/adam/Doors.git .doors
+            git clone https://git.doordesk.net/adam/Doors.git "$HOME"/.doors
         fi
 
         if [ "$input" -eq 4 ]; then
