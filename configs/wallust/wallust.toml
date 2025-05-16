@@ -23,7 +23,7 @@ color_space = "lch"
 # harddark - harddark16 - harddarkcomp - harddarkcomp16
 # softdark - softdark16 - softdarkcomp - softdarkcomp16
 # softlight - softlight16 - softlightcomp - softlightcomp16
-palette = "harddarkcomp16"
+palette = "harddark16"
 
 # Ensures a "readable contrast" (OPTIONAL, disabled by default)
 # Should only be enabled when you notice an unreadable contrast frequently happening
@@ -33,7 +33,7 @@ check_contrast = true
 # Color saturation, between [1% and 100%] (OPTIONAL, disabled by default)
 # usually something higher than 50 increases the saturation and below
 # decreases it (on a scheme with strong and vivid colors)
-# saturation = 1
+# saturation = 100
 
 # threshold = 20
 
@@ -41,12 +41,12 @@ check_contrast = true
 alpha = 100
 
 [templates]
+wal = { src = "wal", dst = "~/.cache/wal/wal" }
 alacritty = { src = "colors-alacritty.toml", dst = "~/.cache/wal/colors-alacritty.toml", pywal = true }
 colors = { src = "colors", dst = "~/.cache/wal/colors" }
 css = { src = "colors.css", dst = "~/.cache/wal/colors.css" }
 json = { src = "colors.json", dst = "~/.cache/wal/colors.json" }
 sh = { src = "colors.sh", dst = "~/.cache/wal/colors.sh" }
 vim = { src = "colors.vim", dst = "~/.cache/wal/colors-wal.vim" }
-wal = { src = "wal", dst = "~/.cache/wal/wal" }
 xres = { src = "Xresources", dst = "~/.cache/wal/colors.Xresources" }
 zathura = { src = "zathurarc", dst = "~/.config/zathura/zathurarc" }

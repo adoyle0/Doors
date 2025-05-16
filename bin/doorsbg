@@ -1,12 +1,16 @@
 #!/bin/sh
+set -e
 
 # Pick a random wallpaper and generate colors
 cd ~/Pictures/Wallpapers/ && 
     find . |sort -R |tail -1 |while read -r file; do
-    wallust run -qs "$file"
+    wallust run -q "$file"
 done
 
 # Use the new colors
+[ -x "$(command -v walogram )" ] && walogram -B && 
+    # Hack because walogram uses `cp -f` which circumvents hot-reload
+    # by replacing the theme rather than updating it
+    cp ~/.cache/walogram/wal.tdesktop-theme ~/.cache/walogram/test.tdesktop-theme
 [ -x "$(command -v pywalfox)" ] && pywalfox update
-[ -x "$(command -v walogram )" ] && walogram -B
 xrdb -merge -quiet ~/.cache/wal/colors.Xresources
