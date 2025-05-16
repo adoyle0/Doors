@@ -52,9 +52,9 @@ if [ "$1" -ge 1 ]; then
         unrar \
         unzip \
         wget \
-        zsh 
+        zsh
 
-    cargo binstall --no-confirm leptosfmt
+    cargo install leptosfmt
 fi
 
 # Install basic GUI
@@ -87,7 +87,7 @@ if [ "$1" -ge 2 ]; then
         xorg-server \
         xorg-xinit \
         xorg-xrandr \
-        xwallpaper 
+        xwallpaper
 
     # Init and update awesome widgets submodule
     cd "$HOME"/.doors &&
@@ -107,8 +107,8 @@ if [ "$1" -ge 3 ]; then
         steam \
         telegram-desktop \
         thunderbird \
-        walogram-git 
-    fi
+        walogram-git
+fi
 
 # Set shell
 echo ""
