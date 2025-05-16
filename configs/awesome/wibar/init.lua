@@ -3,7 +3,7 @@ require 'wibar.taglist'
 require 'wibar.tasklist'
 
 local function set_wallpaper(s)
-  os.execute 'xwallpaper --no-randr --zoom ~/.cache/wal/bg'
+  os.execute 'xwallpaper --no-randr --zoom $(cat ~/.cache/wal/wal)'
 end
 
 -- Set wallpaper on load

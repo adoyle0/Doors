@@ -19,10 +19,11 @@ unclutter &
 # Make clipboard work
 xclip &               
 
-# Set system colors
-wal -Rnq
-
+# Set up colors
 export XDG_CURRENT_DESKTOP=GNOME
+if [ -f "${XDG_CONFIG_HOME:-$HOME/.cache}/wal/colors.Xresources" ]; then
+    xrdb -merge -quiet ~/.cache/wal/colors.Xresources
+fi
 
 # Optimus
 [ -x "$(command -v prime-offload)" ] && prime-offload

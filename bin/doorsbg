@@ -1,9 +1,12 @@
 #!/bin/sh
 
-# Pick a random wallpaper and save a copy
-wal -nestqi ~/Pictures/Wallpapers
-cp "$(awk "{print}" "$HOME/.cache/wal/wal")" ~/.cache/wal/bg
+# Pick a random wallpaper and generate colors
+cd ~/Pictures/Wallpapers/ && 
+    find . |sort -R |tail -1 |while read -r file; do
+    wallust run -qs "$file"
+done
 
-# Update themes for other stuff it it exists
+# Use the new colors
 [ -x "$(command -v pywalfox)" ] && pywalfox update
 [ -x "$(command -v wal-telegram )" ] && wal-telegram -g
+xrdb -merge -quiet ~/.cache/wal/colors.Xresources

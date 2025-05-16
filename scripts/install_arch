@@ -48,7 +48,6 @@ if [ "$1" -ge 1 ]; then
         npm \
         oh-my-zsh-git \
         pacman-contrib \
-        python-pywal \
         rate-mirrors-bin \
         ripgrep \
         rsync \
@@ -59,15 +58,13 @@ if [ "$1" -ge 1 ]; then
         unrar \
         unzip \
         w3m \
+        wallust \
         wget \
         xwallpaper \
         zsh \
 
-        if [ ! "$(command -v rustup)" ]; then
-        yay -S --needed --noconfirm rust cargo-binstall
-        fi
-
         if [ ! "$(command -v leptosfmt)" ]; then
+        yay -S --needed --noconfirm rust cargo-binstall
         cargo binstall --no-confirm leptosfmt
         fi
 fi

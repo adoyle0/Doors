@@ -29,11 +29,11 @@ The meat and potatoes
 - [neovim](https://github.com/neovim/neovim) - Edit text blazingly fast (even over ssh!)
 - [nnn](https://github.com/jarun/nnn) - Lightning fast file manager
 - [Oh My Zsh](https://github.com/ohmyzsh/ohmyzsh) - Community enhancements for zsh. Easier than DIY
-- [pywal](https://github.com/dylanaraps/pywal) - Set whole system color scheme from wallpaper colors
 - [ripgrep](https://github.com/BurntSushi/ripgrep) - Extremely fast grep replacement
 - [rsync](https://rsync.samba.org/) - For my 'push' alias
 - [sl](https://github.com/eyJhb/sl) - For when you're too fast
 - [unrar](https://www.rarlab.com/rar_add.htm) - For decompressing .rar
+- [wallust](https://codeberg.org/explosion-mental/wallust) - Set whole system color scheme from wallpaper colors
 - [wget](https://www.gnu.org/software/wget/wget.html) - Tool to get things from the web
 - [zsh](https://www.zsh.org/) - Comfy shell
 

@@ -3,9 +3,6 @@ require 'core'
 -- Set up key remaps
 os.execute 'setxkbmap -option "caps:escape,altwin:menu_win,altwin:meta_win"'
 
--- Set colors
-os.execute 'wal -Rnq'
-
 -- Key repeat rate
 os.execute 'xset r rate 200 100'
 
