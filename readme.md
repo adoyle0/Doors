@@ -83,8 +83,6 @@ Eye candy, bloat, stuff that won't install on ARM devices
 
 The install script clones this repo, installs a few dependencies and copies my configs to `~/.config/`. It then links `~/.xinitrc` and `~/.zprofile` to the ones copied from the repo, all while creating a **SINGLE** backup for any files that already exist. **NOTE:** Only **ONE** backup per file is saved to prevent piling up backups. It's only meant to catch small oversights. In other words, if you run the installer twice **IT WILL OVERWRITE THE BACKUP!**
 
-The install script is only for Arch right now but I plan to include any distro with this software in their repos. At least the popular ones
-
 1. Create a new user or backup your home directory if you're unsure about anything. If you have nothing to lose then go ahead and YOLO it. Just don't complain if something gets overwritten
 
 1. `sh <(curl -s https://doors.doordesk.net/setup)`
@@ -93,7 +91,7 @@ The install script is only for Arch right now but I plan to include any distro w
 
 ### Starting the GUI
 
-Just run `startx` if you log in to TTY like a boss, or start awesome from your display manager if that's more your thing
+`startx`
 
 - The mod keys are Super, Menu, and Meta
 - Once in awesome press Mod + F1 for a quick reference of all keybinds
@@ -107,10 +105,9 @@ Some manual setup is required for theming if you want eye candy. My scripts shou
 - Install [pywalfox](https://addons.mozilla.org/en-US/firefox/addon/pywalfox/) for firefox, then open it and click the "Fetch Pywal colors" button. You shouldn't have to touch it ever again
 - [Point telegram to walogram's generated theme](https://codeberg.org/thirtysix/walogram#applying-theme). It should handle itself from there
 
-## Future:
 
-- Polish nvim
-- nnn setup
-- posix compliance
-- Support more distros
-- Add color to setup cause why not?
+### Neovim
+
+Use `:Lazy` and `:Mason` to update
+
+I recommend at least skimming [the configs](configs/nvim) to see what else it can do. The config is based on [kickstart.nvim](https://github.com/nvim-lua/kickstart.nvim)
