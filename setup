@@ -37,7 +37,6 @@ fi
 clear
 
 # # Trigger sudo prompt before less can block password input
-# sudo echo ''
 
 # Detect OS and act accordingly
 . /etc/os-release
@@ -48,15 +47,6 @@ printf "\nSetup for %s\n\n" "$OS"
 
 case "$OS" in
     *Arch*)
-        # # Check for less and install if not found
-        # if ! type "less" > /dev/null 2>&1; then
-        #     echo "less not found, installing..."
-        #     sudo pacman -S --noconfirm less # <<< should handle other distros here
-        # fi
-        # clear &&
-        #     # Execute in less with a header for style points
-        #             exec > >(less +F -X --header 8) 2>&1
-        #             trap 'exec >&- 2>&-; wait' EXIT
         echo "Enabling Pacman colors..."
         sudo sed '/Color/s/^#//' -i /etc/pacman.conf
 
@@ -80,10 +70,6 @@ case "$OS" in
             echo "Cleaning nvim..."
             "$HOME"/.doors/scripts/nvim_clean
             echo "Done! Run setup to refresh"
-            
-            # # Give less time to catch up and tell it we're done
-            # sleep .5 && killall -s SIGINT less
-
             exit 0
         fi
 
@@ -94,21 +80,6 @@ case "$OS" in
     exit 1
     ;;
 esac
-
-# TODO: Add "Arch ARM"
-
-# These are broken for now
-# elif [[ $OS == *buntu* ]]; then
-#     cd
-#         sudo apt-get -y install git rsync
-#         git clone https://git.doordesk.net/adam/Doors.git .doors
-#         $HOME/.doors/scripts/install_min_ubuntu
-#
-# elif [[ $OS == *Fedora* ]]; then
-#     cd
-#         sudo dnf install -y git rsync
-#         git clone https://git.doordesk.net/adam/Doors.git .doors
-#         $HOME/.doors/scripts/install_min_fedora
 
 # Copy and link files
 cd "$HOME"/.doors &&
@@ -127,6 +98,3 @@ fi
 
 # Wrap up
 printf "\nDone!\nLog out and back in for changes to take effect.\n"
-
-# # Give less time to catch up and tell it we're done
-# sleep .5 && killall -s SIGINT less

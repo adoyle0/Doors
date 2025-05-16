@@ -35,20 +35,17 @@ if [ "$1" -ge 1 ]; then
         byobu \
         coreutils \
         fd \
-        ffmpegthumbnailer \
-        file \
         fzf \
         glow \
         man-db \
         man-pages \
-        mediainfo \
         mosh \
         neovim \
         nnn \
         npm \
         oh-my-zsh-git \
         pacman-contrib \
-        rate-mirrors-bin \
+        rate-mirrors \
         ripgrep \
         rsync \
         rubygems \
@@ -57,10 +54,7 @@ if [ "$1" -ge 1 ]; then
         tree \
         unrar \
         unzip \
-        w3m \
-        wallust \
         wget \
-        xwallpaper \
         zsh \
 
         if [ ! "$(command -v leptosfmt)" ]; then
@@ -94,10 +88,12 @@ if [ "$1" -ge 2 ]; then
         redshift \
         ttf-font-awesome \
         unclutter \
+        wallust \
         xclip \
         xorg-server \
         xorg-xinit \
         xorg-xrandr \
+        xwallpaper \
 
         # Init and update awesome widgets submodule
     cd "$HOME"/.doors &&
