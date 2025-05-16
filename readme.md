@@ -63,6 +63,7 @@ Base:
 - [xorg-server](https://wiki.archlinux.org/title/Xorg) - Displays graphics
 - [xorg-xinit](https://wiki.archlinux.org/title/Xinit) - Starts the X server
 - [xorg-xrandr](https://wiki.archlinux.org/title/xrandr) - Configures monitors
+- [xwallpaper](https://github.com/stoeckmann/xwallpaper) - Tiny and fast wallpaper setter for X
 
 ### Extras:
 

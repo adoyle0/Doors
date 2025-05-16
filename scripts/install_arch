@@ -60,6 +60,7 @@ if [ "$1" -ge 1 ]; then
         unzip \
         w3m \
         wget \
+        xwallpaper \
         zsh \
 
         if [ ! "$(command -v rustup)" ]; then

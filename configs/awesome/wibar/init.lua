@@ -3,7 +3,7 @@ require 'wibar.taglist'
 require 'wibar.tasklist'
 
 local function set_wallpaper(s)
-  os.execute 'nitrogen --set-zoom-fill ~/.cache/wal/bg'
+  os.execute 'xwallpaper --no-randr --zoom ~/.cache/wal/bg'
 end
 
 -- Set wallpaper on load
