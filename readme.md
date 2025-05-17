@@ -96,7 +96,7 @@ Eye candy, bloat, stuff that won't install on ARM devices. This section is more 
 
 ## Install
 
-The install script clones this repo, installs a few dependencies and copies my configs to `~/.config/`. It then links `~/.xinitrc` and `~/.zprofile` to the ones copied from the repo, all while creating a **SINGLE** backup for any files that already exist. **NOTE:** Only **ONE** backup per file is saved to prevent piling up backups. It's only meant to catch small oversights. In other words, if you run the installer twice **IT WILL OVERWRITE THE BACKUP!**
+The install script clones this repo, installs a few dependencies and copies my configs to `~/.config/`. It then links `~/.xinitrc` and `~/.zprofile` to the ones copied from the repo. **THERE ARE NO BACKUPS!** Create your own if you're worried about [what may be overwritten](scripts/copy_and_link)
 
 1. Create a new user or backup your home directory if you're unsure about anything. If you have nothing to lose then go ahead and YOLO it. Just don't complain if something gets overwritten
 
