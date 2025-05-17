@@ -110,6 +110,9 @@ if [ "$1" -ge 3 ]; then
         walogram-git
 fi
 
+echo "Updating nnn plugins..."
+sh -c "$(curl -Ls https://raw.githubusercontent.com/jarun/nnn/master/plugins/getplugs)"
+
 # Set shell
 echo ""
 if [ "$SHELL" = "/bin/zsh" ]; then
