@@ -4,7 +4,7 @@ set -e
 # Pick a random wallpaper and generate colors
 cd ~/Pictures/Wallpapers/ && 
     find . |sort -R |tail -1 |while read -r file; do
-    wallust run -q "$file"
+    wallust run -qs "$file"
 done
 
 # Use the new colors
