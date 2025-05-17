@@ -1,6 +1,3 @@
--- [[ Setting options ]]
--- See `:help vim.o`
-
 -- Make line numbers default and relative
 vim.o.nu = true
 vim.o.rnu = true
@@ -18,15 +15,13 @@ vim.o.hls = false
 vim.o.mouse = 'a'
 
 -- Sync clipboard between OS and Neovim.
---  Remove this option if you want your OS clipboard to remain independent.
---  See `:help 'clipboard'`
 vim.o.cb = 'unnamedplus'
 
 -- Enable break indent
 vim.o.bri = true
 
 -- Save undo history
-vim.o.udir = os.getenv('HOME') .. '/.vim.undodir'
+vim.o.udir = os.getenv 'HOME' .. '/.vim.undodir'
 vim.o.udf = true
 
 -- Keep cursor 8 lines from top/bottom
@@ -45,5 +40,3 @@ vim.o.tm = 300
 
 -- Set completeopt to have a better completion experience
 vim.o.cot = 'menuone,noselect'
-
--- vim: ts=2 sts=2 sw=2 et

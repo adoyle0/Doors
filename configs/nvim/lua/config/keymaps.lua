@@ -1,7 +1,4 @@
--- [[ Basic Keymaps ]]
-
--- Keymaps for better default experience
--- See `:help vim.keymap.set()`
+-- Quality of life
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 vim.keymap.set('n', '<leader>pv', vim.cmd.Ex)
 
@@ -9,7 +6,7 @@ vim.keymap.set('n', '<leader>pv', vim.cmd.Ex)
 vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv")
 vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv")
 
---  J without moving cursor
+-- J without moving cursor
 vim.keymap.set('n', 'J', 'mzJ`z')
 
 -- Center cursor when jumping
@@ -50,8 +47,7 @@ vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next diagnos
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
 
--- [[ Highlight on yank ]]
--- See `:help vim.highlight.on_yank()`
+-- Highlight on yank
 local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
 vim.api.nvim_create_autocmd('TextYankPost', {
   callback = function()
@@ -66,5 +62,3 @@ vim.keymap.set('n', '<leader>gs', ':G status<CR>')
 vim.keymap.set('n', '<leader>ga', ':G add %<CR>')
 vim.keymap.set('n', '<leader>gc', [[:G commit -m ""<Left>]])
 vim.keymap.set('n', '<leader>gp', ':G push<CR>')
-
--- vim: ts=2 sts=2 sw=2 et
