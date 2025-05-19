@@ -4,10 +4,96 @@ return {
   'neovim/nvim-lspconfig',
   dependencies = {
     -- Automatically install LSPs to stdpath for neovim
-    { 'williamboman/mason.nvim', version = '^1.0.0', config = true, dependencies = {
-      'WhoIsSethDaniel/mason-tool-installer.nvim',
-    } },
-    { 'williamboman/mason-lspconfig.nvim', version = '^1.0.0' },
+    {
+      'williamboman/mason.nvim',
+      version = '^1.0.0',
+      config = true,
+      dependencies = {
+        {
+          'williamboman/mason-lspconfig.nvim',
+          version = '^1.0.0',
+          config = {
+            function()
+              local servers = {
+                bashls = {},
+                cssls = {},
+                docker_compose_language_service = {},
+                dockerls = {},
+                gopls = {},
+                html = {},
+                jsonls = {},
+                lua_ls = {
+                  Lua = {
+                    workspace = { checkThirdParty = false },
+                    telemetry = { enable = false },
+                    -- NOTE: toggle below to ignore Lua_LS's noisy `missing-fields` warnings
+                    -- diagnostics = { disable = { 'missing-fields' } },
+                  },
+                },
+                marksman = {},
+                mutt_ls = {},
+                pbls = {},
+                pyright = {},
+                rust_analyzer = {
+                  ['rust-analyzer'] = {
+                    cargo = {
+                      allFeatures = true,
+                    },
+                  },
+                },
+                tailwindcss = {},
+                ts_ls = {},
+                yamlls = {},
+                zls = {},
+              }
+
+              -- Ensure the servers above are installed
+              local mason_lspconfig = require 'mason-lspconfig'
+
+              mason_lspconfig.setup {
+                ensure_installed = vim.tbl_keys(servers),
+                automatic_installation = true,
+              }
+
+              mason_lspconfig.setup_handlers {
+                function(server_name)
+                  require('lspconfig')[server_name].setup {
+                    capabilities = capabilities,
+                    on_attach = on_attach,
+                    settings = servers[server_name],
+                    filetypes = (servers[server_name] or {}).filetypes,
+                  }
+                end,
+              }
+            end,
+          },
+        },
+        {
+          'WhoIsSethDaniel/mason-tool-installer.nvim',
+          opts = {
+            auto_update = true,
+            ensure_installed = {
+              'beautysh',
+              'black',
+              'eslint_d',
+              'htmlbeautifier',
+              'isort',
+              'nginx-language-server',
+              'pbls',
+              'prettier',
+              'prettierd',
+              'rust-analyzer',
+              'rustywind',
+              'shellcheck',
+              'shellharden',
+              'stylua',
+              'taplo',
+              'yamlfix',
+            },
+          },
+        },
+      },
+    },
 
     -- Useful status updates for LSP
     -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
@@ -18,12 +104,6 @@ return {
   },
   config = function()
     local on_attach = function(_, bufnr)
-      -- NOTE: Remember that lua is a real programming language, and as such it is possible
-      -- to define small helper and utility functions so you don't have to repeat yourself
-      -- many times.
-      --
-      -- In this case, we create a function that lets us more easily define mappings specific
-      -- for LSP related items. It sets the mode, buffer and description for us each time.
       local nmap = function(keys, func, desc)
         if desc then
           desc = 'LSP: ' .. desc
@@ -81,100 +161,6 @@ return {
         { '<leader>', group = 'VISUAL <leader>', mode = 'v' },
         { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
       },
-    }
-
-    -- mason-lspconfig requires that these setup functions are called in this order
-    -- before setting up the servers.
-    require('mason').setup()
-    require('mason-lspconfig').setup()
-
-    -- Enable the following language servers
-    --  Feel free to add/remove any LSPs that you want here. They will automatically be installed.
-    --
-    --  Add any additional override configuration in the following tables. They will be passed to
-    --  the `settings` field of the server config. You must look up that documentation yourself.
-    --
-    --  If you want to override the default filetypes that your language server will attach to you can
-    --  define the property 'filetypes' to the map in question.
-    local servers = {
-      bashls = {},
-      cssls = {},
-      docker_compose_language_service = {},
-      dockerls = {},
-      gopls = {},
-      html = {},
-      jsonls = {},
-      lua_ls = {
-        Lua = {
-          workspace = { checkThirdParty = false },
-          telemetry = { enable = false },
-          -- NOTE: toggle below to ignore Lua_LS's noisy `missing-fields` warnings
-          -- diagnostics = { disable = { 'missing-fields' } },
-        },
-      },
-      marksman = {},
-      mutt_ls = {},
-      pbls = {},
-      pyright = {},
-      rust_analyzer = {
-        ['rust-analyzer'] = {
-          cargo = {
-            allFeatures = true,
-          },
-        },
-      },
-      tailwindcss = {},
-      ts_ls = {},
-      yamlls = {},
-      zls = {},
-    }
-
-    local mason_tool_installer = require 'mason-tool-installer'
-    mason_tool_installer.setup {
-      ensure_installed = {
-        'beautysh',
-        'black',
-        'eslint_d',
-        'htmlbeautifier',
-        'isort',
-        'nginx-language-server',
-        'pbls',
-        'prettier',
-        'prettierd',
-        'rust-analyzer',
-        'rustywind',
-        'shellcheck',
-        'shellharden',
-        'stylua',
-        'taplo',
-        'yamlfix',
-      },
-    }
-
-    -- Setup neovim lua configuration
-    require('neodev').setup()
-
-    -- nvim-cmp supports additional completion capabilities, so broadcast that to servers
-    local capabilities = vim.lsp.protocol.make_client_capabilities()
-    capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
-
-    -- Ensure the servers above are installed
-    local mason_lspconfig = require 'mason-lspconfig'
-
-    mason_lspconfig.setup {
-      ensure_installed = vim.tbl_keys(servers),
-      automatic_installation = true,
-    }
-
-    mason_lspconfig.setup_handlers {
-      function(server_name)
-        require('lspconfig')[server_name].setup {
-          capabilities = capabilities,
-          on_attach = on_attach,
-          settings = servers[server_name],
-          filetypes = (servers[server_name] or {}).filetypes,
-        }
-      end,
     }
   end,
 }
