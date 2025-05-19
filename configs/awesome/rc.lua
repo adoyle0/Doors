@@ -7,7 +7,7 @@ os.execute 'setxkbmap -option "caps:escape,altwin:menu_win,altwin:meta_win"'
 os.execute 'xset r rate 200 100'
 
 -- Some defaults
-Browser = 'firefox-developer-edition'
+Browser = 'librewolf'
 Browser2 = 'chromium'
 Editor = 'nvim'
 Email = 'thunderbird'

@@ -63,15 +63,16 @@ Base:
 - [bluez](https://www.bluez.org/) - Bluetooth tools
 - [commit-mono-nerd](https://github.com/ryanoasis/nerd-fonts) - .otf nerd font that also supports bold, italic, and bold italic
 - [chromium](https://www.chromium.org/Home/) - Backup browser
-- [firefox-developer-edition](https://www.mozilla.org/en-US/firefox/developer/) - Main browser
 - [font-awesome](https://fontawesome.com/) - Icon font
 - [gnome-themes-extra](https://gitlab.gnome.org/Archive/gnome-themes-extra) - Provides dark GTK themes
-- [maim](https://github.com/naelstrof/maim) - Screenshot tool, script included in bin for ease of use
+- [librewolf](https://librewolf.net/) - Main browser
+- [maim](https://github.com/naelstrof/maim) - Screenshot tool
 - [noto-fonts, noto-fonts-cjk, noto-fonts-emoji](https://en.wikipedia.org/wiki/Noto_fonts) - Full coverage unicode fonts
 - [nsxiv](https://nsxiv.codeberg.page/) - Image viewer
 - [picom](https://github.com/yshui/picom) - Compositor. Provides vsync, shadows, transparency, etc
 - [playerctl](https://github.com/altdesktop/playerctl) - For controlling media playback
 - [polkit-gnome](https://wiki.archlinux.org/title/Polkit) - GTK polkit prompt
+- [python-pywalfox](https://github.com/frewacom/pywalfox) - Themes firefox with pywal colors
 - [redshift](https://github.com/jonls/redshift) - Shifts screen to red at night to be easier on the eyes
 - [unclutter](https://github.com/Airblader/unclutter-xfixes) - Hides the cursor after inactivity
 - [wallust](https://codeberg.org/explosion-mental/wallust) - Set whole system color scheme from wallpaper colors
@@ -88,7 +89,6 @@ Eye candy, bloat, stuff that won't install on ARM devices. This section is more 
 - [caprine](https://sindresorhus.com/caprine/) - Facebook messenger
 - [discord](https://discord.com/) - Discord
 - [gimp](https://www.gimp.org/) - Image editor
-- [python-pywalfox](https://github.com/frewacom/pywalfox) - Themes firefox with pywal colors
 - [spotify-launcher](https://github.com/kpcyrd/spotify-launcher) - Handles Spotify
 - [steam](https://store.steampowered.com/) - Steam
 - [telegram-desktop](https://telegram.org/) - Telegram messenger

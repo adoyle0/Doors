@@ -69,8 +69,8 @@ if [ "$1" -ge 2 ]; then
         awesome \
         bluez \
         chromium \
-        firefox-developer-edition \
         gnome-themes-extra \
+        librewolf-bin \
         maim \
         noto-fonts \
         noto-fonts-cjk \
@@ -81,6 +81,7 @@ if [ "$1" -ge 2 ]; then
         picom \
         playerctl \
         polkit-gnome \
+        python-pywalfox-librewolf \
         redshift \
         unclutter \
         wallust \
@@ -93,6 +94,11 @@ if [ "$1" -ge 2 ]; then
     # Init and update awesome widgets submodule
     cd "$HOME"/.doors &&
     git submodule init && git submodule update
+
+    # Set up pywalfox
+    if ! test -f "$HOME"/.librewolf/native-messaging-hosts/pywalfox.json; then
+        pywalfox install --browser librewolf
+    fi
 
     # Copy default wallpaper and set colors
     if ! test -f "$HOME"/Pictures/Wallpapers/door2.jpg; then
@@ -113,7 +119,6 @@ if [ "$1" -ge 3 ]; then
         caprine-bin \
         discord \
         gimp \
-        python-pywalfox \
         spotify-launcher \
         steam \
         telegram-desktop \

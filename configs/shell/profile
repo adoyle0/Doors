@@ -10,7 +10,7 @@ fi
 unsetopt PROMPT_SP
 
 # Default programs:
-export BROWSER="firefox-developer-edition"
+export BROWSER="librewolf"
 export EDITOR="nvim"
 export PAGER="bat -p"
 export TERMINAL="alacritty"
