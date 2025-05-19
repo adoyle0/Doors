@@ -91,6 +91,9 @@ if [ "$1" -ge 2 ]; then
         xorg-xrandr \
         xwallpaper
 
+    # Set librewolf as default browser
+    xdg-settings set default-web-browser librewolf.desktop
+
     # Init and update awesome widgets submodule
     cd "$HOME"/.doors &&
     git submodule init && git submodule update
