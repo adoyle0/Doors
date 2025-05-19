@@ -114,11 +114,12 @@ fi
 # Install extras
 if [ "$1" -ge 3 ]; then
 
+    # electron-29-bin is caprine dependency that fails to build
     printf "\nInstalling extras..."
     yay -S --needed --noconfirm \
         caprine-bin \
         discord \
-        electron-29-bin \ # Caprine dependency
+        electron-29-bin \
         gimp \
         spotify-launcher \
         steam \
