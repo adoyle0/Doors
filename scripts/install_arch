@@ -118,6 +118,7 @@ if [ "$1" -ge 3 ]; then
     yay -S --needed --noconfirm \
         caprine-bin \
         discord \
+        electron-29-bin \ # Caprine dependency
         gimp \
         spotify-launcher \
         steam \
