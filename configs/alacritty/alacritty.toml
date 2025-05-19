@@ -2,7 +2,11 @@
 import = ["~/.cache/wal/colors-alacritty.toml"]
 
 [font]
-size = 13
+normal = { family = "CommitMono Nerd Font Mono", style = "Regular" }
+bold = { family = "CommitMono Nerd Font Mono", style = "Bold" }
+italic = { family = "CommitMono Nerd Font Mono", style = "Italic" }
+bold_italic = { family = "CommitMono Nerd Font Mono", style = "Bold Italic" }
+size = 15
 
 [window]
 opacity = 0.90

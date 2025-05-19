@@ -61,6 +61,7 @@ Base:
 - [awesome](https://awesomewm.org/) - Window manager
 - [awesome-wm-widgets](https://github.com/streetturtle/awesome-wm-widgets) - Community collection of widgets for awesome
 - [bluez](https://www.bluez.org/) - Bluetooth tools
+- [commit-mono-nerd](https://github.com/ryanoasis/nerd-fonts) - .otf nerd font that also supports bold, italic, and bold italic
 - [chromium](https://www.chromium.org/Home/) - Backup browser
 - [firefox-developer-edition](https://www.mozilla.org/en-US/firefox/developer/) - Main browser
 - [font-awesome](https://fontawesome.com/) - Icon font

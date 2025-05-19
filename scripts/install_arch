@@ -76,12 +76,12 @@ if [ "$1" -ge 2 ]; then
         noto-fonts-cjk \
         noto-fonts-emoji \
         nsxiv \
+        otf-commit-mono-nerd \
         otf-font-awesome \
         picom \
         playerctl \
         polkit-gnome \
         redshift \
-        ttf-font-awesome \
         unclutter \
         wallust \
         xclip \
