@@ -9,8 +9,7 @@ done
 
 # Use the new colors
 [ -x "$(command -v walogram )" ] && walogram -B && 
-    # Hack because walogram uses `cp -f` which circumvents hot-reload
-    # by replacing the theme rather than updating it
+    # Hack because walogram has a bug with hot-reload
     cp ~/.cache/walogram/wal.tdesktop-theme ~/.cache/walogram/doors.tdesktop-theme
 [ -x "$(command -v pywalfox)" ] && pywalfox update
 xrdb -merge -quiet ~/.cache/wal/colors.Xresources
