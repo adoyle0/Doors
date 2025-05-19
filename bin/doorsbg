@@ -11,6 +11,6 @@ done
 [ -x "$(command -v walogram )" ] && walogram -B && 
     # Hack because walogram uses `cp -f` which circumvents hot-reload
     # by replacing the theme rather than updating it
-    cp ~/.cache/walogram/wal.tdesktop-theme ~/.cache/walogram/test.tdesktop-theme
+    cp ~/.cache/walogram/wal.tdesktop-theme ~/.cache/walogram/doors.tdesktop-theme
 [ -x "$(command -v pywalfox)" ] && pywalfox update
 xrdb -merge -quiet ~/.cache/wal/colors.Xresources
