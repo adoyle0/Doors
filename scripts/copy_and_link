@@ -19,5 +19,5 @@ fi
 cp -ru bin "$HOME"/.local
 
 printf "\nLinking shell...\n"
-cp -su "$HOME"/.config/shell/profile ~/.zprofile
-cp -su "$HOME"/.config/x11/xinitrc ~/.xinitrc
+ln -sf "$HOME"/.config/shell/profile ~/.zprofile
+ln -sf "$HOME"/.config/x11/xinitrc ~/.xinitrc
