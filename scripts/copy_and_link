@@ -1,16 +1,14 @@
 #!/bin/sh
 set -e
 
-# Copy configs and make a backup if it already exists
 printf "\nInstalling Configs..."
 cd configs
 for file in *
 do
     printf "\n%s..." "$file"
-    cp -rb "$file" "$HOME"/.config/
+    cp -ru "$file" "$HOME"/.config/
 done
 
-# Copy scripts and make a backup if it already exists
 printf "\n\nInstalling Scripts..."
 cd ../
 
@@ -18,9 +16,8 @@ if [ ! -d "$HOME/.local/bin" ]; then
     mkdir -p "$HOME/.local/bin"
 fi
 
-cp -rb bin "$HOME"/.local
+cp -ru bin "$HOME"/.local
 
-# Link shell files and make a backup if it already exists
 printf "\nLinking shell...\n"
-cp -sb "$HOME"/.config/shell/profile ~/.zprofile
-cp -sb "$HOME"/.config/x11/xinitrc ~/.xinitrc
+cp -su "$HOME"/.config/shell/profile ~/.zprofile
+cp -su "$HOME"/.config/x11/xinitrc ~/.xinitrc
