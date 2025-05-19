@@ -119,9 +119,3 @@ Some manual setup is required for theming if you want eye candy. My scripts shou
 
 - Install [pywalfox](https://addons.mozilla.org/en-US/firefox/addon/pywalfox/) for firefox, then open it and click the "Fetch Pywal colors" button. You shouldn't have to touch it ever again
 - [Point telegram to walogram's generated theme](https://codeberg.org/thirtysix/walogram#applying-theme). It should handle itself from there
-
-### Neovim
-
-Use `:Lazy` and `:Mason` to update
-
-I recommend at least skimming [the configs](configs/nvim) to see what else it can do. The config is based on [kickstart.nvim](https://github.com/nvim-lua/kickstart.nvim)
