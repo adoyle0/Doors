@@ -23,7 +23,7 @@ xclip &
 
 # Run colors script if output dir doesn't exist 
 if ! test -d "$HOME"/.cache/wal; then
-    [ -x "$(command -v walogram )" ] && sh "$HOME"/.local/bin/doorsbg
+    [ -x "$(command -v walogram )" ] && doorsbg
 fi
 
 export XDG_CURRENT_DESKTOP=GNOME
