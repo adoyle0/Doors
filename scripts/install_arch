@@ -1,6 +1,8 @@
 #!/bin/sh
 set -e
 
+DOORSDIR = "$HOME"/.doors
+
 # Install yay
 cd
 if [ ! "$(command -v yay)" ]; then
@@ -93,10 +95,14 @@ if [ "$1" -ge 2 ]; then
         zathura
 
     # Set librewolf as default browser
+    # Unset BROWSER because xdg gets pissy if it doesn't feel like it's the authority
+    unset BROWSER
     xdg-settings set default-web-browser librewolf.desktop
+    # Set it anyway
+    BROWSER=librewolf
 
     # Init and update awesome widgets submodule
-    cd "$HOME"/.doors &&
+    cd "$DOORSDIR" &&
     git submodule init && git submodule update
 
     # Set up pywalfox
@@ -110,7 +116,7 @@ if [ "$1" -ge 2 ]; then
             mkdir -p "$HOME"/Pictures/Wallpapers
             printf "Downloading default wallpaper...\n"
             curl -so "$HOME"/Pictures/Wallpapers/door2.jpg https://old.doordesk.net/door2.jpg &&
-            wallust run -qs "$HOME"/Pictures/Wallpapers/door2.jpg
+            sh "$DOORSDIR"/bin/doorsbg
         fi
     fi
 fi
