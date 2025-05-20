@@ -20,6 +20,12 @@ unclutter &
 xclip &               
 
 # Set up colors
+
+# Run colors script if output dir doesn't exist 
+if ! test -d "$HOME"/.cache/wal; then
+    [ -x "$(command -v walogram )" ] && sh "$HOME"/.local/bin/doorsbg
+fi
+
 export XDG_CURRENT_DESKTOP=GNOME
 if [ -f "${XDG_CONFIG_HOME:-$HOME/.cache}/wal/colors.Xresources" ]; then
     xrdb -merge -quiet ~/.cache/wal/colors.Xresources
