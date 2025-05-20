@@ -86,7 +86,7 @@ cd "$HOME"/.doors &&
 
 # Run colors script if output dir doesn't exist 
 if ! test -d "$HOME"/.cache/wal; then
-    sh "$HOME"/.local/bin/doorsbg
+    [ -x "$(command -v walogram )" ] && sh "$HOME"/.local/bin/doorsbg
 fi
 
 printf "\nDone!\nLog out and back in for changes to take effect.\n"
