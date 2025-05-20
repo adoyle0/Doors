@@ -130,7 +130,7 @@ if [ "$1" -ge 3 ]; then
 
     # Caprine depends on electon29 and it fails to build from the source it provides
     # A bin package exists so we're using it
-    yay -S --needed --noconfirm electron-29-bin
+    yay -S --needed --noconfirm electron29-bin
 
     # Ensure caprine comes after its dependency
     yay -S --needed --noconfirm caprine-bin
