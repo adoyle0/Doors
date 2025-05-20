@@ -6,7 +6,7 @@ cd configs
 for file in *
 do
     printf "\n%s..." "$file"
-    cp -ru "$file" "$HOME"/.config/
+    cp -r --update=all "$file" "$HOME"/.config/
 done
 
 printf "\n\nInstalling Scripts..."
@@ -16,7 +16,7 @@ if [ ! -d "$HOME/.local/bin" ]; then
     mkdir -p "$HOME/.local/bin"
 fi
 
-cp -ru bin "$HOME"/.local
+cp -r --update=all bin "$HOME"/.local
 
 printf "\nLinking shell...\n"
 ln -sf "$HOME"/.config/shell/profile ~/.zprofile
