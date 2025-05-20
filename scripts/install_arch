@@ -118,18 +118,22 @@ fi
 # Install extras
 if [ "$1" -ge 3 ]; then
 
-    # electron-29-bin is caprine dependency that fails to build
     printf "\nInstalling extras..."
     yay -S --needed --noconfirm \
-        caprine-bin \
         discord \
-        electron-29-bin \
         gimp \
         spotify-launcher \
         steam \
         telegram-desktop \
         thunderbird \
         walogram-git
+
+    # Caprine depends on electon29 and it fails to build from the source it provides
+    # A bin package exists so we're using it
+    yay -S --needed --noconfirm electron-29-bin
+
+    # Ensure caprine comes after its dependency
+    yay -S --needed --noconfirm caprine-bin
 fi
 
 echo "Updating nnn plugins..."
