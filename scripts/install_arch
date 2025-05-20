@@ -93,7 +93,11 @@ if [ "$1" -ge 2 ]; then
         zathura
 
     # Set librewolf as default browser
+    # Unset BROWSER because xdg gets pissy if it doesn't feel like it's the authority
+    unset BROWSER
     xdg-settings set default-web-browser librewolf.desktop
+    # Set it anyway
+    BROWSER=librewolf
 
     # Init and update awesome widgets submodule
     cd "$HOME"/.doors &&
