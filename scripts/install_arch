@@ -89,7 +89,8 @@ if [ "$1" -ge 2 ]; then
         xorg-server \
         xorg-xinit \
         xorg-xrandr \
-        xwallpaper
+        xwallpaper \
+        zathura
 
     # Set librewolf as default browser
     xdg-settings set default-web-browser librewolf.desktop

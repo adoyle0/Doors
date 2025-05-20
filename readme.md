@@ -81,6 +81,7 @@ Base:
 - [xorg-xinit](https://wiki.archlinux.org/title/Xinit) - Starts the X server
 - [xorg-xrandr](https://wiki.archlinux.org/title/xrandr) - Configures monitors
 - [xwallpaper](https://github.com/stoeckmann/xwallpaper) - Tiny and fast wallpaper setter for X
+- [zathura](https://pwmt.org/projects/zathura/) - Minimalistic document viewer with keyboard controls
 
 ### Extras:
 
