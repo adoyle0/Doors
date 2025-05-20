@@ -113,13 +113,14 @@ if [ "$1" -ge 2 ]; then
         if ! test -d "$HOME"/Pictures/Wallpapers; then
             mkdir -p "$HOME"/Pictures/Wallpapers
             printf "Downloading default wallpaper...\n"
-            curl -so "$HOME"/Pictures/Wallpapers/door2.jpg https://old.doordesk.net/door2.jpg
+            curl -so "$HOME"/Pictures/Wallpapers/door2.jpg https://old.doordesk.net/door2.jpg &&
         fi
     fi
 
     # Run colors script if output dir doesn't exist 
     if ! test -d "$HOME"/.cache/wal; then
         sh "$HOME"/.doors/bin/doorsbg
+    fi
 fi
 
 # Install extras
