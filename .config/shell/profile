@@ -31,3 +31,7 @@ export ZDOTDIR="${XDG_CONFIG_HOME:-$HOME/.config}/shell/zsh"
 # Other program settings:
 export FZF_DEFAULT_OPTS="--layout=reverse --height 40%"
 export XZ_DEFAULTS="-T 0"
+
+if [ -z "$DISPLAY" ] && [ "$XDG_VTNR" = 1 ]; then
+  exec startx
+fi
