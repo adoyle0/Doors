@@ -1,19 +1,21 @@
 #!/bin/bash
+HEADER=$(cat <<'EOF'
+:::::::-.      ...         ...    :::::::..   .::::::.
+ ;;,   `';, .;;;;;;;.   .;;;;;;;. ;;;;``;;;; ;;;`    `
+ `[[     [[,[[     \[[,,[[     \[[,[[[,/[[[' '[==/[[[[,
+  $$,    $$$$$,     $$$$$$,     $$$$$$$$$c     '''    $
+  888_,o8P'"888,_ _,88P"888,_ _,88P888b "88bo,88b    dP
+  MMMMP"`    "YMMMMMP"   "YMMMMMP" MMMM   "W"  "YMmMY"
+
+Doors are sturdier than windows.
+-------------------------------------------------------
+EOF)
+
 set -e
 
 CONFIG_DIR="$HOME"/.config
 DOORS_CACHE_DIR="$HOME"/.cache/doors
 GIT_URL=https://git.doordesk.net/adam/Doors.git
-
-HEADER=':::::::-.      ...         ...    :::::::..   .::::::.
- ;;,   `'\'';, .;;;;;;;.   .;;;;;;;. ;;;;``;;;; ;;;`    `
- `[[     [[,[[     \[[,,[[     \[[,[[[,/[[['\'' '\''[==/[[[[,
-  $$,    $$$$$,     $$$$$$,     $$$$$$$$$c     '\'''\'''\''    $
-  888_,o8P'\''"888,_ _,88P"888,_ _,88P888b "88bo,88b    dP
-  MMMMP"`    "YMMMMMP"   "YMMMMMP" MMMM   "W"  "YMmMY" 
-
-Doors are sturdier than windows.
--------------------------------------------------------'
 
 install_yay() {
     cd
@@ -210,27 +212,27 @@ run_setup() {
     # Detect OS and act accordingly
     . /etc/os-release
     OS=$NAME
-    
+
     printf "\nSetup for %s\n\n" "$OS"
-    
+
     case "$OS" in
         *Arch*)
             sudo sed '/Color/s/^#//' -i /etc/pacman.conf
             sudo pacman -S --needed --noconfirm git base-devel
-    
+
             if test -d "$DOORS_CACHE_DIR"; then
                 cd "$DOORS_CACHE_DIR" &&
-                    git pull
+                git pull
             else
                 git clone "$GIT_URL" "$DOORS_CACHE_DIR"
             fi
-    
+
             setup_arch "$1"
             ;;
         *)
-        printf "$OS is not supported by this script at this time."
-        exit 1
-        ;;
+            printf "$OS is not supported by this script at this time."
+            exit 1
+            ;;
     esac
 }
 
