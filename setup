@@ -253,7 +253,7 @@ Choose your adventure:
 Enter number: " input
 
 clear
-printf "$HEADER"
+printf "$HEADER\n"
 
 if ! [ "$input" -eq "$input" ] 2> /dev/null; then
     printf "Error: Not a number"
@@ -264,10 +264,11 @@ elif [ "$input" -lt 1 ] || [ "$input" -gt 4 ]; then
 fi
 
 if [ "$input" -eq 4 ]; then
-    rm -rf "$HOME"/.doors
-    rm -rf "$HOME"/*~
-    rm -rf "$HOME"/.config/*~
-    rm -rf "$HOME"/.local/bin/*~
+    rm -rfv "$HOME"/.doors
+    rm -rfv "$HOME"/*~
+    rm -rfv "$HOME"/.config/*~
+    rm -rfv "$HOME"/.local/bin/*~
+    printf "Done"
     exit 0
 fi
 
