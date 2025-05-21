@@ -102,16 +102,14 @@ Eye candy, stuff that won't install on ARM devices. This section is more persona
 
 ## Install
 
+To update an existing installation run `doorsupdate`
+
 Create a new user or back up your home directory if you're unsure about anything. If you have nothing to lose then go ahead and YOLO it. Just don't complain if something gets overwritten
 
 1. `sh <(curl -s https://doors.doordesk.net/setup)`
 1. Log out and log back in
 1. ????
 1. PROFIT!!!!
-
-### Starting the GUI
-
-`startx`
 
 - The mod keys are Super, Menu, and Meta
 - Once in awesome press Mod + F1 for a reference of all keybinds
@@ -130,3 +128,11 @@ Some manual setup is required for theming if you want eye candy.
 1. Toggle hidden files visibility in right click menu
 1. Navigate to and double click on ~/.cache/walogram/doors.tdesktop-theme file
 1. Click on keep changes
+
+## Troubleshooting
+
+### I see a black screen after logging in
+
+Make sure your [video drivers](https://wiki.archlinux.org/title/Xorg#Driver_installation) are set up properly.
+
+If you're confident that your drivers are set up correctly and X is not crashing then run `ka picom` in another TTY (<kbd>Ctrl<.kbd> + <kbd>Alt</kbd> + <kbd>F2</kbd>), or try to blindly open a terminal (<kbd>Super</kbd> + <kbd>Enter</kbd>) and run it. If everything appears to suddenly work then picom is having an issue. Try running `picom --backend xrender -b` to load picom with software rendering. If this works then you can make the changes permanent in `~/.config/picom.conf` by changing `glx` to `xrender` however these changes will be overwritten with `doorsupdate`. If this is an issue then [let me know about it](https://git.doordesk.net/adam/Doors/issues).
