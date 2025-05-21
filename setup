@@ -264,8 +264,8 @@ elif [ "$input" -lt 1 ] || [ "$input" -gt 4 ]; then
 fi
 
 if [ "$input" -eq 4 ]; then
-    rm -rfv "$HOME"/.doors
     rm -rfv "$HOME"/*~
+    rm -rfv "$HOME"/.doors
     rm -rfv "$HOME"/.config/*~
     rm -rfv "$HOME"/.local/bin/*~
     printf "Done"
