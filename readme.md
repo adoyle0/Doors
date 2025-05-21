@@ -8,7 +8,7 @@ This is my personal desktop environment that is:
 1. Simple (see above)
 1. Decent looking
 
-I try to use the terminal as much as possible for performance (I use old hardware) and so it's the same experience whether you're hands-on or remote. If it's not here then you probably don't need it
+I try to use the terminal as much as possible both for performance (I use old hardware) and so it's the same experience whether you're hands-on or remote. If it's not here then you probably don't need it
 
 This started as a script for quick deployment of some tools when connected to a remote system and then evolved into including the rest(almost) of my environment and configs as well. Now it's how I store and sync configs between my different systems and bootstrap a fresh install
 
@@ -53,8 +53,6 @@ The meat and potatoes
 
 AwesomeWM starter kit
 
-Base:
-
 - [acpi](https://wiki.archlinux.org/title/ACPI_modules) - For battery widget
 - [alacritty](https://github.com/alacritty/alacritty) - Terminal emulator
 - [arandr](https://christian.amsuess.com/tools/arandr) - To configure screens
@@ -83,9 +81,9 @@ Base:
 - [xwallpaper](https://github.com/stoeckmann/xwallpaper) - Tiny and fast wallpaper setter for X
 - [zathura](https://pwmt.org/projects/zathura/) - Minimalistic document viewer with keyboard controls
 
-### Extras:
+### Bloat:
 
-Eye candy, bloat, stuff that won't install on ARM devices. This section is more personal
+Eye candy, stuff that won't install on ARM devices. This section is more personal
 
 - [caprine](https://sindresorhus.com/caprine/) - Facebook messenger
 - [discord](https://discord.com/) - Discord
@@ -98,26 +96,31 @@ Eye candy, bloat, stuff that won't install on ARM devices. This section is more 
 
 ## Install
 
-The install script clones this repo, installs a few dependencies and copies my configs to `~/.config/`. It then links `~/.xinitrc` and `~/.zprofile` to the ones copied from the repo. **THERE ARE NO BACKUPS!** Create your own if you're worried about [what may be overwritten](scripts/copy_and_link)
-
-1. Create a new user or backup your home directory if you're unsure about anything. If you have nothing to lose then go ahead and YOLO it. Just don't complain if something gets overwritten
+Create a new user or back up your home directory if you're unsure about anything. If you have nothing to lose then go ahead and YOLO it. Just don't complain if something gets overwritten
 
 1. `sh <(curl -s https://doors.doordesk.net/setup)`
-1. Choose your adventure
 1. Log out and log back in
+1. ????
+1. PROFIT!!!!
 
 ### Starting the GUI
 
 `startx`
 
 - The mod keys are Super, Menu, and Meta
-- Once in awesome press Mod + F1 for a quick reference of all keybinds
+- Once in awesome press Mod + F1 for a reference of all keybinds
 
 ## Post Install
 
-### Colors
+Some manual setup is required for theming if you want eye candy.
 
-Some manual setup is required for theming if you want eye candy. My scripts should handle everything else
+### Pywalfox
 
-- Install [pywalfox](https://addons.mozilla.org/en-US/firefox/addon/pywalfox/) for firefox, then open it and click the "Fetch Pywal colors" button. You shouldn't have to touch it ever again
-- [Point telegram to walogram's generated theme](https://codeberg.org/thirtysix/walogram#applying-theme). It should handle itself from there
+1. Install [pywalfox](https://addons.mozilla.org/en-US/firefox/addon/pywalfox/) for firefox, then open it and click the "Fetch Pywal colors" button. You shouldn't have to touch it ever again
+
+### Walogram
+
+1.Navigate to Settings > Chat Settings and click on choose from file
+1.Toggle hidden files visibility in right click menu
+1.Navigate to and double click on ~/.cache/walogram/doors.tdesktop-theme file
+1.Click on keep changes
