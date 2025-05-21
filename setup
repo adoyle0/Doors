@@ -153,14 +153,6 @@ set_shell() {
 }
 
 setup_arch() {
-    if ! [ "$1" -eq "$1" ] 2> /dev/null; then
-        printf "Error: Expected a number"
-        exit 1
-    elif [ "$1" -lt 1 ] || [ "$1" -gt 4 ]; then
-        printf "Error: Input out of range"
-        exit 1
-    fi
-
     install_yay
 
     if [ "$1" -ge 1 ]; then
