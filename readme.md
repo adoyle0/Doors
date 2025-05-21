@@ -116,11 +116,11 @@ Some manual setup is required for theming if you want eye candy.
 
 ### Pywalfox
 
-1. Install [pywalfox](https://addons.mozilla.org/en-US/firefox/addon/pywalfox/) for firefox, then open it and click the "Fetch Pywal colors" button. You shouldn't have to touch it ever again
+- Install [pywalfox](https://addons.mozilla.org/en-US/firefox/addon/pywalfox/) for firefox, then open it and click the "Fetch Pywal colors" button. You shouldn't have to touch it ever again
 
 ### Walogram
 
-1.Navigate to Settings > Chat Settings and click on choose from file
-1.Toggle hidden files visibility in right click menu
-1.Navigate to and double click on ~/.cache/walogram/doors.tdesktop-theme file
-1.Click on keep changes
+1. Navigate to Settings > Chat Settings and click on choose from file
+1. Toggle hidden files visibility in right click menu
+1. Navigate to and double click on ~/.cache/walogram/doors.tdesktop-theme file
+1. Click on keep changes
