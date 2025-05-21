@@ -196,6 +196,16 @@ install_shell() {
     ln -sf "$HOME"/.config/x11/xinitrc "$HOME"/.xinitrc
 }
 
+copy_and_link() {
+    install_configs
+    install_bin
+    install_shell
+}
+
+cleanup() {
+    rm -rf "$DOORS_CACHE_DIR"
+}
+
 run_setup() {
     # Detect OS and act accordingly
     . /etc/os-release
@@ -227,16 +237,6 @@ run_setup() {
     copy_and_link
     cleanup
     set_shell
-}
-
-copy_and_link() {
-    install_configs
-    install_bin
-    install_shell
-}
-
-cleanup() {
-    rm -rf "$DOORS_CACHE_DIR"
 }
 
 clear
