@@ -268,7 +268,7 @@ if [ "$input" -eq 4 ]; then
     rm -rfv "$HOME"/.doors
     rm -rfv "$HOME"/.config/*~
     rm -rfv "$HOME"/.local/bin/*~
-    printf "Done"
+    printf "\nDone"
     exit 0
 fi
 
