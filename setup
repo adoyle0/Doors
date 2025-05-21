@@ -1,5 +1,9 @@
-#!/bin/sh
+#!/bin/bash
 set -e
+
+CONFIG_DIR="$HOME"/.config
+DOORS_CACHE_DIR="$HOME"/.cache/doors
+GIT_URL=https://git.doordesk.net/adam/Doors.git
 
 HEADER=':::::::-.      ...         ...    :::::::..   .::::::.
  ;;,   `'\'';, .;;;;;;;.   .;;;;;;;. ;;;;``;;;; ;;;`    `
@@ -11,76 +15,267 @@ HEADER=':::::::-.      ...         ...    :::::::..   .::::::.
 Doors are sturdier than windows.
 -------------------------------------------------------'
 
+install_yay() {
+    cd
+    if [ ! "$(command -v yay)" ]; then
+        if test -d yay; then
+            rm -rf yay
+        fi
+
+        git clone https://aur.archlinux.org/yay.git
+        cd yay
+        makepkg -si --noconfirm
+        cd
+        rm -rf yay
+    fi
+}
+
+install_base() {
+    yay -S --needed --noconfirm \
+        atool \
+        archlinux-contrib \
+        bat \
+        btop \
+        byobu \
+        coreutils \
+        fd \
+        fzf \
+        glow \
+        go \
+        man-db \
+        man-pages \
+        mosh \
+        neovim \
+        nnn \
+        npm \
+        oh-my-zsh-git \
+        pacman-contrib \
+        rate-mirrors \
+        ripgrep \
+        rsync \
+        rubygems \
+        sl \
+        tar \
+        tree \
+        unrar \
+        unzip \
+        wget \
+        zsh
+
+    cargo install leptosfmt
+}
+
+install_gui() {
+    yay -S --needed --noconfirm \
+        acpi \
+        alacritty \
+        arandr \
+        awesome \
+        bluez \
+        chromium \
+        gnome-themes-extra \
+        librewolf-bin \
+        maim \
+        noto-fonts \
+        noto-fonts-cjk \
+        noto-fonts-emoji \
+        nsxiv \
+        otf-commit-mono-nerd \
+        otf-font-awesome \
+        picom \
+        playerctl \
+        polkit-gnome \
+        python-pywalfox-librewolf \
+        redshift \
+        unclutter \
+        wallust \
+        xclip \
+        xorg-server \
+        xorg-xinit \
+        xorg-xrandr \
+        xwallpaper \
+        zathura
+
+    # Set librewolf as default browser
+    # Unset BROWSER because xdg gets pissy if it doesn't feel like it's the authority
+    unset BROWSER
+    xdg-settings set default-web-browser librewolf.desktop
+    # Set it anyway
+    BROWSER=librewolf
+
+    # Init and update awesome widgets submodule
+    cd "$DOORS_CACHE_DIR" &&
+    git submodule init && git submodule update
+
+    # Set up pywalfox
+    if ! test -f "$HOME"/.librewolf/native-messaging-hosts/pywalfox.json; then
+        pywalfox install --browser librewolf
+    fi
+
+    # Copy default wallpaper if it doesn't exist
+    if ! test -f "$HOME"/Pictures/Wallpapers/door2.jpg; then
+        if ! test -d "$HOME"/Pictures/Wallpapers; then
+            mkdir -p "$HOME"/Pictures/Wallpapers
+            curl -so "$HOME"/Pictures/Wallpapers/door2.jpg https://old.doordesk.net/door2.jpg
+        fi
+    fi
+}
+
+install_extras() {
+    yay -S --needed --noconfirm \
+        discord \
+        gimp \
+        spotify-launcher \
+        steam \
+        telegram-desktop \
+        thunderbird \
+        walogram-git
+
+    # Caprine depends on electon29 and it fails to build from the source it provides
+    # A bin package exists so we're using it
+    yay -S --needed --noconfirm electron29-bin
+
+    # Ensure caprine comes after its dependency
+    yay -S --needed --noconfirm caprine-bin
+}
+
+install_nnn_plugins() {
+    sh -c "$(curl -Ls https://raw.githubusercontent.com/jarun/nnn/master/plugins/getplugs)"
+}
+
+set_shell() {
+    if ! [ "$SHELL" = "/bin/zsh" ]; then
+        sudo chsh -s /bin/zsh "$USER"
+        printf "\nLog out and back in for changes to take effect.\n"
+    fi
+}
+
+setup_arch() {
+    if ! [ "$1" -eq "$1" ] 2> /dev/null; then
+        printf "Error: Expected a number"
+        exit 1
+    elif [ "$1" -lt 1 ] || [ "$1" -gt 4 ]; then
+        printf "Error: Input out of range"
+        exit 1
+    fi
+
+    install_yay
+
+    if [ "$1" -ge 1 ]; then
+        install_base
+    fi
+
+    if [ "$1" -ge 2 ]; then
+        install_gui
+    fi
+
+    if [ "$1" -ge 3 ]; then
+        install_extras
+    fi
+
+    install_nnn_plugins
+    set_shell
+}
+
+install_configs() {
+    cd configs
+    for file in *
+    do
+        oldfile="$CONFIG_DIR"/"$file"
+
+        if [ -e "$oldfile" ]; then
+            rm -rf "$oldfile"
+        fi
+
+        cp -r "$file" "$oldfile"
+    done
+
+    if [ ! -d "$HOME/.local/bin" ]; then
+        mkdir -p "$HOME/.local/bin"
+    fi
+}
+
+install_bin() {
+    cd ../
+    cp -r --update=all bin "$HOME"/.local/
+}
+
+install_shell() {
+    ln -sf "$HOME"/.config/shell/profile ~/.zprofile
+    ln -sf "$HOME"/.config/x11/xinitrc ~/.xinitrc
+}
+
+
+run_setup() {
+    # Detect OS and act accordingly
+    . /etc/os-release
+    OS=$NAME
+    
+    printf "\nSetup for %s\n\n" "$OS"
+    
+    case "$OS" in
+        *Arch*)
+            sudo sed '/Color/s/^#//' -i /etc/pacman.conf
+            sudo pacman -S --needed --noconfirm git base-devel
+    
+            if test -d "$DOORS_CACHE_DIR"; then
+                cd "$DOORS_CACHE_DIR" &&
+                    git pull
+            else
+                git clone "$GIT_URL" "$DOORS_CACHE_DIR"
+            fi
+    
+            setup_arch "$1"
+            ;;
+        *)
+        printf "$OS is not supported by this script at this time."
+        exit 1
+        ;;
+    esac
+}
+
+copy_and_link() {
+    cd "$DOORS_CACHE_DIR"
+    install_configs
+    install_bin
+    install_shell
+}
+
+cleanup() {
+    rm -rf "$DOORS_CACHE_DIR"
+}
+
 clear
-echo "$HEADER"
-echo "Choose your adventure:
-============================
-1. Shell/CLI stuff only
-2. Above plus basic GUI
-3. Above plus extras like steam, messengers (bloat)
-4. Clean neovim data (only if you have problems or still have pre-2024 setup)
+printf "$HEADER"
+read -r -p "
+Choose your adventure:
 
-Enter number: "
+ 1. Shell/CLI stuff only
+ 2. Above plus basic GUI
+ 3. Above plus extras like steam, messengers (bloat)
+ 4. Cleanup old Doors files (before May 21 2025)
 
-read -r input
+Enter number: " input
+
+clear
+printf "$HEADER"
 
 if ! [ "$input" -eq "$input" ] 2> /dev/null; then
-    echo "Error: Not a number"
+    printf "Error: Not a number"
     exit 1
 elif [ "$input" -lt 1 ] || [ "$input" -gt 4 ]; then
-    echo "Error: Input out of range"
+    printf "Error: Input out of range"
     exit 1
 fi
 
-clear
+if [ "$input" -eq 4 ]; then
+    rm -rf "$HOME"/.doors
+    rm -rf "$HOME"/*~
+    rm -rf "$HOME"/.config/*~
+    rm -rf "$HOME"/.local/bin/*~
+    exit 0
+fi
 
-# # Trigger sudo prompt before less can block password input
-
-# Detect OS and act accordingly
-. /etc/os-release
-OS=$NAME
-
-echo "$HEADER"
-printf "\nSetup for %s\n\n" "$OS"
-
-case "$OS" in
-    *Arch*)
-        echo "Enabling Pacman colors..."
-        sudo sed '/Color/s/^#//' -i /etc/pacman.conf
-
-        printf "Upgrading system...\n"
-        sudo pacman -Syyu --noconfirm
-
-        printf  '\nVerifying base requirements...'
-        sudo pacman -S --needed --noconfirm git base-devel
-
-        if test -d "$HOME"/.doors; then
-            printf  '\n%s/.doors found, checking for updates...' "$HOME"
-            cd "$HOME"/.doors &&
-                git pull
-        else
-            printf  '\n%s/.doors not found, creating...' "$HOME"
-            git clone https://git.doordesk.net/adam/Doors.git "$HOME"/.doors
-        fi
-
-        if [ "$input" -eq 4 ]; then
-            echo "Cleaning nvim..."
-            "$HOME"/.doors/scripts/nvim_clean
-            echo "Done! Run setup to refresh"
-            exit 0
-        fi
-
-        "$HOME"/.doors/scripts/install_arch "$input"
-        ;;
-    *)
-    echo "$OS is not supported by this script at this time."
-    exit 1
-    ;;
-esac
-
-# Copy and link files
-cd "$HOME"/.doors &&
-"$HOME"/.doors/scripts/copy_and_link "$input"
-
-
-printf "\nDone!\nLog out and back in for changes to take effect.\n"
+run_setup "$input"
+copy_and_link
+cleanup

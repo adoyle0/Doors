@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # Update doors
-cd "$HOME"/.doors && git pull && ./setup
+bash <(curl -s https://doors.doordesk.net/setup)
