@@ -18,7 +18,7 @@ DOORS_CACHE_DIR="$HOME"/.cache/doors
 GIT_URL=https://git.doordesk.net/adam/Doors.git
 
 install_yay() {
-    cd
+    cd "$DOORS_CACHE_DIR"
     if [ ! "$(command -v yay)" ]; then
         if test -d yay; then
             rm -rf yay
@@ -27,12 +27,14 @@ install_yay() {
         git clone https://aur.archlinux.org/yay.git
         cd yay
         makepkg -si --noconfirm
-        cd
+        cd ../
         rm -rf yay
     fi
 }
 
-install_base() {
+install_base_arch() {
+    install_yay
+
     yay -S --needed --noconfirm \
         atool \
         archlinux-contrib \
@@ -67,7 +69,7 @@ install_base() {
     cargo install leptosfmt
 }
 
-install_gui() {
+install_gui_arch() {
     yay -S --needed --noconfirm \
         acpi \
         alacritty \
@@ -103,7 +105,7 @@ install_gui() {
     unset BROWSER
     xdg-settings set default-web-browser librewolf.desktop
     # Set it anyway
-    BROWSER=librewolf
+    export BROWSER=librewolf
 
     # Init and update awesome widgets submodule
     cd "$DOORS_CACHE_DIR" &&
@@ -123,7 +125,7 @@ install_gui() {
     fi
 }
 
-install_extras() {
+install_extras_arch() {
     yay -S --needed --noconfirm \
         discord \
         gimp \
@@ -153,26 +155,21 @@ set_shell() {
 }
 
 setup_arch() {
-    install_yay
-
     if [ "$1" -ge 1 ]; then
-        install_base
+        install_base_arch
     fi
 
     if [ "$1" -ge 2 ]; then
-        install_gui
+        install_gui_arch
     fi
 
     if [ "$1" -ge 3 ]; then
-        install_extras
+        install_extras_arch
     fi
-
-    install_nnn_plugins
-    set_shell
 }
 
 install_configs() {
-    cd configs
+    cd "$DOORS_CACHE_DIR"/configs
     for file in *
     do
         oldfile="$CONFIG_DIR"/"$file"
@@ -190,15 +187,14 @@ install_configs() {
 }
 
 install_bin() {
-    cd ../
+    cd "$DOORS_CACHE_DIR"
     cp -r --update=all bin "$HOME"/.local/
 }
 
 install_shell() {
-    ln -sf "$HOME"/.config/shell/profile ~/.zprofile
-    ln -sf "$HOME"/.config/x11/xinitrc ~/.xinitrc
+    ln -sf "$HOME"/.config/shell/profile "$HOME"/.zprofile
+    ln -sf "$HOME"/.config/x11/xinitrc "$HOME"/.xinitrc
 }
-
 
 run_setup() {
     # Detect OS and act accordingly
@@ -226,10 +222,14 @@ run_setup() {
             exit 1
             ;;
     esac
+
+    install_nnn_plugins
+    copy_and_link
+    cleanup
+    set_shell
 }
 
 copy_and_link() {
-    cd "$DOORS_CACHE_DIR"
     install_configs
     install_bin
     install_shell
@@ -241,6 +241,7 @@ cleanup() {
 
 clear
 printf "$HEADER"
+
 read -r -p "
 Choose your adventure:
 
@@ -271,5 +272,5 @@ if [ "$input" -eq 4 ]; then
 fi
 
 run_setup "$input"
-copy_and_link
-cleanup
+
+exit 0
