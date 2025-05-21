@@ -169,7 +169,7 @@ setup_arch() {
 }
 
 install_configs() {
-    cd "$DOORS_CACHE_DIR"/configs
+    cd "$DOORS_CACHE_DIR"/.config
     for file in *
     do
         oldfile="$CONFIG_DIR"/"$file"
@@ -188,7 +188,7 @@ install_configs() {
 
 install_bin() {
     cd "$DOORS_CACHE_DIR"
-    cp -r --update=all bin "$HOME"/.local/
+    cp -r --update=all .local "$HOME"
 }
 
 install_shell() {
