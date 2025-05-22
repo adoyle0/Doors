@@ -1,10 +1,11 @@
 return {
   -- Highlight, edit, and navigate code
   'nvim-treesitter/nvim-treesitter',
+  build = ':TSUpdate',
+  main = 'nvim-treesitter.configs',
   dependencies = {
     'nvim-treesitter/nvim-treesitter-textobjects',
   },
-  build = ':TSUpdate',
   config = function()
     vim.defer_fn(function()
       require('nvim-treesitter.configs').setup {

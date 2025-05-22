@@ -1,9 +1,22 @@
 return {
   {
+    'folke/todo-comments.nvim',
+    event = 'VimEnter',
+    dependencies = { 'nvim-lua/plenary.nvim' },
+    opts = { signs = false },
+  },
+  {
+    'lukas-reineke/indent-blankline.nvim',
+    main = 'ibl',
+    ---@module "ibl"
+    ---@type ibl.config
+    opts = {},
+  },
+  {
     'RedsXDD/neopywal.nvim',
     name = 'neopywal',
     lazy = false,
-    cond = os.execute('test -f ~/.cache/wal/colors-wal.vim') == 0,
+    cond = os.execute 'test -f ~/.cache/wal/colors-wal.vim' == 0,
     priority = 1000,
     opts = {},
     config = function()

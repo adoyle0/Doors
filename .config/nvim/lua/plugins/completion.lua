@@ -1,83 +1,46 @@
 return {
-  -- Autocompletion
-  'hrsh7th/nvim-cmp',
-  dependencies = {
-    'L3MON4D3/LuaSnip',
-    'hrsh7th/cmp-nvim-lsp',
-    'hrsh7th/cmp-path',
-    'rafamadriz/friendly-snippets',
-    'saadparwaiz1/cmp_luasnip',
-  },
-  setup = function()
-    -- nvim-cmp supports additional completion capabilities, so broadcast that to servers
-    local capabilities = vim.lsp.protocol.make_client_capabilities()
-    capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
-
-    local cmp = require 'cmp'
-    local luasnip = require 'luasnip'
-    require('luasnip.loaders.from_vscode').lazy_load()
-    luasnip.config.setup {}
-
-    cmp.setup {
-      window = {
-        completion = {
-          col_offset = -3,
-          side_padding = 0,
+  -- 'hrsh7th/cmp-path',
+  -- { 'hrsh7th/cmp-nvim-lsp', opts = {} },
+  -- 'saadparwaiz1/cmp_luasnip',
+  {
+    'saghen/blink.cmp',
+    event = 'VimEnter',
+    version = '1.*', -- keep this pinned for rust fuzzy finder
+    dependencies = {
+      -- Snippet Engine
+      {
+        'L3MON4D3/LuaSnip',
+        version = '2.*', -- keep this pinned for rust fuzzy finder
+        build = 'make install_jsregexp',
+        dependencies = {
+          {
+            'rafamadriz/friendly-snippets',
+            config = function()
+              require('luasnip.loaders.from_vscode').lazy_load()
+            end,
+          },
         },
+        opts = {},
       },
-      formatting = {
-        fields = { 'kind', 'abbr', 'menu' },
-        format = function(entry, vim_item)
-          local kind = require('lspkind').cmp_format { mode = 'symbol_text', maxwidth = 50 }(entry, vim_item)
-          local strings = vim.split(kind.kind, '%s', { trimempty = true })
-          kind.kind = ' ' .. (strings[1] or '') .. ' '
-          kind.menu = '    (' .. (strings[2] or '') .. ')'
-
-          return kind
-        end,
-      },
-      snippet = {
-        expand = function(args)
-          luasnip.lsp_expand(args.body)
-        end,
-      },
+      'folke/lazydev.nvim',
+    },
+    --- @module 'blink.cmp'
+    --- @type blink.cmp.Config
+    opts = {
       completion = {
-        completeopt = 'menu,menuone,noinsert',
-      },
-      mapping = cmp.mapping.preset.insert {
-        ['<C-n>'] = cmp.mapping.select_next_item(),
-        ['<C-p>'] = cmp.mapping.select_prev_item(),
-        ['<C-b>'] = cmp.mapping.scroll_docs(-4),
-        ['<C-f>'] = cmp.mapping.scroll_docs(4),
-        ['<C-Space>'] = cmp.mapping.complete {},
-        ['<CR>'] = cmp.mapping.confirm {
-          behavior = cmp.ConfirmBehavior.Replace,
-          select = true,
-        },
-        ['<Tab>'] = cmp.mapping(function(fallback)
-          if cmp.visible() then
-            cmp.select_next_item()
-          elseif luasnip.expand_or_locally_jumpable() then
-            luasnip.expand_or_jump()
-          else
-            fallback()
-          end
-        end, { 'i', 's' }),
-        ['<S-Tab>'] = cmp.mapping(function(fallback)
-          if cmp.visible() then
-            cmp.select_prev_item()
-          elseif luasnip.locally_jumpable(-1) then
-            luasnip.jump(-1)
-          else
-            fallback()
-          end
-        end, { 'i', 's' }),
+        documentation = { auto_show = true, auto_show_delay_ms = 500 },
       },
       sources = {
-        { name = 'nvim_lsp' },
-        { name = 'luasnip' },
-        { name = 'path' },
+        default = { 'lsp', 'path', 'snippets', 'lazydev' },
+        providers = {
+          lazydev = { module = 'lazydev.integrations.blink', score_offset = 100 },
+        },
       },
-    }
-  end,
+      snippets = { preset = 'luasnip' },
+      fuzzy = { implementation = 'prefer_rust' },
+
+      -- Shows a signature help window while you type arguments for a function
+      signature = { enabled = true },
+    },
+  },
 }

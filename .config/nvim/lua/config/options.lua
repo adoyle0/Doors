@@ -1,42 +1,70 @@
--- Make line numbers default and relative
-vim.o.nu = true
-vim.o.rnu = true
+-- Schedule this to happen after UiEnter for SPEED
+vim.schedule(function()
+  -- Share clipboard with system
+  vim.o.clipboard = 'unnamedplus'
+end)
 
--- 4 space tabs
-vim.o.ts = 4
-vim.o.sts = 4
-vim.o.sw = 4
-vim.o.et = true
+-- Indent wrapped lines
+vim.o.breakindent = true
 
--- Set highlight on search
-vim.o.hls = false
+-- Adjust completion selection
+vim.o.completeopt = 'longest,menuone,noselect'
+
+-- Nicer confirmation warning when quitting without saving, etc
+vim.o.confirm = true
+
+-- Highlight the line the cursor is on
+vim.o.cursorline = true
+
+-- Turn tabs into spaces
+vim.o.expandtab = true
+
+-- Don't highlight search results
+vim.o.hlsearch = false
+
+-- Case-insensitive searching UNLESS \C or one or more capital letters in the search term
+vim.o.ignorecase = true
+vim.o.smartcase = true
+
+-- Preview substitutions live
+vim.o.inccommand = 'split'
+
+-- Make extra whitespace obvious
+vim.o.list = true
+vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 
 -- Enable mouse mode
 vim.o.mouse = 'a'
 
--- Sync clipboard between OS and Neovim.
-vim.o.cb = 'unnamedplus'
+-- Make line numbers default
+vim.o.number = true
 
--- Enable break indent
-vim.o.bri = true
+-- Use relative line numbers
+vim.o.relativenumber = true
+
+-- Keep cursor 10 lines from the bottom
+vim.o.scrolloff = 10
+
+-- 4 space indenting
+vim.o.shiftwidth = 4
+vim.o.softtabstop = 4
+vim.o.tabstop = 4
+
+-- Hide mode cause the status line shows it anyway
+vim.o.showmode = false
+
+-- How new splits open
+vim.o.splitbelow = true
+vim.o.splitright = true
+
+-- Be impatient
+vim.o.timeoutlen = 300
+
+-- Update cache more often to recover from a crash better
+vim.o.updatetime = 250
 
 -- Save undo history
-vim.o.udir = os.getenv 'HOME' .. '/.vim.undodir'
-vim.o.udf = true
+vim.o.undofile = true
 
--- Keep cursor 8 lines from top/bottom
-vim.o.so = 8
-
--- Case-insensitive searching UNLESS \C or capital in search
-vim.o.ic = true
-vim.o.scs = true
-
--- Keep signcolumn on by default
-vim.wo.scl = 'yes'
-
--- Decrease update time
-vim.o.ut = 250
-vim.o.tm = 300
-
--- Set completeopt to have a better completion experience
-vim.o.cot = 'menuone,noselect'
+-- UI consistency
+vim.wo.signcolumn = 'yes'

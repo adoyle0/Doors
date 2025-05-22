@@ -12,6 +12,7 @@ unsetopt PROMPT_SP
 # Default programs:
 export BROWSER="librewolf"
 export EDITOR="nvim"
+export VISUAL="nvim"
 export PAGER="bat -p"
 export TERMINAL="alacritty"
 
@@ -32,6 +33,6 @@ export ZDOTDIR="${XDG_CONFIG_HOME:-$HOME/.config}/shell/zsh"
 export FZF_DEFAULT_OPTS="--layout=reverse --height 40%"
 export XZ_DEFAULTS="-T 0"
 
-if [ -z "$DISPLAY" ] && [ "$XDG_VTNR" = 1 ]; then
-  exec startx
+if [ "$DISPLAY" = "" ] && [ "$XDG_VTNR" = 1 ]; then
+    exec startx
 fi
