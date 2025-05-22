@@ -205,6 +205,7 @@ return {
         'eslint_d',
         'htmlbeautifier',
         'isort',
+        'luacheck',
         'markdownlint',
         'nginx-language-server',
         'pbls',
