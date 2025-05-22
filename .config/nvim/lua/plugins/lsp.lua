@@ -205,6 +205,7 @@ return {
         'eslint_d',
         'htmlbeautifier',
         'isort',
+        'markdownlint',
         'nginx-language-server',
         'pbls',
         'prettier',
