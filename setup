@@ -1,5 +1,5 @@
 #!/bin/bash
-HEADER=$(cat <<'EOF'
+read -r -d '' HEADER <<-'EOF'
 :::::::-.      ...         ...    :::::::..   .::::::.
  ;;,   `';, .;;;;;;;.   .;;;;;;;. ;;;;``;;;; ;;;`    `
  `[[     [[,[[     \[[,,[[     \[[,[[[,/[[[' '[==/[[[[,
@@ -9,7 +9,9 @@ HEADER=$(cat <<'EOF'
 
 Doors are sturdier than windows.
 -------------------------------------------------------
-EOF)
+EOF
+
+HEADER=$HEADER$'\n'
 
 set -e
 
@@ -69,6 +71,35 @@ install_base_arch() {
     cargo install leptosfmt
 }
 
+init_browser() {
+    # Unset BROWSER because xdg gets pissy if it doesn't feel like it's the authority
+    unset BROWSER
+    xdg-settings set default-web-browser librewolf.desktop
+    # Set it anyway
+    export BROWSER=librewolf
+}
+
+init_widgets() {
+    cd "$DOORS_CACHE_DIR" &&
+    git submodule init && git submodule update
+}
+
+init_pywalfox() {
+    if ! test -f "$HOME"/.librewolf/native-messaging-hosts/pywalfox.json; then
+        pywalfox install --browser librewolf
+    fi
+}
+
+init_wallpaper() {
+    # Copy default wallpaper if it doesn't exist
+    if ! test -f "$HOME"/Pictures/Wallpapers/door2.jpg; then
+        if ! test -d "$HOME"/Pictures/Wallpapers; then
+            mkdir -p "$HOME"/Pictures/Wallpapers
+            curl -so "$HOME"/Pictures/Wallpapers/door2.jpg https://old.doordesk.net/door2.jpg
+        fi
+    fi
+}
+
 install_gui_arch() {
     yay -S --needed --noconfirm \
         acpi \
@@ -100,29 +131,10 @@ install_gui_arch() {
         xwallpaper \
         zathura
 
-    # Set librewolf as default browser
-    # Unset BROWSER because xdg gets pissy if it doesn't feel like it's the authority
-    unset BROWSER
-    xdg-settings set default-web-browser librewolf.desktop
-    # Set it anyway
-    export BROWSER=librewolf
-
-    # Init and update awesome widgets submodule
-    cd "$DOORS_CACHE_DIR" &&
-    git submodule init && git submodule update
-
-    # Set up pywalfox
-    if ! test -f "$HOME"/.librewolf/native-messaging-hosts/pywalfox.json; then
-        pywalfox install --browser librewolf
-    fi
-
-    # Copy default wallpaper if it doesn't exist
-    if ! test -f "$HOME"/Pictures/Wallpapers/door2.jpg; then
-        if ! test -d "$HOME"/Pictures/Wallpapers; then
-            mkdir -p "$HOME"/Pictures/Wallpapers
-            curl -so "$HOME"/Pictures/Wallpapers/door2.jpg https://old.doordesk.net/door2.jpg
-        fi
-    fi
+    init_browser
+    init_widgets
+    init_pywalfox
+    init_wallpaper
 }
 
 install_extras_arch() {
@@ -143,7 +155,7 @@ install_extras_arch() {
     yay -S --needed --noconfirm caprine-bin
 }
 
-install_nnn_plugins() {
+init_nnn_plugins() {
     sh -c "$(curl -Ls https://raw.githubusercontent.com/jarun/nnn/master/plugins/getplugs)"
 }
 
@@ -228,32 +240,31 @@ run_setup() {
             setup_arch "$1"
             ;;
         *)
-            printf "$OS is not supported by this script at this time."
+            printf '%s' "$OS is not supported by this script at this time."
             exit 1
             ;;
     esac
 
-    install_nnn_plugins
+    init_nnn_plugins
     copy_and_link
     cleanup
     set_shell
 }
 
 clear
-printf "$HEADER"
+printf '%s' "$HEADER"
 
-read -r -p "
-Choose your adventure:
+read -r -p "Choose your adventure:
 
- 1. Shell/CLI stuff only
- 2. Above plus basic GUI
- 3. Above plus extras like steam, messengers (bloat)
- 4. Cleanup old Doors files (before May 21 2025)
+1. Shell/CLI stuff only
+2. Above plus basic GUI
+3. Above plus extras like steam, messengers (bloat)
+4. Cleanup old Doors files (before May 21 2025)
 
 Enter number: " input
 
 clear
-printf "$HEADER\n"
+printf '%s' "$HEADER"
 
 if ! [ "$input" -eq "$input" ] 2> /dev/null; then
     printf "Error: Not a number"
