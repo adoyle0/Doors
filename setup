@@ -11,31 +11,30 @@ Doors are sturdier than windows.
 -------------------------------------------------------
 EOF
 
-HEADER=$HEADER$'\n'
+bin_dir="$HOME"/.local/bin
+config_dir="$HOME"/.config
+doors_cache_dir="$HOME"/.cache/doors
+git_url=https://git.doordesk.net/adam/Doors.git
 
-set -e
-
-CONFIG_DIR="$HOME"/.config
-DOORS_CACHE_DIR="$HOME"/.cache/doors
-GIT_URL=https://git.doordesk.net/adam/Doors.git
-
-install_yay() {
-    cd "$DOORS_CACHE_DIR"
+ensure_yay() {
     if [ ! "$(command -v yay)" ]; then
-        if test -d yay; then
-            rm -rf yay
-        fi
+        echo "Installing yay..."
 
-        git clone https://aur.archlinux.org/yay.git
-        cd yay
-        makepkg -si --noconfirm
-        cd ../
-        rm -rf yay
+        local yay_dir="$doors_cache_dir"/yay
+
+        # git clone will return 0 even on error so clean up ahead of time
+        rm -rf "$yay_dir"
+
+        git clone https://aur.archlinux.org/yay.git "$yay_dir" &&
+        cd "$yay_dir" &&
+        makepkg -si --noconfirm || return 1
     fi
+
+    return 0
 }
 
 install_base_arch() {
-    install_yay
+    echo "Installing base..."
 
     yay -S --needed --noconfirm \
         atool \
@@ -66,38 +65,55 @@ install_base_arch() {
         unrar \
         unzip \
         wget \
-        zsh
+        zsh \
+        &&
 
-    cargo install leptosfmt
+    cargo install leptosfmt || return 1
+
+    return 0
 }
 
 init_browser() {
+    echo "Setting default browser..."
+
     # Unset BROWSER because xdg gets pissy if it doesn't feel like it's the authority
-    unset BROWSER
-    xdg-settings set default-web-browser librewolf.desktop
+    unset BROWSER &&
+    xdg-settings set default-web-browser librewolf.desktop &&
     # Set it anyway
-    export BROWSER=librewolf
+    export BROWSER=librewolf || return 1
+
+    return 0
 }
 
 init_widgets() {
-    cd "$DOORS_CACHE_DIR" &&
-    git submodule init && git submodule update
+    echo "Configuring awesome widgets..."
+
+    cd "$doors_cache_dir" &&
+    git submodule init &&
+    git submodule update || return 1
+
+    return 0
 }
 
 init_pywalfox() {
     if ! test -f "$HOME"/.librewolf/native-messaging-hosts/pywalfox.json; then
-        pywalfox install --browser librewolf
+        echo "Configuring pywalfox..."
+        pywalfox install --browser librewolf || return 1
     fi
+
+    return 0
 }
 
 init_wallpaper() {
     # Copy default wallpaper if it doesn't exist
     if ! test -f "$HOME"/Pictures/Wallpapers/door2.jpg; then
         if ! test -d "$HOME"/Pictures/Wallpapers; then
-            mkdir -p "$HOME"/Pictures/Wallpapers
-            curl -so "$HOME"/Pictures/Wallpapers/door2.jpg https://old.doordesk.net/door2.jpg
+            mkdir -p "$HOME"/Pictures/Wallpapers &&
+            curl -so "$HOME"/Pictures/Wallpapers/door2.jpg https://old.doordesk.net/door2.jpg || return 1
         fi
     fi
+
+    return 0
 }
 
 install_gui_arch() {
@@ -129,12 +145,10 @@ install_gui_arch() {
         xorg-xinit \
         xorg-xrandr \
         xwallpaper \
-        zathura
+        zathura \
+        &&
 
-    init_browser
-    init_widgets
-    init_pywalfox
-    init_wallpaper
+    return 0
 }
 
 install_extras_arch() {
@@ -145,144 +159,180 @@ install_extras_arch() {
         steam \
         telegram-desktop \
         thunderbird \
-        walogram-git
+        walogram-git \
+        &&
 
     # Caprine depends on electon29 and it fails to build from the source it provides
     # A bin package exists so we're using it
-    yay -S --needed --noconfirm electron29-bin
+    yay -S --needed --noconfirm electron29-bin &&
 
     # Ensure caprine comes after its dependency
-    yay -S --needed --noconfirm caprine-bin
+    yay -S --needed --noconfirm caprine-bin || return 1
+
+    return 0
 }
 
 init_nnn_plugins() {
-    sh -c "$(curl -Ls https://raw.githubusercontent.com/jarun/nnn/master/plugins/getplugs)"
-}
+    sh -c "$(curl -Ls https://raw.githubusercontent.com/jarun/nnn/master/plugins/getplugs)" || return 1
 
-set_shell() {
-    if ! [ "$SHELL" = "/bin/zsh" ]; then
-        sudo chsh -s /bin/zsh "$USER"
-        printf "\nLog out and back in for changes to take effect.\n"
-    fi
-}
-
-setup_arch() {
-    if [ "$1" -ge 1 ]; then
-        install_base_arch
-    fi
-
-    if [ "$1" -ge 2 ]; then
-        install_gui_arch
-    fi
-
-    if [ "$1" -ge 3 ]; then
-        install_extras_arch
-    fi
-}
-
-install_configs() {
-    cd "$DOORS_CACHE_DIR"/.config
-    for file in *
-    do
-        oldfile="$CONFIG_DIR"/"$file"
-
-        if [ -e "$oldfile" ]; then
-            rm -rf "$oldfile"
-        fi
-
-        cp -r "$file" "$oldfile"
-    done
-
-    if [ ! -d "$HOME/.local/bin" ]; then
-        mkdir -p "$HOME/.local/bin"
-    fi
-}
-
-install_bin() {
-    cd "$DOORS_CACHE_DIR"
-    cp -r --update=all .local "$HOME"
+    return 0
 }
 
 install_shell() {
-    ln -sf "$HOME"/.config/shell/profile "$HOME"/.zprofile
-    ln -sf "$HOME"/.config/x11/xinitrc "$HOME"/.xinitrc
+    if ! [ "$SHELL" = "/bin/zsh" ]; then
+        sudo chsh -s /bin/zsh "$USER" &&
+        ln -sf "$HOME"/.config/shell/profile "$HOME"/.zprofile &&
+        ln -sf "$HOME"/.config/x11/xinitrc "$HOME"/.xinitrc || return 1
+        echo "Log out and back in for changes to take effect"
+    fi
+
+    return 0
 }
 
-copy_and_link() {
-    install_configs
-    install_bin
-    install_shell
+install_configs() {
+    [ ! -d "$config_dir" ] && { mkdir -p "$config_dir" || return 1; }
+
+    cd "$doors_cache_dir"/config &&
+    for file in *; do
+        local oldfile="$config_dir"/"$file"
+        [ -e "$oldfile" ] && rm -rf "$oldfile"
+        cp -r "$file" "$oldfile" || break
+    done || return 1
+
+    return 0
+}
+
+install_bin() {
+    [ ! -d "$bin_dir" ] && { mkdir -p "$bin_dir" || return 1; }
+
+    cd "$doors_cache_dir" &&
+    cp -r --update=all bin/* "$bin_dir" || return 1
+
+    return 0
 }
 
 cleanup() {
-    rm -rf "$DOORS_CACHE_DIR"
+    rm -rf "$doors_cache_dir"
 }
 
-run_setup() {
-    # Detect OS and act accordingly
-    . /etc/os-release
-    OS=$NAME
+setup_arch() {
+    sudo sed '/Color/s/^#//' -i /etc/pacman.conf &&
+    sudo pacman -S --needed --noconfirm git base-devel &&
 
-    printf "\nSetup for %s\n\n" "$OS"
+    if test -d "$doors_cache_dir"; then
+        cd "$doors_cache_dir" &&
+        git pull
+    else
+        git clone "$git_url" "$doors_cache_dir"
+    fi &&
 
-    case "$OS" in
-        *Arch*)
-            sudo sed '/Color/s/^#//' -i /etc/pacman.conf
-            sudo pacman -S --needed --noconfirm git base-devel
+    if [ "$1" -ge 1 ]; then
+        ensure_yay &&
+        install_base_arch || return 1
+    fi &&
 
-            if test -d "$DOORS_CACHE_DIR"; then
-                cd "$DOORS_CACHE_DIR" &&
-                git pull
-            else
-                git clone "$GIT_URL" "$DOORS_CACHE_DIR"
-            fi
+    if [ "$1" -ge 2 ]; then
+        install_gui_arch &&
+        init_browser &&
+        init_widgets &&
+        init_pywalfox &&
+        init_wallpaper || return 1
 
-            setup_arch "$1"
-            ;;
-        *)
-            printf '%s' "$OS is not supported by this script at this time."
-            exit 1
-            ;;
-    esac
+    fi &&
 
-    init_nnn_plugins
-    copy_and_link
-    cleanup
-    set_shell
+    if [ "$1" -ge 3 ]; then
+        install_extras_arch || return 1
+    fi &&
+
+    init_nnn_plugins &&
+    install_bin &&
+    install_configs &&
+    install_shell &&
+
+    # this should be last
+    cleanup || return 1
+
+    return 0
 }
 
-clear
-printf '%s' "$HEADER"
+draw_header() {
+    clear && echo "$HEADER" || return 1
 
-read -r -p "Choose your adventure:
+    return 0
+}
 
-1. Shell/CLI stuff only
-2. Above plus basic GUI
-3. Above plus extras like steam, messengers (bloat)
-4. Cleanup old Doors files (before May 21 2025)
+wipe_old_files() {
+    echo "Cleaning up old install files..."
 
-Enter number: " input
-
-clear
-printf '%s' "$HEADER"
-
-if ! [ "$input" -eq "$input" ] 2> /dev/null; then
-    printf "Error: Not a number"
-    exit 1
-elif [ "$input" -lt 1 ] || [ "$input" -gt 4 ]; then
-    printf "Error: Input out of range"
-    exit 1
-fi
-
-if [ "$input" -eq 4 ]; then
     rm -rfv "$HOME"/*~
     rm -rfv "$HOME"/.doors
     rm -rfv "$HOME"/.config/*~
     rm -rfv "$HOME"/.local/bin/*~
-    printf "\nDone"
-    exit 0
-fi
 
-run_setup "$input"
+    echo "Done"
 
-exit 0
+    return 0
+}
+
+get_user_input() {
+    read -r -p 'Choose your adventure:
+
+ 1. Shell/CLI stuff only
+ 2. Above plus basic GUI
+ 3. Above plus extras like steam, messengers (bloat)
+ 4. Cleanup old Doors files (before May 21 2025)
+
+    Enter number: ' input &&
+
+    # Filter input
+    if ! [[ "$input" =~ ^[0-9]+$ ]]; then
+        echo "Error: Not a number"
+        exit 1
+
+    elif [ "$input" -lt 1 ] || [ "$input" -gt 4 ]; then
+        echo "Error: Input out of range"
+        exit 1
+    else
+        echo "$input"
+    fi || exit 1
+
+    return 0
+}
+
+main() {
+    draw_header
+
+    user_input=$(get_user_input)
+
+    draw_header
+
+    if [ "$user_input" -eq 4 ]; then
+        wipe_old_files
+        exit 0
+    fi
+
+    # Detect OS and act accordingly
+    . /etc/os-release
+    local os_name=$NAME
+
+    case "$os_name" in
+        *Arch*)
+            printf "Setup for %s\n\n" "$os_name"
+            setup_arch "$user_input" || return 1
+            ;;
+        *)
+            printf '%s' "$os_name is not supported at this time\n"
+            return 1
+            ;;
+    esac
+
+    return 0
+}
+
+{
+    main && exit 0
+    } || {
+    echo "Setup failed" &&
+    cleanup &&
+    exit 1
+}
