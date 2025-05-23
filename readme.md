@@ -95,7 +95,6 @@ Eye candy, stuff that won't install on ARM devices. This section is more persona
 | [discord](https://discord.com/)                                | Discord                         |
 | [gimp](https://www.gimp.org/)                                  | Image editor                    |
 | [spotify-launcher](https://github.com/kpcyrd/spotify-launcher) | Handles Spotify                 |
-| [steam](https://store.steampowered.com/)                       | Steam                           |
 | [telegram-desktop](https://telegram.org/)                      | Telegram messenger              |
 | [thunderbird](https://www.thunderbird.net)                     | Email client                    |
 | [walogram-git](https://codeberg.org/thirtysix/walogram)        | Generate telegram-desktop theme |

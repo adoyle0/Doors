@@ -156,7 +156,6 @@ install_extras_arch() {
         discord \
         gimp \
         spotify-launcher \
-        steam \
         telegram-desktop \
         thunderbird \
         walogram-git \
