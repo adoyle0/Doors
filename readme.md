@@ -28,6 +28,7 @@ The meat and potatoes
 | [bat](https://github.com/sharkdp/bat)                                | Better cat for quickly viewing files                                                                                     |
 | [btop](https://github.com/aristocratos/btop)                         | Top++                                                                                                                    |
 | [byobu](https://www.byobu.org/)                                      | Comfy multiplexer                                                                                                        |
+| [cargo-binstall](https://github.com/cargo-bins/cargo-binstall)       | Installs binary versions of crates instead of having to build everything saving CPU time                                 |
 | [coreutils](https://www.gnu.org/software/coreutils/)                 | Basic file, shell, and text manipulation utilities                                                                       |
 | [fd](https://github.com/sharkdp/fd)                                  | Alternative to find, used by bat and made by the same guy                                                                |
 | [fzf](https://github.com/junegunn/fzf)                               | Fuzzy finder also used by telescope(nvim plugin)                                                                         |

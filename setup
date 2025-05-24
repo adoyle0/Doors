@@ -42,6 +42,7 @@ install_base_arch() {
         bat \
         btop \
         byobu \
+        cargo-binstall \
         coreutils \
         fd \
         fzf \
@@ -68,7 +69,7 @@ install_base_arch() {
         zsh \
         &&
 
-    cargo install leptosfmt || return 1
+    cargo bininstall --no-confirm leptosfmt || return 1
 
     return 0
 }
