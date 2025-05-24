@@ -22,7 +22,7 @@ The meat and potatoes
 
 | Package                                                              | Description                                                                                                              |
 | -------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------ |
-| [Yay](https://github.com/Jguer/yay)                                  | Easier to use Arch package manager that supports AUR                                                                     |
+| [paru](https://github.com/Morganamilo/paru)                          | Easier to use Arch package manager that supports AUR                                                                     |
 | [atool](https://www.nongnu.org/atool)                                | For working with archives, used by other programs like nnn                                                               |
 | [archlinux-contrib](https://github.com/archlinux/contrib)            | Handy scripts for system maintenance                                                                                     |
 | [bat](https://github.com/sharkdp/bat)                                | Better cat for quickly viewing files                                                                                     |
