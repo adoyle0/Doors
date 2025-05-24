@@ -38,7 +38,7 @@ wipe_old_files() {
     return 0
 }
 
-setwal() {
+setbg() {
     # Pick a random wallpaper and generate colors
     cd ~/Pictures/Wallpapers/ &&
     find . |sort -R |tail -1 |while read -r file; do
@@ -105,8 +105,8 @@ main() {
                 screenshot
                 break
                 ;;
-            setwal)
-                screenshot
+            setbg)
+                setbg
                 break
                 ;;
             *)
