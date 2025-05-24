@@ -2,7 +2,7 @@
 
 # startx/xinit run this script
 
-# Tint screen at night    
+# Tint screen at night
 redshift -l \
     "$(curl -s "https://location.services.mozilla.com/v1/geolocate?key=geoclue" \
     | sed 's/.*"lat": \(-\?[0-9.]*\).*"lng": \(-\?[0-9.]*\).*/\1:\2/')" &
@@ -11,19 +11,19 @@ redshift -l \
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 
 # Compositor
-picom -b &            
+picom -b &
 
 # Hide mouse cursor after inactivity
-unclutter &           
+unclutter &
 
 # Make clipboard work
-xclip &               
+xclip &
 
 # Set up colors
 
 # Run colors script if output dir doesn't exist 
 if ! test -d "$HOME"/.cache/wal; then
-    [ -x "$(command -v wallust )" ] && "bream setbg"
+    [ -x "$(command -v wallust )" ] && "$(bream setbg)"
 fi
 
 export XDG_CURRENT_DESKTOP=GNOME
