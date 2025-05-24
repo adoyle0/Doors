@@ -49,6 +49,7 @@ install_base_arch() {
         cargo-binstall \
         coreutils \
         fd \
+        fish \
         fzf \
         glow \
         go \
@@ -58,8 +59,8 @@ install_base_arch() {
         neovim \
         nnn \
         npm \
-        oh-my-zsh-git \
         pacman-contrib \
+        pkgfile \
         rate-mirrors-bin \
         ripgrep \
         rsync \
@@ -70,7 +71,6 @@ install_base_arch() {
         unrar \
         unzip \
         wget \
-        zsh \
         &&
 
     cargo binstall --no-confirm leptosfmt || return 1
@@ -183,9 +183,8 @@ init_nnn_plugins() {
 }
 
 install_shell() {
-    if ! [ "$SHELL" = "/bin/zsh" ]; then
-        sudo chsh -s /bin/zsh "$USER" &&
-        ln -sf "$HOME"/.config/shell/profile "$HOME"/.zprofile &&
+    if ! [ "$SHELL" = "/bin/fish" ]; then
+        sudo chsh -s /bin/fish "$USER" &&
         ln -sf "$HOME"/.config/x11/xinitrc "$HOME"/.xinitrc || return 1
         echo "Log out and back in for changes to take effect"
     fi

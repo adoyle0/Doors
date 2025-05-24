@@ -22,7 +22,6 @@ The meat and potatoes
 
 | Package                                                              | Description                                                                                                              |
 | -------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------ |
-| [paru](https://github.com/Morganamilo/paru)                          | Easier to use Arch package manager that supports AUR                                                                     |
 | [atool](https://www.nongnu.org/atool)                                | For working with archives, used by other programs like nnn                                                               |
 | [archlinux-contrib](https://github.com/archlinux/contrib)            | Handy scripts for system maintenance                                                                                     |
 | [bat](https://github.com/sharkdp/bat)                                | Better cat for quickly viewing files                                                                                     |
@@ -31,6 +30,7 @@ The meat and potatoes
 | [cargo-binstall](https://github.com/cargo-bins/cargo-binstall)       | Installs binary versions of crates instead of having to build everything saving CPU time                                 |
 | [coreutils](https://www.gnu.org/software/coreutils/)                 | Basic file, shell, and text manipulation utilities                                                                       |
 | [fd](https://github.com/sharkdp/fd)                                  | Alternative to find, used by bat and made by the same guy                                                                |
+| [fish](https://fishshell.com/)                                       | Fish shell because fish name                                                                                             |
 | [fzf](https://github.com/junegunn/fzf)                               | Fuzzy finder also used by telescope(nvim plugin)                                                                         |
 | [git](https://git-scm.com/)                                          | Version control system                                                                                                   |
 | [glow](https://github.com/charmbracelet/glow)                        | Command-line markdown renderer                                                                                           |
@@ -40,8 +40,9 @@ The meat and potatoes
 | [neovim](https://github.com/neovim/neovim)                           | Edit text blazingly fast (even over ssh!)                                                                                |
 | [nnn](https://github.com/jarun/nnn)                                  | Lightning fast file manager                                                                                              |
 | [npm](https://www.npmjs.com/)                                        | Used by neovim/mason                                                                                                     |
-| [Oh My Zsh](https://github.com/ohmyzsh/ohmyzsh)                      | Community enhancements for zsh. Easier than DIY                                                                          |
 | [pacman-contrib](https://gitlab.archlinux.org/pacman/pacman-contrib) | Handy scripts for system maintenance                                                                                     |
+| [paru](https://github.com/Morganamilo/paru)                          | Easier to use Arch package manager that supports AUR                                                                     |
+| [pkgfile](https://github.com/falconindy/pkgfile/)                    | Used by fish to look up commands when they're not found                                                                  |
 | [rate-mirrors](https://github.com/westandskif/rate-mirrors)          | Arch mirror ranking tool                                                                                                 |
 | [ripgrep](https://github.com/BurntSushi/ripgrep)                     | Extremely fast grep replacement                                                                                          |
 | [rsync](https://rsync.samba.org/)                                    | For my 'push' alias                                                                                                      |
@@ -52,7 +53,6 @@ The meat and potatoes
 | [unrar](https://www.rarlab.com/rar_add.htm)                          | For extracting rar archives                                                                                              |
 | [unzip](http://infozip.sourceforge.net/UnZip.html)                   | For extracting zip archives                                                                                              |
 | [wget](https://www.gnu.org/software/wget/wget.html)                  | Tool to get things from the web                                                                                          |
-| [zsh](https://www.zsh.org/)                                          | Comfy shell                                                                                                              |
 
 ### GUI
 
