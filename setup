@@ -16,6 +16,10 @@ config_dir="$HOME"/.config
 cache_dir="$HOME"/.cache/bream
 git_url=https://git.doordesk.net/adam/bream.git
 
+if [ "$1" = local ]; then
+    local_repo=0
+fi
+
 ensure_paru() {
     if [ ! "$(command -v paru)" ]; then
         echo "Installing paru..."
@@ -219,9 +223,8 @@ setup_arch() {
     sudo sed '/Color/s/^#//' -i /etc/pacman.conf &&
     sudo pacman -S --needed --noconfirm git base-devel &&
 
-    if test -d "$cache_dir"; then
-        cd "$cache_dir" &&
-        git pull
+    if [ "$local_repo" ]; then
+        cp -r . "$cache_dir"
     else
         git clone "$git_url" "$cache_dir"
     fi &&
