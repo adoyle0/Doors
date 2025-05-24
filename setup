@@ -69,7 +69,7 @@ install_base_arch() {
         zsh \
         &&
 
-    cargo bininstall --no-confirm leptosfmt || return 1
+    cargo binstall --no-confirm leptosfmt || return 1
 
     return 0
 }
