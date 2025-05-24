@@ -1,0 +1,126 @@
+#!/bin/bash
+
+usage() {
+    echo "Bream desktop configuration utility.
+
+Usage: bream [OPTION]
+
+Options:
+ clean       Cleans up old files
+ install     Installs bream
+ mirrors     Rates available mirrors and saves a sorted list
+ screenshot  Display a menu with screenshot options
+ setbg       Picks a random image from ~/Pictures/Wallpapers and generates color schemes based on it
+ update      Updates bream
+
+https://bream.doordesk.net
+    "
+}
+
+install() {
+    sh <(curl -s https://doors.doordesk.net/setup)
+}
+
+wipe_old_files() {
+    echo "Cleaning up old install files..."
+
+    rm -rfv "$HOME"/*~
+    rm -rfv "$HOME"/.config/*~
+    rm -rfv "$HOME"/.doors
+    rm -rfv "$HOME"/.local/bin/*~
+    rm -rfv "$HOME"/.local/bin/doors*
+    rm -rfv "$HOME"/.local/bin/maimpick
+    rm -rfv "$HOME"/.local/bin/mirrors
+    rm -rfv "$HOME"/.local/bin/n
+
+    echo "Done"
+
+    return 0
+}
+
+setwal() {
+    # Pick a random wallpaper and generate colors
+    cd ~/Pictures/Wallpapers/ &&
+    find . |sort -R |tail -1 |while read -r file; do
+        wallust run -qs "$file"
+    done
+
+    # Use the new colors
+    [ -x "$(command -v walogram )" ] && walogram -B &&
+    # Hack because walogram has a bug with hot-reload
+    cp ~/.cache/walogram/wal.tdesktop-theme ~/.cache/walogram/bream.tdesktop-theme
+    [ -x "$(command -v pywalfox)" ] && pywalfox update
+    xrdb -merge -quiet ~/.cache/wal/colors.Xresources
+}
+
+screenshot() {
+    case "$(printf "a selected area\\ncurrent window\\nfull screen\\na selected area (copy)\\ncurrent window (copy)\\nfull screen (copy)" | dmenu -l 6 -i -p "Screenshot which area?")" in
+        "a selected area") maim -s pic-selected-"$(date '+%y%m%d-%H%M-%S').png" ;;
+        "current window") maim -i "$(xdotool getactivewindow)" pic-window-"$(date '+%y%m%d-%H%M-%S').png" ;;
+        "full screen") maim pic-full-"$(date '+%y%m%d-%H%M-%S').png" ;;
+        "a selected area (copy)") maim -s | xclip -selection clipboard -t image/png ;;
+        "current window (copy)") maim -i "$(xdotool getactivewindow)" | xclip -selection clipboard -t image/png ;;
+        "full screen (copy)") maim | xclip -selection clipboard -t image/png ;;
+    esac
+}
+
+mirrors() {
+    . /etc/os-release
+    OS=$NAME
+
+    case "$OS" in
+        "Arch Linux")
+            rate-mirrors arch | sudo tee /etc/pacman.d/mirrorlist
+            ;;
+        "Arch Linux ARM")
+            rate-mirrors archarm | sudo tee /etc/pacman.d/mirrorlist
+            ;;
+        *)
+            echo "$OS is not supported by this script at this time."
+            exit 1
+            ;;
+    esac
+}
+
+main() {
+    while [[ $# -gt 0 ]]; do
+        case $1 in
+            clean|--clean)
+                wipe_old_files
+                break
+                ;;
+            install|--install|update|--update)
+                install
+                break
+                ;;
+            help|-h|--help)
+                usage
+                break
+                ;;
+            mirrors)
+                mirrors
+                break
+                ;;
+            screenshot)
+                screenshot
+                break
+                ;;
+            setwal)
+                screenshot
+                break
+                ;;
+            *)
+                echo "Unknown input"
+                usage
+                break
+                ;;
+        esac
+    done
+
+    [[ $# -eq 0 ]] &&
+    printf "bream: missing input\nTry 'bream --help' for more information." && exit 0
+
+    return 0
+}
+
+main "$@"

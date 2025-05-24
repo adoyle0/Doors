@@ -22,6 +22,12 @@ VI_MODE_SET_CURSOR=true
 # Use neovim for vim if present.
 [[ -x "$(command -v nvim)" ]] && alias vim="nvim" vimdiff="nvim -d"
 
+# nnn shortcut
+alias n="NNN_TERMINAL='alacritty' \
+    NNN_FIFO=/tmp/nnn.fifo \
+    NNN_PLUG='f:preview-tui' \
+    nnn -P f"
+
 # /comfy/
 alias \
     bb="byobu" \

@@ -9,7 +9,7 @@ globalkeys = Gears.table.join(
   }),
 
   Awful.key({ Modkey, 'Shift' }, 'p', function()
-    Awful.spawn.easy_async_with_shell('doorsbg', function()
+    Awful.spawn.easy_async_with_shell('bream setwal', function()
       awesome.restart()
     end)
   end, {
@@ -33,7 +33,7 @@ globalkeys = Gears.table.join(
   }),
 
   Awful.key({}, 'Print', function()
-    os.execute 'maimpick'
+    os.execute 'bream screenshot'
   end, {
     description = 'run screenshot script',
     group = 'awesome',

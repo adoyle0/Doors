@@ -1,4 +1,0 @@
-#!/bin/bash
-
-# Update doors
-bash <(curl -s https://doors.doordesk.net/setup)

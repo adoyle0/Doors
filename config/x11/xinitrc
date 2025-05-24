@@ -23,7 +23,7 @@ xclip &
 
 # Run colors script if output dir doesn't exist 
 if ! test -d "$HOME"/.cache/wal; then
-    [ -x "$(command -v walogram )" ] && doorsbg
+    [ -x "$(command -v wallust )" ] && "bream setbg"
 fi
 
 export XDG_CURRENT_DESKTOP=GNOME
@@ -39,4 +39,3 @@ fi
 
 # Start awesome
 ssh-agent awesome
-

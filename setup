@@ -1,26 +1,26 @@
 #!/bin/bash
 read -r -d '' HEADER <<-'EOF'
-:::::::-.      ...         ...    :::::::..   .::::::.
- ;;,   `';, .;;;;;;;.   .;;;;;;;. ;;;;``;;;; ;;;`    `
- `[[     [[,[[     \[[,,[[     \[[,[[[,/[[[' '[==/[[[[,
-  $$,    $$$$$,     $$$$$$,     $$$$$$$$$c     '''    $
-  888_,o8P'"888,_ _,88P"888,_ _,88P888b "88bo,88b    dP
-  MMMMP"`    "YMMMMMP"   "YMMMMMP" MMMM   "W"  "YMmMY"
+:::::::. :::::::..  .,::::::   :::.     .        :
+ ;;;'';;';;;;``;;;; ;;;;''''   ;;`;;    ;;,.    ;;;
+ [[[__[[\.[[[,/[[['  [[cccc   ,[[ '[[,  [[[[, ,[[[[,
+ $$""""Y$$$$$$$$c    $$""""  c$$$cc$$$c $$$$$$$$"$$$
+_88o,,od8P888b "88bo,888oo,__ 888   888,888 Y88" 888o
+""YUMMMP" MMMM   "W" """"YUMMMYMM   ""` MMM  M'  "MMM
 
-Doors are sturdier than windows.
--------------------------------------------------------
+       Bash   Rules   Everything   Around   Me
+-----------------------------------------------------
 EOF
 
 bin_dir="$HOME"/.local/bin
 config_dir="$HOME"/.config
-doors_cache_dir="$HOME"/.cache/doors
-git_url=https://git.doordesk.net/adam/Doors.git
+cache_dir="$HOME"/.cache/bream
+git_url=https://git.doordesk.net/adam/bream.git
 
 ensure_yay() {
     if [ ! "$(command -v yay)" ]; then
         echo "Installing yay..."
 
-        local yay_dir="$doors_cache_dir"/yay
+        local yay_dir="$cache_dir"/yay
 
         # git clone will return 0 even on error so clean up ahead of time
         rm -rf "$yay_dir"
@@ -88,7 +88,7 @@ init_browser() {
 init_widgets() {
     echo "Configuring awesome widgets..."
 
-    cd "$doors_cache_dir" &&
+    cd "$cache_dir" &&
     git submodule init &&
     git submodule update || return 1
 
@@ -191,7 +191,7 @@ install_shell() {
 install_configs() {
     [ ! -d "$config_dir" ] && { mkdir -p "$config_dir" || return 1; }
 
-    cd "$doors_cache_dir"/config &&
+    cd "$cache_dir"/config &&
     for file in *; do
         local oldfile="$config_dir"/"$file"
         [ -e "$oldfile" ] && rm -rf "$oldfile"
@@ -204,25 +204,25 @@ install_configs() {
 install_bin() {
     [ ! -d "$bin_dir" ] && { mkdir -p "$bin_dir" || return 1; }
 
-    cd "$doors_cache_dir" &&
+    cd "$cache_dir" &&
     cp -r --update=all bin/* "$bin_dir" || return 1
 
     return 0
 }
 
 cleanup() {
-    rm -rf "$doors_cache_dir"
+    rm -rf "$cache_dir"
 }
 
 setup_arch() {
     sudo sed '/Color/s/^#//' -i /etc/pacman.conf &&
     sudo pacman -S --needed --noconfirm git base-devel &&
 
-    if test -d "$doors_cache_dir"; then
-        cd "$doors_cache_dir" &&
+    if test -d "$cache_dir"; then
+        cd "$cache_dir" &&
         git pull
     else
-        git clone "$git_url" "$doors_cache_dir"
+        git clone "$git_url" "$cache_dir"
     fi &&
 
     if [ "$1" -ge 1 ]; then
@@ -260,26 +260,12 @@ draw_header() {
     return 0
 }
 
-wipe_old_files() {
-    echo "Cleaning up old install files..."
-
-    rm -rfv "$HOME"/*~
-    rm -rfv "$HOME"/.doors
-    rm -rfv "$HOME"/.config/*~
-    rm -rfv "$HOME"/.local/bin/*~
-
-    echo "Done"
-
-    return 0
-}
-
 get_user_input() {
     read -r -p 'Choose your adventure:
 
- 1. Shell/CLI stuff only
- 2. Above plus basic GUI
- 3. Above plus extras like steam, messengers (bloat)
- 4. Cleanup old Doors files (before May 21 2025)
+ 1. Base shell/CLI stuff only
+ 2. Above plus basic GUI stuff
+ 3. Above plus extras (bloat)
 
     Enter number: ' input &&
 
@@ -304,11 +290,6 @@ main() {
     user_input=$(get_user_input)
 
     draw_header
-
-    if [ "$user_input" -eq 4 ]; then
-        wipe_old_files
-        exit 0
-    fi
 
     # Detect OS and act accordingly
     . /etc/os-release
