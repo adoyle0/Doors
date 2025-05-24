@@ -56,7 +56,7 @@ install_base_arch() {
         npm \
         oh-my-zsh-git \
         pacman-contrib \
-        rate-mirrors \
+        rate-mirrors-bin \
         ripgrep \
         rsync \
         rubygems \
